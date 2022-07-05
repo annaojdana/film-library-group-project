@@ -5,7 +5,7 @@ Projekt: Filmoteka
 ## Członkowie zespołu: 💪💪💪 🧨 💥💥💥
 
 - Team Leader - Anna Ojdana
-- Scrum Master - Patryk Tomaszek
+- Scrum Master - Patryk Tomaszek 🐈🐈🐈
 - Dawid Marek
 - Marek Kalus
 - Bartłomiej Kita
