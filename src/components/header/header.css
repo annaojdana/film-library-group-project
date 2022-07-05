@@ -1,0 +1,12 @@
+.header__wrapper {
+  height: 230px;
+  background-color: #979797;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url(../../images/header__bg.png);
+  background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../../images/header__bg.png);
+  background-size: cover;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=header.css.map */

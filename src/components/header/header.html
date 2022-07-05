@@ -1,0 +1,37 @@
+<header>
+  <div class="header__wrapper">
+    <div class="nav__wrapper">
+      <a class="header__logo" href="./index.html">
+        <svg class="header__icon">
+          <use href="./images/sprite.svg#film"></use>
+        </svg>
+        <h1 class="header__title">Filmoteka</h1></a
+      >
+
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a class="nav__link" href="./index.html">Home</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#">My Library</a>
+        </li>
+      </ul>
+    </div>
+    <div class="header__input-wrapper">
+      <input
+        type="text"
+        class="header__input"
+        id="input"
+        placeholder="Search For The Movie"
+      />
+      <svg class="input__icon">
+        <use href="./images/sprite.svg#search"></use>
+      </svg>
+    </div>
+    <p class="not-found is-hidden">
+      Search result not successful. Enter the correct movie name.
+    </p>
+  </div>
+
+  <script src="./header.js" type="module"></script>
+</header>
