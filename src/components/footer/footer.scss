@@ -1,0 +1,51 @@
+// Mobile first!
+.footer {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100px;
+  background: #f7f7f7;
+
+  .container {
+    width: 100%;
+  }
+
+  &__copyright {
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &__image {
+    width: 12px;
+    height: 14px;
+    margin: 0 10px;
+  }
+
+  &__link {
+    color: #545454;
+    margin-left: 5px;
+  }
+}
+
+@media screen and(min-width: 768px) {
+  .footer {
+    height: 77px;
+    .container {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+    }
+
+    &__copyright {
+      font-size: 16px;
+      &:first-of-type {
+        margin-right: 5px;
+      }
+    }
+  }
+}
