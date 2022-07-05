@@ -4,3 +4,5 @@ import './main.scss';
 // Przykład:
 
 // import './components/katalog_komponentu/komponent.js';
+
+import './components/popularMovies/popularMovies'
