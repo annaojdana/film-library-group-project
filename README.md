@@ -9,7 +9,8 @@ Projekt: Filmoteka
 - Dawid Marek
 - Marek Kalus
 - Bartłomiej Kita
-- Rafał Gawlak - testtt
+- Rafał Gawlak
+
 
 ## Link do GitHub Pages 👇👇👇
 
