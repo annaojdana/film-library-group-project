@@ -6,7 +6,7 @@ Projekt: Filmoteka
 
 - Team Leader - Anna Ojdana
 - Scrum Master - Patryk Tomaszek
-- Dawid Marek
+- Dawid Marek 
 - Marek Kalus
 - Bartłomiej Kita
 - Rafał Gawlak
