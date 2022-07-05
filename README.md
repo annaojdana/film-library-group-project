@@ -8,8 +8,9 @@ Projekt: Filmoteka
 - Scrum Master - Patryk Tomaszek
 - Dawid Marek
 - Marek Kalus
-- Bartłomiej Kita ?
+- Bartłomiej Kita
 - Rafał Gawlak
+
 
 ## Link do GitHub Pages 👇👇👇
 
