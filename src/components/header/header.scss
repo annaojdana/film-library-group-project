@@ -78,17 +78,13 @@ li {
     width: 100%;
     left: 0;
   }
-  &:hover,
-  &:focus {
-    color: red;
-  }
 }
 
 .nav__link.nav__link--active {
   position: relative;
 }
 
-.nav__link.navigation__link--active::after {
+.nav__link.nav__link--active::after {
   content: '';
   width: 100%;
   height: 3px;
