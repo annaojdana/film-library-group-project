@@ -59,10 +59,6 @@
   .popular-movies_item {
     width: 294px;
     margin-bottom: 30px;
-
-    &:not(:nth-child(2n)) {
-      margin-right: 30px;
-    }
   }
 }
 
