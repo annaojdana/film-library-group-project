@@ -1,26 +1,17 @@
 ///////////--HEADER--///////////
-
-li {
-  list-style: none;
-}
-
-.header__wrapper {
+.header {
   height: 230px;
   background-color: #979797;
   background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../../images/header__mobile-bg.png);
   background-size: cover;
-  padding-left: 20px;
-  padding-right: 20px;
-  max-width: 1280px;
-  margin: 0 auto;
 }
 
 @media (min-device-pixel-ratio: 2),
   (-webkit-min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
-  .header__wrapper {
+  .header {
     background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../../images/header__mobile-bg@x2.png);
     background-size: cover;
@@ -31,7 +22,8 @@ li {
   display: flex;
   align-items: baseline;
   margin: 0;
-  padding: 45px 0 45px;
+  padding-top: 45px;
+  padding-bottom: 45px;
   justify-content: space-between;
   & a {
     color: white;
@@ -161,7 +153,7 @@ li {
 ///////////--TABLET--///////////
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-  .header__wrapper {
+  .header {
     background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../../images/header__tablet-bg.png);
     background-size: cover;
@@ -171,7 +163,7 @@ li {
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    .header__wrapper {
+    .header {
       background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url(../../images/header__tablet-bg@x2.png);
       background-size: cover;
@@ -182,7 +174,7 @@ li {
 ///////////--DESKTOP--///////////
 
 @media screen and (min-width: 1024px) {
-  .header__wrapper {
+  .header {
     background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../../images/header__desktop-bg.png);
     background-size: cover;
@@ -192,7 +184,7 @@ li {
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    .header__wrapper {
+    .header {
       background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url(../../images/header__desktop-bg@x2.png);
       background-size: cover;
