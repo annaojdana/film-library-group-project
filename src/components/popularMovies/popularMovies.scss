@@ -1,18 +1,25 @@
-.container{
-margin: 20 auto 40;
-width: 280px;
-border: 1px solid red;
+.popular-movies{
+  &--wrapper{
+    margin: 20px auto 40px;
+    width: 280px;
+}
 }
 
+
+
 @media screen and(min-width: 768px) {
-  .container{
-    margin: 60px auto;
-    width: 616px;
+  .popular-movies {
+      &--wrapper {
+        margin: 60px auto;
+        width: 616px;
   }
+}
 }
 
 @media screen and(min-width: 1024px) {
-  .container {
-    width: 882px;
+  .popular-movies {
+      &--wrapper {
+        width: 882px;
   }
+}
 }
