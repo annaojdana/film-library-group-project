@@ -17,6 +17,21 @@
   cursor: pointer;
 }
 
+.item__image:hover {
+  opacity: 1;
+  animation: flash 1.8s;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .item__title {
   margin-top: 10px;
   margin-bottom: 0;
