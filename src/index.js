@@ -1,8 +1,11 @@
 import './main.scss';
 
-// Tutaj wczytujemy importy plików .js strony głownej
-// Przykład:
+import './components/header/header';
+import './components/popularMovies/popularMovies'
+import './components/footer/footer.js';
 
-// import './components/katalog_komponentu/komponent.js';
 import './components/movieCard/movieCard';
 import './components/movieModal/movieModal';
+
+// import './components/katalog_komponentu/komponent.js';
+
