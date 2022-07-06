@@ -1,0 +1,21 @@
+.popular-movies{
+  padding: 20px 20px 40px;
+  &--wrapper{
+   border: 1px solid red; //kod dozobrazowania
+}
+}
+
+
+
+@media screen and(min-width: 768px) {
+  .popular-movies {
+    padding: 60px 76px;
+
+}
+}
+
+@media screen and(min-width: 1024px) {
+  .popular-movies {
+    padding: 60px 71px;
+}
+}
