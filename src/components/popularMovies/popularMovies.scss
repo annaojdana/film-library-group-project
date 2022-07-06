@@ -1,7 +1,7 @@
 .popular-movies{
+  padding: 20px 20px 40px;
   &--wrapper{
-    margin: 20px auto 40px;
-    width: 280px;
+   border: 1px solid red; //kod dozobrazowania
 }
 }
 
@@ -9,17 +9,13 @@
 
 @media screen and(min-width: 768px) {
   .popular-movies {
-      &--wrapper {
-        margin: 60px auto;
-        width: 616px;
-  }
+    padding: 60px 76px;
+
 }
 }
 
 @media screen and(min-width: 1024px) {
   .popular-movies {
-      &--wrapper {
-        width: 882px;
-  }
+    padding: 60px 71px;
 }
 }
