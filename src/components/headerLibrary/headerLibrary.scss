@@ -1,20 +1,16 @@
-.library__wrapper {
+.library {
   height: 230px;
   background-color: #979797;
   background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../../images/library__mobile-bg.png);
   background-size: cover;
-  padding-left: 20px;
-  padding-right: 20px;
-  max-width: 1280px;
-  margin: 0 auto;
 }
 
 @media (min-device-pixel-ratio: 2),
   (-webkit-min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
-  .library__wrapper {
+  .library {
     background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../../images/library__mobile-bg@x2.png);
     background-size: cover;
@@ -61,7 +57,7 @@
     width: 136px;
   }
 
-  .library__wrapper {
+  .library {
     background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../../images/library__tablet-bg.png);
     background-size: cover;
@@ -71,7 +67,7 @@
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    .library__wrapper {
+    .library {
       background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url(../../images/library__tablet-bg@x2.png);
       background-size: cover;
@@ -82,7 +78,7 @@
   .btn {
     width: 136px;
   }
-  .library__wrapper {
+  .library {
     background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../../images/library__desktop-bg.png);
     background-size: cover;
@@ -92,7 +88,7 @@
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    .library__wrapper {
+    .library {
       background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url(../../images/library__desktop-bg@x2.png);
       background-size: cover;
