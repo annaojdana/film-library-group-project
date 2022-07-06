@@ -5,3 +5,4 @@ import './main.scss';
 
 // import './components/katalog_komponentu/komponent.js';
 import './components/movieCard/movieCard';
+import './components/movieModal/movieModal';
