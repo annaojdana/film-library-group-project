@@ -20,6 +20,7 @@
 }
 
 .modal-window {
+  padding: 0 20px;
   position: absolute;
   overflow-y: auto;
   top: 50%;
@@ -38,7 +39,7 @@
     right: 8px;
     top: 8px;
     border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: none;
     cursor: pointer;
     fill: black;
     background-color: white;
@@ -48,10 +49,12 @@
   }
 }
 .movie__wrap {
-  margin: 48px 20px 41px 20px;
+  margin-top: 48px;
+  margin-bottom: 41px;
   width: 100%;
   &-img {
     width: 240px;
+    border-radius: 5px;
     &-desktop {
       display: none;
     }
@@ -142,7 +145,7 @@
   .modal-window {
     width: 618px;
     height: auto;
-      
+
   }
   .movie__wrap {
   margin: 42px 28px 40px 30px;
@@ -158,10 +161,10 @@
     width: 240px;
   }
   &-title {
-   
+
     margin-top: 0;
   }
-  
+
 }
 .data-value {
   margin-left: 36px;
@@ -172,7 +175,7 @@
   .modal-window {
     width: 882px;
     height: auto;
-      
+
   }
   .movie__wrap {
   margin: 50px 30px 40px 30px;
@@ -192,10 +195,10 @@
     }
   }
   &-title {
-   
+
     margin-top: 0;
   }
-  
+
 }
 .data-value {
   margin-left: 36px;
