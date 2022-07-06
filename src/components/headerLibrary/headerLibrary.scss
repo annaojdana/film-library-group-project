@@ -1,3 +1,101 @@
-p {
-  font-size: 60px;
+.library__wrapper {
+  height: 230px;
+  background-color: #979797;
+  background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../../images/library__mobile-bg.png);
+  background-size: cover;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+@media (min-device-pixel-ratio: 2),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .library__wrapper {
+    background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../../images/library__mobile-bg@x2.png);
+    background-size: cover;
+  }
+}
+
+.btn {
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 1.143;
+  width: 130px;
+  height: 44px;
+  cursor: pointer;
+
+  &:last-child {
+    margin-left: 20px;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 65px;
+  }
+  &:hover {
+    background: #ff6b08;
+    border: none;
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  }
+  &__active {
+    background: #ff6b08;
+    border: none;
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  }
+}
+
+///////////--TABLET--///////////
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .btn {
+    width: 136px;
+  }
+
+  .library__wrapper {
+    background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../../images/library__tablet-bg.png);
+    background-size: cover;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .library__wrapper {
+      background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url(../../images/library__tablet-bg@x2.png);
+      background-size: cover;
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .btn {
+    width: 136px;
+  }
+  .library__wrapper {
+    background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../../images/library__desktop-bg.png);
+    background-size: cover;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .library__wrapper {
+      background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url(../../images/library__desktop-bg@x2.png);
+      background-size: cover;
+    }
+  }
 }

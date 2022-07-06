@@ -1,1 +1,1 @@
-import './headerLibrary.scss'
+import './headerLibrary.scss';
