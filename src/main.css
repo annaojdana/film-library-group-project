@@ -1,8 +1,5 @@
 body {
   box-sizing: border-box;
-  // font-family: $mainFont;
-  // font-size: $mainFontSize;
-  // color: $mainFontColor;
   background-color: #E5E5E5;
 }
 
@@ -30,4 +27,4 @@ img {
 
 button {
   cursor: pointer;
-}
+}/*# sourceMappingURL=main.css.map */
