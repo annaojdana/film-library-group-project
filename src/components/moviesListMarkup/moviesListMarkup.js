@@ -6,7 +6,7 @@ const htmlMarkup = data =>
   data
     .map(
       ({ backdrop_path, title, genre_ids, release_date, vote_average }) => `
-     <div class="popular-movies_item item" id="">
+     <div class="popular-movies_item item" id="" data-modal-open>
          <img src="${backdrop_path}" alt="" class="item__image" />
          <div class="item__info">
             <h3 class="item__title">${title}</h3>
