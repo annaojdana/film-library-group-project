@@ -6,7 +6,7 @@ const htmlMarkup = data =>
   data
     .map(
       ({ poster_path, title, genre_ids, release_date, vote_average, id }) => `
-     <div class="item" id="${id}" data-modal-open>
+     <div class="item" data-id="${id}" data-modal-open>
          <img class="item__image" src="https://image.tmdb.org/t/p/w300${poster_path}" alt=" Poster of: ${title}" />
          <div class="item__info">
             <h3 class="item__title">${title}</h3>
