@@ -5,14 +5,14 @@ import fetchTrendyMovies from '../fetchTrendyMovies/fetchTrendyMovies';
 const htmlMarkup = data =>
   data
     .map(
-      ({ backdrop_path, title, genre_ids, release_date, vote_average }) => `
-     <div class="popular-movies_item item" id="" data-modal-open>
-         <img src="${backdrop_path}" alt="" class="item__image" />
+      ({ poster_path, title, genre_ids, release_date, vote_average, id }) => `
+     <div class="item" id="${id}" data-modal-open>
+         <img class="item__image" src="https://image.tmdb.org/t/p/w300${poster_path}" alt=" Poster of: ${title}" />
          <div class="item__info">
             <h3 class="item__title">${title}</h3>
             <p class="item__genres" data-genres>${genre_ids}</p>
             <span class="item__separator">|</span>
-            <p class="item__year">${release_date}</p>s
+            <p class="item__year">${release_date}</p>
             <p class="item__rating">${vote_average}</p>
         </div>
     </div>
@@ -21,12 +21,18 @@ const htmlMarkup = data =>
     .join('');
 // Main function for HTML markup output
 export default function moviesListMarkup(whatToOutput = 'trending') {
+  // Variable for selecting output tag
+  const markupOutput = document.querySelector('[data-markup-output]');
+
   switch (whatToOutput) {
     case 'trending':
       fetchTrendyMovies()
         .then(response => {
           console.log(`output markupu dla 'trending'`);
-          return htmlMarkup(response.results);
+          return markupOutput.insertAdjacentHTML(
+            'beforeend',
+            htmlMarkup(response.results)
+          );
         })
         .catch(error => console.error(error));
       break;
@@ -50,6 +56,9 @@ export default function moviesListMarkup(whatToOutput = 'trending') {
 }
 
 // Użycie:
+// ! ! ! WAŻNE ! ! !
+// Najpierw do tagu, gdzie ma renderować się markup. nalezy dodać atrybut 'data-markup-output'
+
 // moviesListMarkup() - domyślne zachowanie - wyświetla filmy z API - trending;
 // moviesListMarkup('trending') - j.w.
 // moviesListMarkup('queue') - wyświetla filmy umieszczone w zbiorze 'queue'

@@ -1,3 +1,13 @@
+// @keyframes flash {
+//   0% {
+//     opacity: 0.2;
+//   }
+
+//   100% {
+//     opacity: 1;
+//   }
+// }
+
 .popular-movies {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -10,60 +20,109 @@
   margin: 0 auto;
 }
 
-.popular-movies_item {
-  width: 280px;
-  height: 440px;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
+// .popular-movies_item {
+//   width: 280px;
+//   height: 440px;
+//   margin-bottom: 20px;
+//   cursor: pointer;
+// }
+// .item {
+//   width: 280px;
+//   min-height: 440px;
+//   margin-bottom: 20px;
+//   cursor: pointer;
 
-.item__image:hover {
-  opacity: 1;
-  animation: flash 1.8s;
-}
+//   &__image {
+//     width: 100%;
+//     height: 402px;
+//     border-radius: 5px;
+//     &:hover {
+//       opacity: 1;
+//       animation: flash 1.8s;
+//     }
+//   }
 
-@keyframes flash {
-  0% {
-    opacity: 0.2;
-  }
+//   &__title {
+//     margin-top: 10px;
+//     margin-bottom: 3px;
+//     font-size: 12px;
+//     line-height: 1.333;
+//     text-transform: uppercase;
+//   }
 
-  100% {
-    opacity: 1;
-  }
-}
+//   &__genres,
+//   &__separator,
+//   &__year {
+//     display: inline;
+//     font-size: 12px;
+//     line-height: 1.172;
+//     font-weight: 500;
+//     color: #ff6b08;
+//   }
 
-.item__title {
-  margin-top: 10px;
-  margin-bottom: 0;
-  font-size: 12px;
-  line-height: 1.333;
-  text-transform: uppercase;
-}
+//   &__rating {
+//     display: inline;
+//     font-weight: 500;
+//     font-size: 12px;
+//     line-height: 1.16;
+//     color: #ffffff;
+//     background-color: #ff6b08;
+//     text-align: center;
+//     width: 36px;
+//     height: 16px;
+//     border-radius: 5px;
+//     padding: 1px 6px;
+//     margin-left: 10px;
+//   }
+// }
 
-.item__genres,
-.item__separator,
-.item__year {
-  display: inline;
-  font-size: 12px;
-  line-height: 1.172;
-  font-weight: 500;
-  color: #ff6b08;
-}
+// .item__image {
+//   width: 280px;
+//   height: 402px;
+//   border-radius: 5px;
+//   &:hover {
+//     opacity: 1;
+//     animation: flash 1.8s;
+//   }
+// }
 
-.item__rating {
-  display: inline;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.16;
-  color: #ffffff;
-  background-color: #ff6b08;
-  text-align: center;
-  width: 36px;
-  height: 16px;
-  border-radius: 5px;
-  padding: 1px 6px;
-  margin-left: 10px;
-}
+// .item__image:hover {
+//   opacity: 1;
+//   animation: flash 1.8s;
+// }
+
+// .item__title {
+//   margin-top: 10px;
+//   margin-bottom: 0;
+//   font-size: 12px;
+//   line-height: 1.333;
+//   text-transform: uppercase;
+// }
+
+// .item__genres,
+// .item__separator,
+// .item__year {
+//   display: inline;
+//   font-size: 12px;
+//   line-height: 1.172;
+//   font-weight: 500;
+//   color: #ff6b08;
+// }
+
+// .item__rating {
+//   display: inline;
+//   font-weight: 500;
+//   font-size: 12px;
+//   line-height: 1.16;
+//   color: #ffffff;
+//   background-color: #ff6b08;
+//   text-align: center;
+//   width: 36px;
+//   height: 16px;
+//   border-radius: 5px;
+//   padding: 1px 6px;
+//   margin-left: 10px;
+// }
 
 @media screen and(min-width: 768px) and (max-width: 1023px) {
   .popular-movies {
@@ -71,10 +130,19 @@
     padding-bottom: 60px;
   }
 
-  .popular-movies_item {
-    width: 294px;
-    margin-bottom: 30px;
-  }
+  // .item {
+  //   width: 294px;
+  //   margin-bottom: 30px;
+
+  //   &:not(:nth-child(2n)) {
+  //     margin-right: 20px;
+  //   }
+
+  //   &__image {
+  //     width: 100%;
+  //     height: 398px;
+  //   }
+  // }
 }
 
 @media screen and(min-width: 1024px) {
@@ -83,12 +151,12 @@
     padding-bottom: 60px;
   }
 
-  .popular-movies_item {
-    width: 274px;
-    margin-bottom: 30px;
+  // .item {
+  //   width: 274px;
+  //   margin-bottom: 30px;
 
-    &:not(:nth-child(3n)) {
-      margin-right: 30px;
-    }
-  }
+  //   &:not(:nth-child(3n)) {
+  //     margin-right: 30px;
+  //   }
+  // }
 }
