@@ -20,7 +20,6 @@
 }
 
 .modal {
-  padding: 0 20px;
   position: absolute;
   overflow-y: auto;
   top: 50%;
@@ -33,170 +32,117 @@
   border-radius: 4px;
 
   &__close {
-    padding: 2px;
+    padding: 0;
     position: sticky;
-    right: 8px;
     top: 8px;
+    right: 8px;
     border-radius: 50%;
     border: none;
-    cursor: pointer;
     background-color: white;
-    display: flex;
     float: right;
-    &-btn{
-      width: 14px;
-      height: 14px;
-      fill:#000000;
-      stroke: #000000;
+    &-btn {
+      width: 30px;
+      height: 30px;
     }
   }
-}
-.movie__wrap {
-  margin-top: 48px;
-  margin-bottom: 41px;
-  &-img {
-    width: 240px;
+  &--wrapper{
+    padding: 0 20px;
+  }
+  &__btns {
+    width: 112.83px;
     border-radius: 5px;
-    &-desktop {
-      display: none;
-    }
-  }
-  &-title {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
+    height: 44px;
+    background: #fff;
+    border: #000 solid 1px;
+    color: #000;
     text-transform: uppercase;
-    margin-top: 30.43px;
-  }
-  &-data {
-    display: flex;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
-}
-.data-name {
-  width: 100%;
-  &-list {
-    color: #8c8c8c;
-    &__item {
-      margin-top: 11px;
-      font-size: 12px;
+
+    &--wrapper{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 21px;
+      margin-bottom: 41px;
+    }
+    &:hover,
+    &:active{
+      background: #ff6b01;
+      border-color: #ff6b01;
+      color: #fff;
     }
   }
 }
-.data-value {
-  &-list {
-
-    &__item {
-      margin-top: 10px;
-      font-size: 12px;
+.movie {
+  &__card {
+    &--wrapper {
+      margin-top: 48px;
     }
   }
 }
-.vote {
-  background: #ff6b01;
-  border-radius: 5px;
-  color: #fff;
-  width: 36px;
-  padding: 1px 10px;
+
+
+@media screen and(min-width: 768px) {
+.modal {
+  width: 618px;
+  &__close {
+    top: 10px;
+    right: 10px;
+    }
+  &--wrapper {
+    padding: 0 28px;
+     }
+  &__btns {
+    width: 125.03px;
+    &--wrapper {
+      width: 265px;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      }
+
+      &:hover,
+      &:active {
+        background: #ff6b01;
+        border-color: #ff6b01;
+        color: #fff;
+      }
+    }
 }
-.votes {
-  background: #f7f7f7;
-  border-radius: 5px;
-  padding: 1px 4px;
-}
-.title {
-  text-transform: uppercase;
-}
-.about {
-  text-transform: uppercase;
-  &-value {
-    line-height: 20px;
-    margin-bottom: 21px;
+.movie {
+  &__card {
+    &--wrapper {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 42px;
+    }
   }
 }
-.button-wrap {
-  display: flex;
-  align-items: initial;
-}
-.add__watch {
-  width: 112px;
-  border-radius: 5px;
-  height: 44px;
-  background: #ff6b01;
-  border: #ff6b01 solid 1px;
-  color: #fff;
-  text-transform: uppercase;
-}
-.add__queue {
-  width: 112px;
-  border-radius: 5px;
-  height: 44px;
-  text-transform: uppercase;
-  border: 1px solid #000000;
-  margin-left: 14px;
 }
 
-// @media screen and (min-width: 767px) and (max-width: 1023px) {
-//   .modal-window {
-//     width: 618px;
-//     height: auto;
+@media screen and(min-width: 1024px) {
+.modal {
+  width: 882px;
+  &--wrapper {
+      padding: 0 30px;
+    }
+    &__btns {
+      width: 136px;
+      &--wrapper {
+        justify-content: start;
+        width: 396px;
+        margin-top: 21px;
+        margin-bottom: 102px;
+      }
+      &--watch{
+        margin-right: 15px;
+      }
 
-//   }
-//   .movie__wrap {
-//   margin: 42px 28px 40px 30px;
+    }
+  }
 
-//   display: flex;
-//   &-nomobile{
-//     display: flex;
-//     flex-direction: column;
-//     margin-left: 32px;
-//     width: 264px;
-//   }
-//   &-img {
-//     width: 240px;
-//   }
-//   &-title {
-
-//     margin-top: 0;
-//   }
-
-// }
-// .data-value {
-//   margin-left: 36px;
-// }
-// }
-
-// @media screen and (min-width: 1024px)  {
-//   .modal-window {
-//     width: 882px;
-//     height: auto;
-
-//   }
-//   .movie__wrap {
-//   margin: 50px 30px 40px 30px;
-
-//   display: flex;
-//   &-nomobile{
-//     display: flex;
-//     flex-direction: column;
-//     margin-left: 32px;
-//     width: 396px;
-//   }
-//   &-img {
-//     display: none;
-//     &-desktop {
-//       display: block;
-//     width: 396px;
-//     }
-//   }
-//   &-title {
-
-//     margin-top: 0;
-//   }
-
-// }
-// .data-value {
-//   margin-left: 36px;
-// }
-// }
+  .movie {
+    &__card {
+      &--wrapper {
+        margin-top: 50px;
+      }
+    }
+  }
+}
