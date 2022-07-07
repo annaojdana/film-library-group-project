@@ -26,6 +26,7 @@ export default function moviesListMarkup(whatToOutput = 'trending') {
       fetchTrendyMovies()
         .then(response => {
           console.log(`output markupu dla 'trending'`);
+          console.log(response.results);
           return htmlMarkup(response.results);
         })
         .catch(error => console.error(error));
