@@ -1,14 +1,14 @@
 import './popularMovies.scss';
 import '../../scss/moviesList.scss';
+import moviesListMarkup from '../moviesListMarkup/moviesListMarkup';
+import openModal from '../openModal/openModal';
 
-// Import funkcji dla markupu danych
-import moviesListMarkup from '../moviesListMarkup/moviesListMarkup.js';
 
 // Wywołanie funkcji - markup danych dla 'trending
+
+
 moviesListMarkup();
 
-import { toggleModal } from '../movieModal/movieModal';
+const moviesWrapper = document.querySelector('[data-markup-output]');
 
-const openModalBtn = document.querySelector('[data-modal-open]');
-
-openModalBtn.addEventListener("click", toggleModal);
+moviesWrapper.addEventListener("click", openModal);

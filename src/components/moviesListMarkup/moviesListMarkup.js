@@ -24,7 +24,7 @@ const htmlMarkup = data =>
 export default function moviesListMarkup(whatToOutput = 'trending') {
   // Variable for selecting output tag
   const markupOutput = document.querySelector('[data-markup-output]');
-
+ 
   switch (whatToOutput) {
     case 'trending':
       fetchTrendyMovies()
