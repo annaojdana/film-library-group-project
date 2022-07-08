@@ -1,10 +1,10 @@
 import './popularMovies.scss';
 import '../../scss/moviesList.scss';
 import moviesListMarkup from '../moviesListMarkup/moviesListMarkup';
-import openModal from '../openModal/openModal';
 
 
 // Wywołanie funkcji - markup danych dla 'trending
+moviesListMarkup();
 
 import { initializeModal } from '../movieModal/movieModal';
 import setToLocalStorage from '../setToLocalStorage/setToLocalStorage';
