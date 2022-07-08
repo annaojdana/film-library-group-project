@@ -5,9 +5,9 @@ import '../../scss/moviesList.scss';
 import moviesListMarkup from '../moviesListMarkup/moviesListMarkup.js';
 
 // Wywołanie funkcji - markup danych dla 'trending
-moviesListMarkup();
+moviesListMarkup('watched');
 
-import { toggleModal, initializeModal } from '../movieModal/movieModal';
+import { initializeModal } from '../movieModal/movieModal';
 
 // Funkcja dla inicjalizacji modala dla listy filmów,
 // funkcja dodajelistener dla każdej wyświetlonej karty.
