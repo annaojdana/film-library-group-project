@@ -8,6 +8,8 @@ import moviesListMarkup from '../moviesListMarkup/moviesListMarkup.js';
 moviesListMarkup('watched');
 
 import { initializeModal } from '../movieModal/movieModal';
+import setToLocalStorage from '../setToLocalStorage/setToLocalStorage';
+import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage';
 
 // Funkcja dla inicjalizacji modala dla listy filmów,
 // funkcja dodajelistener dla każdej wyświetlonej karty.

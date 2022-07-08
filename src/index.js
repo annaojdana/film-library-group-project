@@ -23,4 +23,3 @@ import './components/movieModal/movieModal';
 // const array = [{ ...list[0] }];
 // console.log(array);
 // console.log(JSON.parse(localStorage.getItem('watched')));
-// localStorage.setItem('watched', JSON.stringify(array));

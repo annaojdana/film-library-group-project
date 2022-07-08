@@ -1,3 +1,3 @@
 export default function setToLocalStorage(key, value) {
-  return localStorage.setItem(value, JSON.stringify(key));
+  return localStorage.setItem(key, JSON.stringify(value));
 }
