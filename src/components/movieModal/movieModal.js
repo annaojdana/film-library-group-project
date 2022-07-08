@@ -3,7 +3,6 @@ import './movieModal.scss';
 const closeModalBtn = document.querySelector('[data-modal-close]');
 const modal = document.querySelector('[data-modal]');
 console.log(modal);
-let i = 1;
 console.log(closeModalBtn);
 
 closeModalBtn.addEventListener('click', toggleModal);
@@ -23,11 +22,11 @@ export function initializeModal() {
 
     if (cards.length !== 0) {
       for (const card of cards) {
-        console.log('listener dla karty nr:', i);
-        i++;
         card.addEventListener('click', toggleModal);
       }
       clearInterval(timer);
+    } else {
+      console.log('repeat timer');
     }
   }, 10);
 }

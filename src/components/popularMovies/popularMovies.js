@@ -5,7 +5,7 @@ import '../../scss/moviesList.scss';
 import moviesListMarkup from '../moviesListMarkup/moviesListMarkup.js';
 
 // Wywołanie funkcji - markup danych dla 'trending
-moviesListMarkup('watched');
+moviesListMarkup();
 
 import { initializeModal } from '../movieModal/movieModal';
 import setToLocalStorage from '../setToLocalStorage/setToLocalStorage';
