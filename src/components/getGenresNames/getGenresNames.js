@@ -1,8 +1,7 @@
 import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
 
-const allGenres = getFromLocalStorage("genres");
-
 export default function getGenresNames(genreIdsOfMovie) {
+  const allGenres = getFromLocalStorage("genres");
 
   if (typeof genreIdsOfMovie !== "object") {
     console.log(`No argument to 'getGenresNames' function was given, or it is not an array!`)

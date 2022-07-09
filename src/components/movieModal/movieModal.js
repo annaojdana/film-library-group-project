@@ -5,6 +5,7 @@ const modal = document.querySelector('[data-modal]');
 console.log(modal);
 console.log(closeModalBtn);
 
+
 closeModalBtn.addEventListener('click', toggleModal);
 
 // Funkcja jest lokalna, ponieważ nie jest potrzebna poza tym plikiem

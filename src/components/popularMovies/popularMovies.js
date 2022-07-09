@@ -3,7 +3,9 @@ import '../../scss/moviesList.scss';
 import moviesListMarkup from '../moviesListMarkup/moviesListMarkup';
 
 
-// Wywołanie funkcji - markup danych dla 'trending
+// Wywołanie funkcji - markup danych dla 'trending'
+
+
 moviesListMarkup();
 
 import { initializeModal } from '../movieModal/movieModal';
