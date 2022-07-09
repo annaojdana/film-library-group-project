@@ -1,9 +1,12 @@
+import checkStateBtns from "../checkStateBtns/checkStateBtns";
 import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
 import setToLocalStorage from "../setToLocalStorage/setToLocalStorage";
 
 const modalBtns = document.querySelectorAll('.modal__btns');
 
 modalBtns.forEach(b => b.addEventListener("click", localStorageSupport));
+
+checkStateBtns(modalBtns);
 
 function localStorageSupport(evt) {
   const btn = evt.target;
@@ -51,4 +54,6 @@ function localStorageSupport(evt) {
     const save = [...get, idNumber];
     setToLocalStorage(name, save);
   }
-}
+
+  checkStateBtns(modalBtns);
+};
