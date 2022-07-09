@@ -13,7 +13,7 @@ export function closeModal() {
   modal.classList.add('is-hidden');
   localStorage.removeItem("showMovieId");
   localStorage.removeItem("movieData");
-  const htmlOutput = document.querySelector(".movie__card--wrapper");
+  const htmlOutput = document.querySelector(".modal--wrapper");
   htmlOutput.innerHTML = "";
     }
 
