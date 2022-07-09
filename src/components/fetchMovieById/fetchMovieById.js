@@ -1,7 +1,7 @@
 import axios from "axios";
 import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
 
-export default async function fetchMoviesById(id = Number(getFromLocalStorage("showMovieId"))) {
+export default async function fetchMoviesById(movieId) {
    
 
     const params = new URLSearchParams({
@@ -13,7 +13,7 @@ export default async function fetchMoviesById(id = Number(getFromLocalStorage("s
     try {
        
         const response = await axios.get(`
-    https://api.themoviedb.org/3/movie/${id}?${params}`);
+    https://api.themoviedb.org/3/movie/${movieId}?${params}`);
         return response.data;
     } catch (error) {
         console.log(`${error.name}: ${error.message}`);

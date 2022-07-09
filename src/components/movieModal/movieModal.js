@@ -1,7 +1,8 @@
 import './movieModal.scss';
 import movieModalMarkup from '../movieModalMarkup/movieModalMarkup';
+import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
 
-movieModalMarkup();
+
 const closeModalBtn = document.querySelector('[data-modal-close]');
 closeModalBtn.addEventListener("click", closeModal);
 
@@ -10,5 +11,9 @@ closeModalBtn.addEventListener("click", closeModal);
 export function closeModal() {
   const modal = document.querySelector('[data-modal]');
   modal.classList.add('is-hidden');
+  localStorage.removeItem("showMovieId");
+  localStorage.removeItem("movieData");
+  const htmlOutput = document.querySelector(".movie__card--wrapper");
+  htmlOutput.innerHTML = "";
     }
 

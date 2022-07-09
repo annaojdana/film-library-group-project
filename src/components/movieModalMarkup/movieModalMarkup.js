@@ -1,23 +1,23 @@
 // Import
 
-// import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
-import getGenresNames from '../getGenresNames/getGenresNames';
+import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
+// import getGenresNames from '../getGenresNames/getGenresNames';
 import fetchMoviesById from '../fetchMovieById/fetchMovieById';
 
 // Internal function for creating HTML markup
 
 
-const htmlMarkup = ({ backdrop_path, title, vote_average, vote_count, popularity, genre_ids, overview, id }) => `
+const htmlMarkup = ({ backdrop_path, title, vote_average, vote_count, popularity, genres, overview, id }) => `
     <div class="img">
-     < img src = "https://image.tmdb.org/t/p/w300${backdrop_path}" width = "240px" height = "357px" alt = " Poster of: ${title}" class="modal__image">
+     <img src = "https://image.tmdb.org/t/p/w300${backdrop_path}" alt = " Poster of: ${title}" class="modal__image">
      </div>        
      <div class="info">
             <h2 class="modal__title"> ${title}</h2>
     <ul class="movie__details">
-      <li class="details__item"><span class=" details__label">Vote / Votes</span><span class="details__value">${vote_average.toFixed(1)} / ${vote_count}</span></li>
-      <li class="details__item"><span class=" details__label">Popularity</span><span class="details__value">${popularity.toFixed(0)}</span></li>
+      <li class="details__item"><span class=" details__label">Vote / Votes</span><span class="details__value">${Number(vote_average).toFixed(1)} / ${vote_count}</span></li>
+      <li class="details__item"><span class=" details__label">Popularity</span><span class="details__value">${Number(popularity).toFixed(0)}</span></li>
       <li class="details__item"><span class=" details__label">Original Title</span><span class="details__value">${title}</span></li>
-      <li class="details__item"><span class=" details__label">Genre</span><span class="details__value">${getGenresNames(genre_ids)}</span></li>
+      <li class="details__item"><span class=" details__label">Genre</span><span class="details__value">${(genres).map(g => g.name).join(", ")}</span></li>
     </ul>
    <h3 class="modal__header">About</h3>
    <p class="modal__about">${overview}</p>
@@ -27,17 +27,17 @@ const htmlMarkup = ({ backdrop_path, title, vote_average, vote_count, popularity
     </div>
   </div>
   </div>
-  `).join("");
+  `;	
             
-export default function movieModalMarkup() {
+export default function movieModalMarkup(id) {
     // Variable for selecting output tag
     const htmlOutput = document.querySelector(".movie__card--wrapper");
 
    
 
-                   fetchMoviesById()
+                   fetchMoviesById(id)
                    .then(response => {
-                       console.log(`output markupu dla 'trending'`);
+                       console.log(`output markupu dla 'modal'`);
                        return htmlOutput.insertAdjacentHTML(
                            'beforeend',
                            htmlMarkup(response)
