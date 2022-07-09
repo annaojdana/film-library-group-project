@@ -1,4 +1,4 @@
-import fetchTrendyMovies from "../fetchTrendyMovies/fetchTrendyMovies";
+import fetchTrendyMovies from '../fetchTrendyMovies/fetchTrendyMovies';
 
 export default (function memorizeTrendyMovies(name) {
   fetchTrendyMovies()
@@ -8,4 +8,4 @@ export default (function memorizeTrendyMovies(name) {
     .catch(error => {
       console.log(`${error.name}: ${error.message}`);
     });
-})("trendy");
+})('trendy');
