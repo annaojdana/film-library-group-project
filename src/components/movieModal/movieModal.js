@@ -1,8 +1,6 @@
 import './movieModal.scss';
-// import moviePosterModalMarkup from '../movieModalMarkup/movieModalMarkup';
 import movieModalMarkup from '../movieModalMarkup/movieModalMarkup';
 
-// moviePosterModalMarkup();
 movieModalMarkup();
 const closeModalBtn = document.querySelector('[data-modal-close]');
 closeModalBtn.addEventListener("click", closeModal);

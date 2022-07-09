@@ -1,15 +1,13 @@
 // Import
 
-import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
+// import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
 import getGenresNames from '../getGenresNames/getGenresNames';
+import fetchMoviesById from '../fetchMovieById/fetchMovieById';
 
 // Internal function for creating HTML markup
 
 
-const htmlMarkup = data =>
-    data
-        .map(
-    ({ backdrop_path, title, vote_average, vote_count, popularity, genre_ids, overview, id }) => `
+const htmlMarkup = ({ backdrop_path, title, vote_average, vote_count, popularity, genre_ids, overview, id }) => `
     <div class="img">
      < img src = "https://image.tmdb.org/t/p/w300${backdrop_path}" width = "240px" height = "357px" alt = " Poster of: ${title}" class="modal__image">
      </div>        
@@ -31,33 +29,22 @@ const htmlMarkup = data =>
   </div>
   `).join("");
             
-export default function movieModalMarkup(whatToOutput = 'trending') {
+export default function movieModalMarkup() {
     // Variable for selecting output tag
     const htmlOutput = document.querySelector(".movie__card--wrapper");
 
-    switch (whatToOutput) {
-        case 'trending':
-            let movieData = getFromLocalStorage("trendy");
-            let filmIndexInData = movieData.results.map(film => film.id).indexOf(Number(getFromLocalStorage("showMovieId")));
-            console.log(`output markupu dla 'trending'`);
-            // let film = movieData.results[filmIndexInData];
-            return htmlOutput.insertAdjacentHTML('beforeend', htmlMarkup(movieData.results[filmIndexInData]));
-            break;
+   
 
-        case 'watched':
-            console.log(`output markupu dla 'watched'`);
-            break;
-
-        case 'queue':
-            console.log(`output markupu dla 'queue'`);
-            break;
-
-        default:
-            console.log(`choise library'`);
-           
-                ;
-            break;
-    }
+                   fetchMoviesById()
+                   .then(response => {
+                       console.log(`output markupu dla 'trending'`);
+                       return htmlOutput.insertAdjacentHTML(
+                           'beforeend',
+                           htmlMarkup(response)
+                       );
+                   })
+                   .catch(error => console.error(error));
+            
 }
 
 
