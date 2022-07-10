@@ -6,10 +6,8 @@
 .pagination ul {
   display: flex;
   flex-wrap: wrap;
-  background: #fff;
+  background: #e5e5e5;
   padding: 8px;
-  border-radius: 50px;
-  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
 }
 .pagination ul li {
   color: #000000;
@@ -26,23 +24,30 @@
   list-style: none;
   height: 40px;
   width: 40px;
-  margin: 0 3px;
+  margin: 0 1px;
   line-height: 45px;
   border-radius: 5px;
 }
 .pagination ul li.numb.first {
-  margin: 0px 3px 0 -5px;
+  margin: 0px 1px 0 4px;
 }
 .pagination ul li.numb.last {
-  margin: 0px -5px 0 3px;
+  margin: 0px -15px 0 1px;
 }
 .pagination ul li.dots {
   font-size: 22px;
   cursor: default;
 }
 .pagination ul li.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
   padding: 0 20px;
-  border-radius: 50px;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  border: none;
 }
 .pagination li.active,
 .pagination ul li.numb:hover,

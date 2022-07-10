@@ -7,6 +7,7 @@ let totalPages;
 element.innerHTML = createPagination(totalPages, page);
 
 export function createPagination(totalPages, page) {
+  page = 3;
   let liTag = '';
   let active;
   let beforePage = page - 1;
@@ -15,7 +16,7 @@ export function createPagination(totalPages, page) {
     //show the next button if the page value is greater than 1
     liTag += `<li class="btn prev" onclick="createPagination(totalPages, ${
       page - 1
-    })"><span><i class="fas fa-angle-left"></i> Prev</span></li>`;
+    })"><span><i class="fas fa-angle-left"></i></span></li>`;
   }
 
   if (page > 2) {
@@ -27,17 +28,19 @@ export function createPagination(totalPages, page) {
     }
   }
 
-  // how many pages or li show before the current li
-  if (page == totalPages) {
-    beforePage = beforePage - 2;
-  } else if (page == totalPages - 1) {
-    beforePage = beforePage - 1;
-  }
-  // how many pages or li show after the current li
-  if (page == 1) {
-    afterPage = afterPage + 2;
-  } else if (page == 2) {
-    afterPage = afterPage + 1;
+  if (totalPages > 4) {
+    // how many pages or li show before the current li
+    if (page === totalPages) {
+      beforePage = beforePage - 2;
+    } else if (page === totalPages - 1) {
+      beforePage = beforePage - 1;
+    }
+    // how many pages or li show after the current li
+    if (page === 1) {
+      afterPage = afterPage + 2;
+    } else if (page === 2) {
+      afterPage = afterPage + 1;
+    }
   }
 
   for (let plength = beforePage; plength <= afterPage; plength++) {
@@ -72,7 +75,7 @@ export function createPagination(totalPages, page) {
     //show the next button if the page value is less than totalPage(20)
     liTag += `<li class="btn next" onclick="createPagination(totalPages, ${
       page + 1
-    })"><span>Next <i class="fas fa-angle-right"></i></span></li>`;
+    })"><span><i class="fas fa-angle-right"></i></span></li>`;
   }
   element.innerHTML = liTag; //add li tag inside ul tag
   return liTag; //reurn the li tag
