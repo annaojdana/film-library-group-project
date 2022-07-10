@@ -1,3 +1,4 @@
+import movieModalMarkup from '../movieModalMarkup/movieModalMarkup';
 
 export default function openModal(event) {
   if (event.target.className !== "item__image") {
@@ -6,4 +7,9 @@ export default function openModal(event) {
 
   const modal = document.querySelector('[data-modal]');
   modal.classList.remove('is-hidden');
+
+/*
+  localStorage.setItem("showMovieId", JSON.stringify(event.target.parentElement.dataset.id));
+  movieModalMarkup(event.target.parentElement.dataset.id);
 }
+*/

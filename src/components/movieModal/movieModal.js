@@ -1,17 +1,34 @@
 import './movieModal.scss';
 
+/*
+import movieModalMarkup from '../movieModalMarkup/movieModalMarkup';
+import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
+
+
 const closeModalBtn = document.querySelector('[data-modal-close]');
 const modal = document.querySelector('[data-modal]');
 console.log(modal);
 console.log(closeModalBtn);
+*/
 
 
 closeModalBtn.addEventListener('click', toggleModal);
+
+/*
+export function closeModal() {
+  const modal = document.querySelector('[data-modal]');
+  modal.classList.add('is-hidden');
+  localStorage.removeItem("showMovieId");
+  localStorage.removeItem("movieData");
+  const htmlOutput = document.querySelector(".modal--wrapper");
+  htmlOutput.innerHTML = "";
+    }
 
 // Funkcja jest lokalna, ponieważ nie jest potrzebna poza tym plikiem
 function toggleModal() {
   modal.classList.toggle('is-hidden');
 }
+*/
 
 // Funkcja dla inicjalizacji modala dla listy filmów,
 // funkcja dodajelistener dla każdej wyświetlonej karty.
