@@ -120,7 +120,9 @@
 
 .details {
   &__item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 18px;
 
     &:not(:last-child) {
       margin-bottom: 10px;
@@ -129,8 +131,6 @@
 
   &__label {
     display: block;
-    width: 90px;
-    margin-right: 18px;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.333;
@@ -222,6 +222,12 @@
     &__info {
       max-width: 396px;
       width: 100%;
+    }
+  }
+
+  .details {
+    &__item {
+      gap: 62px;
     }
   }
 }
