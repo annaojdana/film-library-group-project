@@ -14,6 +14,7 @@ export function closeModal() {
   modal.classList.add('is-hidden');
   const htmlOutput = document.querySelector(".modal--wrapper");
   htmlOutput.innerHTML = ``;
+  page.removeEventListener('keydown', closeModalEscKey);
 }
 
 // Funkcja jest lokalna, ponieważ nie jest potrzebna poza tym plikiem
@@ -33,7 +34,7 @@ function closeModalEscKey(e) {
     
     
   }
-  page.removeEventListener('keydown', closeModalEscKey);
+  
 };
 /*  Funkcja dla inicjalizacji modala dla listy filmów,
     funkcja dodajelistener dla każdej wyświetlonej karty.
