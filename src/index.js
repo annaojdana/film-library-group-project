@@ -16,7 +16,7 @@ import memorizeTrendyMovies from './components/memorizeTrendyMovies/memorizeTren
 // Rendering popularnych filmów na stronę główną
 import moviesListMarkup from './components/moviesListMarkup/moviesListMarkup';
 import './components/popularMovies/popularMovies';
-
+import createPagination from './components/pagination/pagination'
 // Stopka
 import './components/footer/footer';
 
