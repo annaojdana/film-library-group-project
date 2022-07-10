@@ -40,7 +40,7 @@ export function createPagination(totalPages, page) {
     afterPage = afterPage + 1;
   }
 
-  for (var plength = beforePage; plength <= afterPage; plength++) {
+  for (let plength = beforePage; plength <= afterPage; plength++) {
     if (plength > totalPages) {
       //if plength is greater than totalPage length then continue
       continue;
