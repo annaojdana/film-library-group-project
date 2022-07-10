@@ -1,23 +1,17 @@
 import axios from "axios";
-import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
 
 export default async function fetchMoviesById(movieId) {
-   
+  const params = new URLSearchParams({
+    api_key: "2f202abcab3fe0934220a17698275697",
+  });
 
-    const params = new URLSearchParams({
-       
-        api_key: "2f202abcab3fe0934220a17698275697",
-        
-    });
-
-    try {
-       
-        const response = await axios.get(`
+  try {  
+    const response = await axios.get(`
     https://api.themoviedb.org/3/movie/${movieId}?${params}`);
-        return response.data;
-    } catch (error) {
-        console.log(`${error.name}: ${error.message}`);
-    };
+    return response.data;
+  } catch (error) {
+    console.log(`${error.name}: ${error.message}`);
+  };
 };
 
 /* Wywoływanie funkcji:
