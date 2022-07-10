@@ -1,6 +1,7 @@
 // Importing API handler - trending movies list
 import fetchTrendyMovies from '../fetchTrendyMovies/fetchTrendyMovies';
 import getGenresNames from '../getGenresNames/getGenresNames';
+import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
 
 // Internal function for creating HTML markup
 const htmlMarkup = data =>
@@ -40,10 +41,26 @@ export default function moviesListMarkup(whatToOutput = 'trending') {
 
     case 'watched':
       console.log(`output markupu dla 'watched'`);
+      if (getFromLocalStorage('watched') !== []) {
+        return markupOutput.insertAdjacentHTML(
+          'beforeend',
+          htmlMarkup(getFromLocalStorage('watched'))
+        );
+      } else {
+        console.log('localStorage queue empty');
+      }
       break;
 
     case 'queue':
       console.log(`output markupu dla 'queue'`);
+      if (getFromLocalStorage('queue') !== []) {
+        return markupOutput.insertAdjacentHTML(
+          'beforeend',
+          htmlMarkup(getFromLocalStorage('queue'))
+        );
+      } else {
+        console.log('localStorage queue empty');
+      }
       break;
 
     default:
