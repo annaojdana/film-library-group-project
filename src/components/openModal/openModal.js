@@ -7,7 +7,7 @@ export default function openModal(event) {
 
   const modal = document.querySelector('[data-modal]');
   modal.classList.remove('is-hidden');
-
+}
 /*
   localStorage.setItem("showMovieId", JSON.stringify(event.target.parentElement.dataset.id));
   movieModalMarkup(event.target.parentElement.dataset.id);

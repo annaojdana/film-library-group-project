@@ -1,6 +1,6 @@
 import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
 
-export default function checkStateBtns(btnList) {
+export default function dynamicChangeBtnsState(btnList) {
   btnList.forEach(b => {
     const {id, name} = b.dataset;
     const idNumber = Number(id);
