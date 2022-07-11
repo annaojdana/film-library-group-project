@@ -9,6 +9,7 @@ const modal = document.querySelector('[data-modal]');
 const page = document.querySelector("body");
 
 closeModalBtn.addEventListener('click', closeModal);
+modal.addEventListener('click', closeModalByClick);
 
 export function closeModal() {
   modal.classList.add('is-hidden');
@@ -36,6 +37,14 @@ function closeModalEscKey(e) {
   }
   
 };
+
+function closeModalByClick(e) {
+
+  if (e.target === modal) {
+    closeModal();
+  }
+
+}
 /*  Funkcja dla inicjalizacji modala dla listy filmów,
     funkcja dodajelistener dla każdej wyświetlonej karty.
     Ze względu, iż fetch jest asynchroniczny,
