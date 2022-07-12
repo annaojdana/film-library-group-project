@@ -2,6 +2,7 @@
 // import getGenresNames from '../getGenresNames/getGenresNames';
 import fetchMoviesById from '../fetchMovieById/fetchMovieById';
 import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 
 // Internal function for creating HTML markup
@@ -55,6 +56,7 @@ export default function movieModalMarkup(id) {
 
   fetchMoviesById(id)
     .then(response => {
+      Loading.remove();
       console.log(`output markupu dla 'modal'`);
       return htmlOutput.insertAdjacentHTML(
         'beforeend',

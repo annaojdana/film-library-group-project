@@ -44,6 +44,7 @@ export default function moviesListMarkup(whatToOutput = 'trending') {
     case 'watched':
       console.log(`output markupu dla 'watched'`);
       if (getFromLocalStorage('watched') !== []) {
+        Loading.remove();
         return markupOutput.insertAdjacentHTML(
           'beforeend',
           htmlMarkup(getFromLocalStorage('watched'))
@@ -54,6 +55,7 @@ export default function moviesListMarkup(whatToOutput = 'trending') {
       break;
 
     case 'queue':
+      Loading.remove();
       console.log(`output markupu dla 'queue'`);
       if (getFromLocalStorage('queue') !== []) {
         return markupOutput.insertAdjacentHTML(
@@ -68,6 +70,7 @@ export default function moviesListMarkup(whatToOutput = 'trending') {
     default:
       fetchTrendyMovies()
         .then(response => {
+          Loading.remove();
           return htmlMarkup(response.results);
         })
         .catch(error => console.error(error));
