@@ -1,7 +1,11 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
-window.addEventListener("load", loader);
+// window.addEventListener("load", loader);
 
-function loader() {
-  Loading.standard();
+ export default function loader() {
+   Loading.standard({
+    clickToClose: true,
+     svgSize: '100px',
+    svgColor: '#FF6B08',
+  });
 }

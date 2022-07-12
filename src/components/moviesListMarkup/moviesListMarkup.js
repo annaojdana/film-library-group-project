@@ -2,6 +2,7 @@
 import fetchTrendyMovies from '../fetchTrendyMovies/fetchTrendyMovies';
 import getGenresNames from '../getGenresNames/getGenresNames';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
+import loader from '../loader/loader';
 
 // Internal function for creating HTML markup
 const htmlMarkup = data =>
@@ -25,11 +26,12 @@ const htmlMarkup = data =>
 export default function moviesListMarkup(whatToOutput = 'trending') {
   // Variable for selecting output tag
   const markupOutput = document.querySelector('[data-markup-output]');
- 
+
   switch (whatToOutput) {
     case 'trending':
       fetchTrendyMovies()
         .then(response => {
+          loader();
           console.log(`output markupu dla 'trending'`);
           return markupOutput.insertAdjacentHTML(
             'beforeend',

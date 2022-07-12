@@ -3,6 +3,7 @@
 import fetchMoviesById from '../fetchMovieById/fetchMovieById';
 import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
 
+
 // Internal function for creating HTML markup
 const htmlMarkup = ({ backdrop_path, title, vote_average, vote_count, popularity, genres, overview, id }) => {
   // Checking if a given movie exists in localStorage and adapting the appropriate name
@@ -38,7 +39,7 @@ const htmlMarkup = ({ backdrop_path, title, vote_average, vote_count, popularity
       </ul>
       <h3 class="movie__label">About</h3>
       <p class="movie__about">${overview}</p>
-      
+
       <div class="modal__btns--wrapper">
         <button type="button" class="modal__btns modal__btns--watch" data-name="watched" data-id=${id}>${watchedlabel}</button>
         <button type="button" class="modal__btns modal__btns--queue" data-name="queue" data-id=${id}>${queuelabel}</button>
@@ -46,21 +47,21 @@ const htmlMarkup = ({ backdrop_path, title, vote_average, vote_count, popularity
     </div>
   </div>
   `;
-}	
-            
+}
+
 export default function movieModalMarkup(id) {
   // Variable for selecting output tag
   const htmlOutput = document.querySelector(".modal--wrapper");
 
   fetchMoviesById(id)
-  .then(response => {
+    .then(response => {
       console.log(`output markupu dla 'modal'`);
       return htmlOutput.insertAdjacentHTML(
         'beforeend',
         htmlMarkup(response)
       );
   })
-  .catch(error => console.error(error));      
+  .catch(error => console.error(error));
 }
 
 // Użycie:
