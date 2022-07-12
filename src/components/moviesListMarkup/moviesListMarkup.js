@@ -30,7 +30,6 @@ export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trendin
     case 'trending':
       fetchTrendyMovies(pageNumber)
         .then(response => {
-          console.log(`output markupu dla 'trending'`);
           page = response.page;
           totalPages = response.total_pages;
 
@@ -48,7 +47,6 @@ export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trendin
       break;
 
     case 'watched':
-      console.log(`output markupu dla 'watched'`);
       if (getFromLocalStorage('watched') !== []) {
         return markupOutput.insertAdjacentHTML(
           'beforeend',
@@ -60,7 +58,6 @@ export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trendin
       break;
 
     case 'queue':
-      console.log(`output markupu dla 'queue'`);
       if (getFromLocalStorage('queue') !== []) {
         return markupOutput.insertAdjacentHTML(
           'beforeend',

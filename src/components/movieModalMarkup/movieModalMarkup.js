@@ -54,7 +54,6 @@ export default function movieModalMarkup(id) {
 
   fetchMoviesById(id)
   .then(response => {
-      console.log(`output markupu dla 'modal'`);
       return htmlOutput.insertAdjacentHTML(
         'beforeend',
         htmlMarkup(response)
