@@ -18,15 +18,17 @@
       </ul>
     </div>
     <div class="header__input-wrapper">
+      <form class="header-form">
       <input
         type="text"
         class="header__input"
         id="input"
         placeholder="Search For The Movie"
       />
-      <svg class="input__icon">
-        <use href="./images/sprite.svg#search"></use>
-      </svg>
+      <button class="header-btn__form" type="submit">
+        <span class="form__search">search</span>
+      </button>
+    </form>
     </div>
     <p class="not-found is-hidden">
       Search result not successful. Enter the correct movie name.

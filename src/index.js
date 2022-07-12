@@ -34,6 +34,10 @@ import moviesListMarkup from './components/moviesListMarkup/moviesListMarkup';
 import './components/footer/footer.js';
 import './components/movieModal/movieModal';
 
+
+// Szukajka
+import   './components/searchByKeyword/searchByKeyword';
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //  TEST GROUND
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
