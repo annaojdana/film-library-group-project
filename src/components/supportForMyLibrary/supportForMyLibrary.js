@@ -1,19 +1,19 @@
-import dynamicChangeBtnsState from "../dynamicChangeBtnsState/dynamicChangeBtnsState";
-import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
-import setToLocalStorage from "../setToLocalStorage/setToLocalStorage";
+import dynamicChangeBtnsState from '../dynamicChangeBtnsState/dynamicChangeBtnsState';
+import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage';
+import setToLocalStorage from '../setToLocalStorage/setToLocalStorage';
 
 const modalWrapper = document.querySelector('.modal--wrapper');
 
-modalWrapper.addEventListener("click", localStorageSupport);
+modalWrapper.addEventListener('click', localStorageSupport);
 
-if (modalWrapper.querySelector(".modal__btns")) {
-  console.log("tak ma");
+if (modalWrapper.querySelector('.modal__btns')) {
+  console.log('tak ma');
 }
 
 function localStorageSupport(evt) {
-  if (evt.target.classList.contains("modal__btns")) {
+  if (evt.target.classList.contains('modal__btns')) {
     const btn = evt.target;
-    const {id, name} = btn.dataset;
+    const { id, name } = btn.dataset;
     const idNumber = Number(id);
 
     if (!getFromLocalStorage(name)) {
@@ -26,7 +26,7 @@ function localStorageSupport(evt) {
       setToLocalStorage(name, remove);
     } else {
       switch (name) {
-        case "watched":
+        case 'watched':
           const next = btn.nextElementSibling.dataset.name;
           if (!getFromLocalStorage(next)) {
             break;
@@ -34,11 +34,12 @@ function localStorageSupport(evt) {
           const getNext = getFromLocalStorage(next);
           if (getNext.includes(idNumber)) {
             const removeNext = getNext.filter(val => val !== val);
+            // Notify Set to watched!
             setToLocalStorage(next, removeNext);
           }
           break;
 
-        case "queue":
+        case 'queue':
           const prev = btn.previousElementSibling.dataset.name;
           if (!getFromLocalStorage(prev)) {
             break;
@@ -46,10 +47,11 @@ function localStorageSupport(evt) {
           const getPrev = getFromLocalStorage(prev);
           if (getPrev.includes(idNumber)) {
             const removePrev = getPrev.filter(val => val !== val);
+            // Notify set to queue!
             setToLocalStorage(prev, removePrev);
           }
           break;
-      
+
         default:
           break;
       }

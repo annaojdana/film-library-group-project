@@ -1,7 +1,11 @@
 // Importing API handler - trending movies list
 import fetchTrendyMovies from '../fetchTrendyMovies/fetchTrendyMovies';
+import fetchMovieById from '../fetchMovieById/fetchMovieById';
 import getGenresNames from '../getGenresNames/getGenresNames';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
+
+// Selecting output tag
+const markupOutput = document.querySelector('[data-markup-output]');
 
 // Internal function for creating HTML markup
 const htmlMarkup = data =>
@@ -21,52 +25,75 @@ const htmlMarkup = data =>
       `
     )
     .join('');
+
+// Function fot displaying cards from localStorage's id array
+function displayFromIdArray(source) {
+  const displayedIdArray = getFromLocalStorage(source);
+  console.log(displayedIdArray);
+
+  if (displayedIdArray === null || displayedIdArray.length === 0) {
+    return console.log('Queue is empty!');
+  } else {
+    const fetchedDataArray = [];
+    const counter = displayedIdArray.length;
+    let idArray = [];
+
+    for (const id of displayedIdArray) {
+      fetchMovieById(id)
+        .then(response => {
+          fetchedDataArray.push(response);
+
+          if (fetchedDataArray.length === counter) {
+            console.log('OK! Displaying queue list');
+            for (let i = 0; i < fetchedDataArray.length; i++) {
+              const genres = fetchedDataArray[i].genres;
+
+              for (const genre of genres) {
+                const id = genre.id;
+                idArray.push(id);
+
+                if (genres.length === idArray.length) {
+                  fetchedDataArray[i].genre_ids = idArray;
+                  idArray = [];
+                }
+              }
+            }
+
+            return (markupOutput.innerHTML = htmlMarkup(fetchedDataArray));
+          } else {
+            console.log('Waiting to fetch enough data');
+          }
+        })
+        .catch(error => console.error(error));
+    }
+  }
+}
+
 // Main function for HTML markup output
-export default function moviesListMarkup(whatToOutput = 'trending') {
-  // Variable for selecting output tag
-  const markupOutput = document.querySelector('[data-markup-output]');
- 
+export function moviesListMarkup(whatToOutput = 'trending') {
   switch (whatToOutput) {
     case 'trending':
       fetchTrendyMovies()
         .then(response => {
           console.log(`output markupu dla 'trending'`);
-          return markupOutput.insertAdjacentHTML(
-            'beforeend',
-            htmlMarkup(response.results)
-          );
+          return (markupOutput.innerHTML = htmlMarkup(response.results));
         })
         .catch(error => console.error(error));
       break;
 
     case 'watched':
-      console.log(`output markupu dla 'watched'`);
-      if (getFromLocalStorage('watched') !== []) {
-        return markupOutput.insertAdjacentHTML(
-          'beforeend',
-          htmlMarkup(getFromLocalStorage('watched'))
-        );
-      } else {
-        console.log('localStorage queue empty');
-      }
+      displayFromIdArray('watched');
       break;
 
     case 'queue':
-      console.log(`output markupu dla 'queue'`);
-      if (getFromLocalStorage('queue') !== []) {
-        return markupOutput.insertAdjacentHTML(
-          'beforeend',
-          htmlMarkup(getFromLocalStorage('queue'))
-        );
-      } else {
-        console.log('localStorage queue empty');
-      }
+      displayFromIdArray('queue');
       break;
 
     default:
       fetchTrendyMovies()
         .then(response => {
-          return htmlMarkup(response.results);
+          console.log(`output markupu dla 'trending'`);
+          return (markupOutput.innerHTML = htmlMarkup(response.results));
         })
         .catch(error => console.error(error));
       break;
