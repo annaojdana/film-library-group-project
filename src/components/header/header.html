@@ -1,12 +1,12 @@
-<header class = "header">
+<header class="header">
   <div class="container">
     <div class="nav__wrapper">
       <a class="header__logo" href="./index.html">
         <svg class="header__icon">
           <use href="./images/sprite.svg#film"></use>
         </svg>
-        <h1 class="header__title">Filmoteka</h1></a
-      >
+        <h1 class="header__title">Filmoteka</h1>
+      </a>
 
       <ul class="nav__list">
         <li class="nav__item">
@@ -18,17 +18,10 @@
       </ul>
     </div>
     <div class="header__input-wrapper">
-      <form class="header-form">
-      <input
-        type="text"
-        class="header__input"
-        id="input"
-        placeholder="Search For The Movie"
-      />
-      <button class="header-btn__form" type="submit">
-        <span class="form__search">search</span>
-      </button>
-    </form>
+      <input type="text" class="header__input" id="input" placeholder="Search For The Movie"  data-input />
+      <svg class="input__icon" data-search>
+        <use href="./images/sprite.svg#search"></use>
+      </svg>
     </div>
     <p class="not-found is-hidden">
       Search result not successful. Enter the correct movie name.

@@ -1,16 +1,14 @@
-import axios from 'axios';
+const API_KEY = '2f202abcab3fe0934220a17698275697';
 
-const button_search = document.querySelector('.header-btn__form');
-
-export async function fetchMovie(value) {
+export async function fetchMovieByQuery(searchQuery, page = 1) {
   try {
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=2f202abcab3fe0934220a17698275697&language=en-US&query=${value}&page=1&include_adult=false`,
+    const response = await fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchQuery}&language=en-US&page=${page}&include_adult=false`
     );
-
-   
-    return response.data;
+    const results = await response.json();
+    console.log(results);
+    return results;
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 }
