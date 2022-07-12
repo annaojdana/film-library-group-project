@@ -6,9 +6,10 @@ element.addEventListener('click', supportForChangePage);
 const header = document.querySelector("header");
 
 function supportForChangePage(evt) {
+  header.scrollIntoView({behavior: 'smooth'});
+  
   const pageBtn = evt.target;
   pageNum = pageBtn.id.split("_").slice(1);
 
   popularMovies(pageNum);
-  header.scrollIntoView({behavior: 'smooth'});
 }
