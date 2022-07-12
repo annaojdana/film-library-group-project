@@ -10,7 +10,7 @@ export default function createPagination(totalPages, page){
   let afterPage = page + 1;
 
   if (page > 1){ //show the next button if the page value is greater than 1
-    liTag += `<li class="btn prev" id="page_${beforePage}"></li>`;
+    liTag += `<li class="btn prev" id="page_${page - 1}"></li>`;
   }
   
   if (page > 2){ //if page value is less than 2 then add 1 after the previous button
@@ -60,7 +60,7 @@ export default function createPagination(totalPages, page){
   }
 
   if (page < totalPages) { //show the next button if the page value is less than totalPage(20)
-    liTag += `<li class="btn next" id="page_${afterPage}"></li>`;
+    liTag += `<li class="btn next" id="page_${page + 1}"></li>`;
   }
 
   element.innerHTML = liTag; //add li tag inside ul tag
