@@ -2,7 +2,7 @@
 import fetchTrendyMovies from '../fetchTrendyMovies/fetchTrendyMovies';
 import getGenresNames from '../getGenresNames/getGenresNames';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
-
+import createPagination from '../pagination/pagination';
 // Internal function for creating HTML markup
 const htmlMarkup = data =>
   data
@@ -22,19 +22,27 @@ const htmlMarkup = data =>
     )
     .join('');
 // Main function for HTML markup output
-export default function moviesListMarkup(whatToOutput = 'trending') {
+export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trending') {
   // Variable for selecting output tag
   const markupOutput = document.querySelector('[data-markup-output]');
- 
+
   switch (whatToOutput) {
     case 'trending':
-      fetchTrendyMovies()
+      fetchTrendyMovies(pageNumber)
         .then(response => {
           console.log(`output markupu dla 'trending'`);
-          return markupOutput.insertAdjacentHTML(
+          page = response.page;
+          totalPages = response.total_pages;
+
+          markupOutput.innerHTML = "";
+
+          markupOutput.insertAdjacentHTML(
             'beforeend',
             htmlMarkup(response.results)
           );
+
+          const element = document.querySelector(".pagination ul");
+          element.innerHTML = createPagination(totalPages, page);
         })
         .catch(error => console.error(error));
       break;

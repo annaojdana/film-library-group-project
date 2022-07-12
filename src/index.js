@@ -14,11 +14,13 @@ import memorizeGenres from './components/memorizeGenres/memorizeGenres';
 import memorizeTrendyMovies from './components/memorizeTrendyMovies/memorizeTrendyMovies';
 
 // Rendering popularnych filmów na stronę główną
-import moviesListMarkup from './components/moviesListMarkup/moviesListMarkup';
-import './components/popularMovies/popularMovies';
+import popularMovies from './components/popularMovies/popularMovies';
+popularMovies();
 
 // Stopka
 import './components/footer/footer';
+
+import './components/changePage/changePage';
 
 // Obsługa modala
 import './components/movieModal/movieModal';
@@ -26,10 +28,6 @@ import './components/movieModal/movieModal';
 
 // Obsługa dodawania filmów do "watched" lub "queue"
 import './components/supportForMyLibrary/supportForMyLibrary';
-
-import memorizeGenres from './components/memorizeGenres/memorizeGenres';
-import memorizeTrendyMovies from './components/memorizeTrendyMovies/memorizeTrendyMovies';
-import moviesListMarkup from './components/moviesListMarkup/moviesListMarkup';
 
 import './components/footer/footer.js';
 import './components/movieModal/movieModal';
