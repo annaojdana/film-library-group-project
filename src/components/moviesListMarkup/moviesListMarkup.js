@@ -2,7 +2,7 @@
 import fetchTrendyMovies from '../fetchTrendyMovies/fetchTrendyMovies';
 import getGenresNames from '../getGenresNames/getGenresNames';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
-import loader from '../loader/loader';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 // Internal function for creating HTML markup
 const htmlMarkup = data =>
@@ -31,7 +31,7 @@ export default function moviesListMarkup(whatToOutput = 'trending') {
     case 'trending':
       fetchTrendyMovies()
         .then(response => {
-          loader();
+          Loading.remove();
           console.log(`output markupu dla 'trending'`);
           return markupOutput.insertAdjacentHTML(
             'beforeend',
