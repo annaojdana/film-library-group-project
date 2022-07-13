@@ -7,7 +7,7 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 // Internal function for creating HTML markup
 const htmlMarkup = ({
-  backdrop_path,
+  poster_path,
   title,
   vote_average,
   vote_count,
