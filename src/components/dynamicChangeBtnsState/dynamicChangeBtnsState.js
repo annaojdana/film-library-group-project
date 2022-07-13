@@ -10,7 +10,7 @@ export default function dynamicChangeBtnsState(btnList) {
     } else if (getFromLocalStorage(name).length === 0) {
       return b.textContent = `Add to ${name}`;
     } else if (getFromLocalStorage(name).includes(idNumber)) {
-      return b.textContent = `Remove form ${name}`
+      return b.textContent = `Remove from ${name}`
     } else {
       return b.textContent = `Add to ${name}`
     }
