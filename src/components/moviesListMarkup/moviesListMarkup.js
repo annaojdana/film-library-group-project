@@ -3,6 +3,7 @@ import fetchTrendyMovies from '../fetchTrendyMovies/fetchTrendyMovies';
 import fetchMovieById from '../fetchMovieById/fetchMovieById';
 import getGenresNames from '../getGenresNames/getGenresNames';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
+import createPagination from '../pagination/pagination';
 
 // Selecting output tag
 const markupOutput = document.querySelector('[data-markup-output]');
@@ -70,23 +71,50 @@ function displayFromIdArray(source) {
 }
 
 // Main function for HTML markup output
-export function moviesListMarkup(whatToOutput = 'trending') {
+
+export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trending') {
+  // Variable for selecting output tag
+  const markupOutput = document.querySelector('[data-markup-output]');
   switch (whatToOutput) {
     case 'trending':
-      fetchTrendyMovies()
+      fetchTrendyMovies(pageNumber)
         .then(response => {
-          console.log(`output markupu dla 'trending'`);
-          return (markupOutput.innerHTML = htmlMarkup(response.results));
+          page = response.page;
+          totalPages = response.total_pages;
+
+          markupOutput.innerHTML = "";
+
+          markupOutput.insertAdjacentHTML(
+            'beforeend',
+            htmlMarkup(response.results)
+          );
+
+          const element = document.querySelector(".pagination ul");
+          element.innerHTML = createPagination(totalPages, page);
         })
         .catch(error => console.error(error));
       break;
 
     case 'watched':
-      displayFromIdArray('watched');
+      if (getFromLocalStorage('watched') !== []) {
+        return markupOutput.insertAdjacentHTML(
+          'beforeend',
+          htmlMarkup(getFromLocalStorage('watched'))
+        );
+      } else {
+        console.log('localStorage queue empty');
+      }
       break;
 
     case 'queue':
-      displayFromIdArray('queue');
+      if (getFromLocalStorage('queue') !== []) {
+        return markupOutput.insertAdjacentHTML(
+          'beforeend',
+          htmlMarkup(getFromLocalStorage('queue'))
+        );
+      } else {
+        console.log('localStorage queue empty');
+      }
       break;
 
     default:

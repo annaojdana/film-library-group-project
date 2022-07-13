@@ -53,7 +53,7 @@ const htmlMarkup = ({
       </ul>
       <h3 class="movie__label">About</h3>
       <p class="movie__about">${overview}</p>
-      
+
       <div class="modal__btns--wrapper">
         <button type="button" class="modal__btns modal__btns--watch" data-name="watched" data-id=${id}>${watchedlabel}</button>
         <button type="button" class="modal__btns modal__btns--queue" data-name="queue" data-id=${id}>${queuelabel}</button>
@@ -73,6 +73,7 @@ export default function movieModalMarkup(id) {
       return htmlOutput.insertAdjacentHTML('beforeend', htmlMarkup(response));
     })
     .catch(error => console.error(error));
+
 }
 
 // Użycie:

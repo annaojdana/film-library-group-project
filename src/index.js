@@ -10,29 +10,25 @@ import './components/footer/footer';
 import { moviesListMarkup } from './components/moviesListMarkup/moviesListMarkup';
 moviesListMarkup();
 
-// - - - - - OUTDATED - - - - -
 
 // Zapisanie genres_name w local storage
-// import memorizeGenres from './components/memorizeGenres/memorizeGenres';
+import memorizeGenres from './components/memorizeGenres/memorizeGenres';
 
 // Zapisywanie aktualnie fetchowanych popularnych filmów z backendu
-// import memorizeTrendyMovies from './components/memorizeTrendyMovies/memorizeTrendyMovies';
+import memorizeTrendyMovies from './components/memorizeTrendyMovies/memorizeTrendyMovies';
 
-// import './components/popularMovies/popularMovies';
+// Rendering popularnych filmów na stronę główną
+import popularMovies from './components/popularMovies/popularMovies';
+popularMovies();
 
 // Stopka
+import './components/footer/footer';
 
-// // Obsługa modala
-// import './components/movieModal/movieModal';
+import './components/changePage/changePage';
+// Obsługa modala
+import './components/movieModal/movieModal';
 
-// // Obsługa dodawania filmów do "watched" lub "queue"
-// import './components/supportForMyLibrary/supportForMyLibrary';
 
-// import memorizeGenres from './components/memorizeGenres/memorizeGenres';
-// import memorizeTrendyMovies from './components/memorizeTrendyMovies/memorizeTrendyMovies';
-// import moviesListMarkup from './components/moviesListMarkup/moviesListMarkup';
-
-// import './components/movieModal/movieModal';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //  TEST GROUND

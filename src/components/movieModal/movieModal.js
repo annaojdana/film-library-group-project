@@ -60,5 +60,5 @@ export function initializeModal() {
       }
       clearInterval(timer);
     }
-  }, 10);
+  }, 100);
 }
