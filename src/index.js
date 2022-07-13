@@ -13,6 +13,12 @@ moviesListMarkup();
 // Szukajka
 import './components/searchByKeyword/searchByKeyword';
 
+
+
+// Obsługa spinnera
+import './components/loader/loader'
+
 // Paginacja
 import createPagination from './components/pagination/pagination';
 import './components/changePage/changePage';
+
