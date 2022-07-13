@@ -72,7 +72,10 @@ function displayFromIdArray(source) {
 
 // Main function for HTML markup output
 
-export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trending') {
+export default function moviesListMarkup(
+  whatToOutput = 'trending',
+  pageNumber = 1
+) {
   // Variable for selecting output tag
   const markupOutput = document.querySelector('[data-markup-output]');
   switch (whatToOutput) {
@@ -82,14 +85,14 @@ export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trendin
           page = response.page;
           totalPages = response.total_pages;
 
-          markupOutput.innerHTML = "";
+          markupOutput.innerHTML = '';
 
           markupOutput.insertAdjacentHTML(
             'beforeend',
             htmlMarkup(response.results)
           );
 
-          const element = document.querySelector(".pagination ul");
+          const element = document.querySelector('.pagination ul');
           element.innerHTML = createPagination(totalPages, page);
         })
         .catch(error => console.error(error));
@@ -97,10 +100,7 @@ export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trendin
 
     case 'watched':
       if (getFromLocalStorage('watched') !== []) {
-        return markupOutput.insertAdjacentHTML(
-          'beforeend',
-          htmlMarkup(getFromLocalStorage('watched'))
-        );
+        return displayFromIdArray('watched');
       } else {
         console.log('localStorage queue empty');
       }
@@ -108,10 +108,7 @@ export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trendin
 
     case 'queue':
       if (getFromLocalStorage('queue') !== []) {
-        return markupOutput.insertAdjacentHTML(
-          'beforeend',
-          htmlMarkup(getFromLocalStorage('queue'))
-        );
+        return displayFromIdArray('queue');
       } else {
         console.log('localStorage queue empty');
       }
