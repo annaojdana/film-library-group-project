@@ -24,7 +24,7 @@ const htmlMarkup = ({
     } else if (getFromLocalStorage(name).length === 0) {
       return (name = `Add to ${name}`);
     } else if (getFromLocalStorage(name).includes(id)) {
-      return (name = `Remove form ${name}`);
+      return (name = `Remove from ${name}`);
     } else {
       return (name = `Add to ${name}`);
     }
@@ -36,7 +36,7 @@ const htmlMarkup = ({
   // Render of a modal for the selected movie
   return `
   <div class="movie__card--wrapper">
-    <img class="movie__image" src="https://image.tmdb.org/t/p/w300${backdrop_path}" alt="Poster of: ${title}">
+    <img class="movie__image" src="https://image.tmdb.org/t/p/w300${poster_path}" alt="Poster of: ${title}">
     <div class="movie__info">
       <h2 class="movie__title">${title}</h2>
       <ul class="movie__details">
