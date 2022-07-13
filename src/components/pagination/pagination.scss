@@ -86,10 +86,13 @@
   & .numb:hover,
   & .first:hover,
   & .last:hover {
-  color: #fff;
-  background: #ff6b08;
+    color: #fff;
+    background: #ff6b08;
   }
 }
 
+.display-none {
+  display: none !important;
+}
 
 

@@ -13,3 +13,4 @@ moviesListMarkup();
 // Paginacja
 import createPagination from './components/pagination/pagination';
 import './components/changePage/changePage';
+import paginationSizeChange from './components/pagination/pagination-mediaQuery';
