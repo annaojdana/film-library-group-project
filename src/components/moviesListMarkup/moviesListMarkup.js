@@ -5,9 +5,9 @@ import getGenresNames from '../getGenresNames/getGenresNames';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import createPagination from '../pagination/pagination';
+
 // Selecting output tag
 const markupOutput = document.querySelector('[data-markup-output]');
-
 
 // Internal function for creating HTML markup
 const htmlMarkup = data =>
@@ -59,7 +59,7 @@ function displayFromIdArray(source) {
                 }
               }
             }
-
+            markupOutput.dataSet.outputType = source;
             return (markupOutput.innerHTML = htmlMarkup(fetchedDataArray));
           } else {
           }
@@ -75,47 +75,44 @@ export default function moviesListMarkup(
   pageNumber = 1
 ) {
   // Variable for selecting output tag
-  const markupOutput = document.querySelector('[data-markup-output]');
+  // const markupOutput = document.querySelector('[data-markup-output]');
   switch (whatToOutput) {
     case 'trending':
       fetchTrendyMovies(pageNumber)
         .then(response => {
-
           Loading.remove();
-         
+
           page = response.page;
           totalPages = response.total_pages;
 
           markupOutput.innerHTML = '';
 
           markupOutput.insertAdjacentHTML(
-
             'beforeend',
             htmlMarkup(response.results)
           );
 
           const element = document.querySelector('.pagination ul');
           element.innerHTML = createPagination(totalPages, page);
+          markupOutput.dataset.outputType = 'trending';
+          console.log(markupOutput.dataset);
         })
         .catch(error => console.error(error));
       break;
 
     case 'watched':
       if (getFromLocalStorage('watched') !== []) {
-
         Loading.remove();
 
         return displayFromIdArray('watched');
-
       } else {
         displayEmptyListInfo();
       }
       break;
 
     case 'queue':
-
       Loading.remove();
-    
+
       if (getFromLocalStorage('queue') !== []) {
         return displayFromIdArray('queue');
       } else {
@@ -126,12 +123,10 @@ export default function moviesListMarkup(
     default:
       fetchTrendyMovies()
         .then(response => {
-
           Loading.remove();
 
           console.log(`output markupu dla 'trending'`);
           return (markupOutput.innerHTML = htmlMarkup(response.results));
-
         })
         .catch(error => console.error(error));
       break;

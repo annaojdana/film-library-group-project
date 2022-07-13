@@ -17,8 +17,6 @@ export default function createPagination(totalPages, page) {
     }"></li>`;
   }
 
-
-  
   if (page > 3 && window.innerWidth > 768) {
     //if page value is less than 2 then add 1 after the previous button
     liTag += `<li class="first numb mobile" data=page="1" id="page_1">1</li>`;

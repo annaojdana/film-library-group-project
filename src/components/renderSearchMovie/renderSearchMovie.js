@@ -4,6 +4,8 @@ import createPagination from '../pagination/pagination';
 import { paginationSupport } from '../changePage/changePage';
 function notificationRender() {}
 
+const markupOutput = document.querySelector('[data-markup-output]');
+
 const htmlMarkup = data =>
   data
     .map(
@@ -47,8 +49,6 @@ export function renderCollection(searchQuery, pageNum) {
     totalPages = response.total_pages;
     const element = document.querySelector('.pagination ul');
     element.innerHTML = createPagination(totalPages, page);
-    paginationSupport(searchQuery, 'search')
+    markupOutput.dataset.outputType = 'search';
   });
 }
-
-

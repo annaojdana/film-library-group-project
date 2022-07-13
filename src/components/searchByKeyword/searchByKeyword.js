@@ -11,7 +11,7 @@ function searchHandler() {
   if (searchQuery === '') {
     document.querySelector('.not-found').classList.remove('is-hidden');
     return;
-  }else{
+  } else {
     document.querySelector('.not-found').classList.add('is-hidden');
   }
   renderCollection(searchQuery);
