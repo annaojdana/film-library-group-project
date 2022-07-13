@@ -4,7 +4,6 @@ import fetchMovieById from '../fetchMovieById/fetchMovieById';
 import getGenresNames from '../getGenresNames/getGenresNames';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
 import createPagination from '../pagination/pagination';
-
 // Selecting output tag
 const markupOutput = document.querySelector('[data-markup-output]');
 
@@ -30,9 +29,9 @@ const htmlMarkup = data =>
 // Function fot displaying cards from localStorage's id array
 function displayFromIdArray(source) {
   const displayedIdArray = getFromLocalStorage(source);
-  console.log(displayedIdArray);
 
   if (displayedIdArray === null || displayedIdArray.length === 0) {
+    displayEmptyListInfo();
     return console.log('Queue is empty!');
   } else {
     const fetchedDataArray = [];
@@ -45,7 +44,6 @@ function displayFromIdArray(source) {
           fetchedDataArray.push(response);
 
           if (fetchedDataArray.length === counter) {
-            console.log('OK! Displaying queue list');
             for (let i = 0; i < fetchedDataArray.length; i++) {
               const genres = fetchedDataArray[i].genres;
 
@@ -62,7 +60,6 @@ function displayFromIdArray(source) {
 
             return (markupOutput.innerHTML = htmlMarkup(fetchedDataArray));
           } else {
-            console.log('Waiting to fetch enough data');
           }
         })
         .catch(error => console.error(error));
@@ -71,8 +68,10 @@ function displayFromIdArray(source) {
 }
 
 // Main function for HTML markup output
-
-export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trending') {
+export default function moviesListMarkup(
+  whatToOutput = 'trending',
+  pageNumber = 1
+) {
   // Variable for selecting output tag
   const markupOutput = document.querySelector('[data-markup-output]');
   switch (whatToOutput) {
@@ -82,14 +81,14 @@ export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trendin
           page = response.page;
           totalPages = response.total_pages;
 
-          markupOutput.innerHTML = "";
+          markupOutput.innerHTML = '';
 
           markupOutput.insertAdjacentHTML(
             'beforeend',
             htmlMarkup(response.results)
           );
 
-          const element = document.querySelector(".pagination ul");
+          const element = document.querySelector('.pagination ul');
           element.innerHTML = createPagination(totalPages, page);
         })
         .catch(error => console.error(error));
@@ -97,23 +96,17 @@ export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trendin
 
     case 'watched':
       if (getFromLocalStorage('watched') !== []) {
-        return markupOutput.insertAdjacentHTML(
-          'beforeend',
-          htmlMarkup(getFromLocalStorage('watched'))
-        );
+        return displayFromIdArray('watched');
       } else {
-        console.log('localStorage queue empty');
+        displayEmptyListInfo();
       }
       break;
 
     case 'queue':
       if (getFromLocalStorage('queue') !== []) {
-        return markupOutput.insertAdjacentHTML(
-          'beforeend',
-          htmlMarkup(getFromLocalStorage('queue'))
-        );
+        return displayFromIdArray('queue');
       } else {
-        console.log('localStorage queue empty');
+        displayEmptyListInfo();
       }
       break;
 
@@ -126,6 +119,12 @@ export default function moviesListMarkup(pageNumber = 1, whatToOutput = 'trendin
         .catch(error => console.error(error));
       break;
   }
+}
+
+// Internal function for displaying info,
+// for empty "watched" and "queue" localStorage
+function displayEmptyListInfo() {
+  markupOutput.innerHTML = `<h2 class="movies__empty-info">Sorry! Collection is empty!</h2>`;
 }
 
 // Użycie:
