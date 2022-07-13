@@ -1,0 +1,25 @@
+.container {
+  padding: 0 20px;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 380px) {
+  .container {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 76px;
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    padding: 0 71px;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+}/*# sourceMappingURL=container.css.map */

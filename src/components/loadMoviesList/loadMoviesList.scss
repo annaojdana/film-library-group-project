@@ -1,3 +1,6 @@
+@import '../../scss/mixin';
+@import '../../scss/variables';
+
 @keyframes flash {
   0% {
     opacity: 0.2;
@@ -39,7 +42,7 @@
   &__title {
     margin-top: 10px;
     margin-bottom: 3px;
-    font-size: 12px;
+    @include size(12px);
     line-height: 1.333;
     text-transform: uppercase;
   }
@@ -48,19 +51,19 @@
   &__separator,
   &__year {
     display: inline;
-    font-size: 12px;
+    @include size(12px);;
     line-height: 1.172;
-    font-weight: 500;
-    color: #ff6b08;
+    font-weight: $mainFontWieght;
+    color: $mainFontColor;
   }
 
   &__rating {
     display: inline;
-    font-weight: 500;
-    font-size: 12px;
+    font-weight: $mainFontWieght;
+    @include size(12px);
     line-height: 1.16;
-    color: #ffffff;
-    background-color: #ff6b08;
+    color: $secondFontColor;
+    background-color: $mainBgColor;
     text-align: center;
     width: 36px;
     height: 16px;

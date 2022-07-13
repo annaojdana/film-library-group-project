@@ -1,7 +1,9 @@
 // Imports
 // import getGenresNames from '../getGenresNames/getGenresNames';
 import fetchMoviesById from '../fetchMovieById/fetchMovieById';
-import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage';
+import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 
 // Internal function for creating HTML markup
 const htmlMarkup = ({
@@ -63,17 +65,18 @@ const htmlMarkup = ({
   `;
 };
 
+
 export default function movieModalMarkup(id) {
   // Variable for selecting output tag
   const htmlOutput = document.querySelector('.modal--wrapper');
 
   fetchMoviesById(id)
     .then(response => {
+ Loading.remove();
       console.log(`output markupu dla 'modal'`);
       return htmlOutput.insertAdjacentHTML('beforeend', htmlMarkup(response));
     })
     .catch(error => console.error(error));
-
 }
 
 // Użycie:

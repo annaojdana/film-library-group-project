@@ -10,7 +10,17 @@ import './components/footer/footer';
 import moviesListMarkup from './components/moviesListMarkup/moviesListMarkup';
 moviesListMarkup();
 
+// Szukajka
+import './components/searchByKeyword/searchByKeyword';
+
+
+
+// Obsługa spinnera
+import './components/loader/loader'
+
 // Paginacja
 import createPagination from './components/pagination/pagination';
 import './components/changePage/changePage';
+
 import paginationSizeChange from './components/pagination/pagination-mediaQuery';
+

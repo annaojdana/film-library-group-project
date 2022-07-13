@@ -3,9 +3,11 @@ import fetchTrendyMovies from '../fetchTrendyMovies/fetchTrendyMovies';
 import fetchMovieById from '../fetchMovieById/fetchMovieById';
 import getGenresNames from '../getGenresNames/getGenresNames';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import createPagination from '../pagination/pagination';
 // Selecting output tag
 const markupOutput = document.querySelector('[data-markup-output]');
+
 
 // Internal function for creating HTML markup
 const htmlMarkup = data =>
@@ -78,12 +80,16 @@ export default function moviesListMarkup(
     case 'trending':
       fetchTrendyMovies(pageNumber)
         .then(response => {
+
+          Loading.remove();
+         
           page = response.page;
           totalPages = response.total_pages;
 
           markupOutput.innerHTML = '';
 
           markupOutput.insertAdjacentHTML(
+
             'beforeend',
             htmlMarkup(response.results)
           );
@@ -96,13 +102,20 @@ export default function moviesListMarkup(
 
     case 'watched':
       if (getFromLocalStorage('watched') !== []) {
+
+        Loading.remove();
+
         return displayFromIdArray('watched');
+
       } else {
         displayEmptyListInfo();
       }
       break;
 
     case 'queue':
+
+      Loading.remove();
+    
       if (getFromLocalStorage('queue') !== []) {
         return displayFromIdArray('queue');
       } else {
@@ -113,8 +126,12 @@ export default function moviesListMarkup(
     default:
       fetchTrendyMovies()
         .then(response => {
+
+          Loading.remove();
+
           console.log(`output markupu dla 'trending'`);
           return (markupOutput.innerHTML = htmlMarkup(response.results));
+
         })
         .catch(error => console.error(error));
       break;
