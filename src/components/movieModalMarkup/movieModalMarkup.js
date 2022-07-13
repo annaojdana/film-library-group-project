@@ -1,21 +1,30 @@
 // Imports
 // import getGenresNames from '../getGenresNames/getGenresNames';
 import fetchMoviesById from '../fetchMovieById/fetchMovieById';
-import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
+import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage';
 
 // Internal function for creating HTML markup
-const htmlMarkup = ({ backdrop_path, title, vote_average, vote_count, popularity, genres, overview, id }) => {
+const htmlMarkup = ({
+  backdrop_path,
+  title,
+  vote_average,
+  vote_count,
+  popularity,
+  genres,
+  overview,
+  id,
+}) => {
   // Checking if a given movie exists in localStorage and adapting the appropriate name
-  const btnNames = ["watched", "queue"];
+  const btnNames = ['watched', 'queue'];
   const btnLabel = btnNames.map(name => {
     if (!getFromLocalStorage(name)) {
-      return name = `Add to ${name}`;
+      return (name = `Add to ${name}`);
     } else if (getFromLocalStorage(name).length === 0) {
-      return name = `Add to ${name}`;
+      return (name = `Add to ${name}`);
     } else if (getFromLocalStorage(name).includes(id)) {
-      return name = `Remove form ${name}`
+      return (name = `Remove form ${name}`);
     } else {
-      return name = `Add to ${name}`;
+      return (name = `Add to ${name}`);
     }
   });
 
@@ -29,16 +38,22 @@ const htmlMarkup = ({ backdrop_path, title, vote_average, vote_count, popularity
     <div class="movie__info">
       <h2 class="movie__title">${title}</h2>
       <ul class="movie__details">
-        <li class="details__item"><span class=" details__label">Vote / Votes</span><span class="details__value"><span class="details__rating">${Number(vote_average).toFixed(1)}</span> /
+        <li class="details__item"><span class=" details__label">Vote / Votes</span><span class="details__value"><span class="details__rating">${Number(
+          vote_average
+        ).toFixed(1)}</span> /
         ${vote_count}</span></li>
-        <li class="details__item"><span class=" details__label">Popularity</span><span class="details__value">${Number(popularity).toFixed(0)}</span></li>
+        <li class="details__item"><span class=" details__label">Popularity</span><span class="details__value">${Number(
+          popularity
+        ).toFixed(0)}</span></li>
         <li class="details__item"><span class=" details__label">Original Title</span><span class="details__value details__title">${title}</span>
         </li>
-        <li class="details__item"><span class=" details__label">Genre</span><span class="details__value">${(genres).map(g => g.name).join(", ")}</span></li>
+        <li class="details__item"><span class=" details__label">Genre</span><span class="details__value">${genres
+          .map(g => g.name)
+          .join(', ')}</span></li>
       </ul>
       <h3 class="movie__label">About</h3>
       <p class="movie__about">${overview}</p>
-      
+
       <div class="modal__btns--wrapper">
         <button type="button" class="modal__btns modal__btns--watch" data-name="watched" data-id=${id}>${watchedlabel}</button>
         <button type="button" class="modal__btns modal__btns--queue" data-name="queue" data-id=${id}>${queuelabel}</button>
@@ -46,20 +61,19 @@ const htmlMarkup = ({ backdrop_path, title, vote_average, vote_count, popularity
     </div>
   </div>
   `;
-}	
-            
+};
+
 export default function movieModalMarkup(id) {
   // Variable for selecting output tag
-  const htmlOutput = document.querySelector(".modal--wrapper");
+  const htmlOutput = document.querySelector('.modal--wrapper');
 
   fetchMoviesById(id)
-  .then(response => {
-      return htmlOutput.insertAdjacentHTML(
-        'beforeend',
-        htmlMarkup(response)
-      );
-  })
-  .catch(error => console.error(error));      
+    .then(response => {
+      console.log(`output markupu dla 'modal'`);
+      return htmlOutput.insertAdjacentHTML('beforeend', htmlMarkup(response));
+    })
+    .catch(error => console.error(error));
+
 }
 
 // Użycie:

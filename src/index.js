@@ -1,11 +1,15 @@
-// Importing modules
-// import './components/katalog_komponentu/komponent.js';
-
 // Style podstawowe + container
 import './main.scss';
 
 // Nagłówek
 import './components/header/header';
+import './components/loadMoviesList/loadMoviesList';
+import './components/footer/footer';
+
+// Rendering popularnych filmów na stronę główną i wywołanie funkcji dla 'trending'
+import { moviesListMarkup } from './components/moviesListMarkup/moviesListMarkup';
+moviesListMarkup();
+
 
 // Zapisanie genres_name w local storage
 import memorizeGenres from './components/memorizeGenres/memorizeGenres';
@@ -21,16 +25,10 @@ popularMovies();
 import './components/footer/footer';
 
 import './components/changePage/changePage';
-
 // Obsługa modala
 import './components/movieModal/movieModal';
 
 
-// Obsługa dodawania filmów do "watched" lub "queue"
-import './components/supportForMyLibrary/supportForMyLibrary';
-
-import './components/footer/footer.js';
-import './components/movieModal/movieModal';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //  TEST GROUND
