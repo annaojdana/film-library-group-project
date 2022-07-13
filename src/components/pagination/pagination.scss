@@ -1,3 +1,6 @@
+@import '../../scss/mixin';
+@import '../../scss/variables';
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -5,16 +8,16 @@
   & ul {
     display: flex;
     flex-wrap: wrap;
-    background: #e5e5e5;
+    background: $paginationBgColor;
     padding: 8px;
 
     & li {
-      color: #000000;
+      color: $fontColor;
       list-style: none;
       line-height: 1.33;
       text-align: center;
-      font-size: 12px;
-      font-weight: 500;
+      @include size(12px);
+      font-weight: $mainFontWieght;
       cursor: pointer;
       user-select: none;
       transition: all 0.3s ease;
@@ -43,7 +46,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 22px;
+    @include size(22px);
     cursor: default;
   }
 
@@ -60,7 +63,7 @@
     width: 40px;
     padding: 0 20px;
     border-radius: 5px;
-    background-color: #f7f7f7;
+    background-color: $paginationBntBgColor;
     border: none;
 
     &.prev {
@@ -86,8 +89,8 @@
   & .numb:hover,
   & .first:hover,
   & .last:hover {
-  color: #fff;
-  background: #ff6b08;
+  color: $secondFontColor;
+  background: $mainBgColor;
   }
 }
 
