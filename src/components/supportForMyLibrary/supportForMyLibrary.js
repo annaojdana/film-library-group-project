@@ -27,7 +27,7 @@ function localStorageSupport(evt) {
     const get = getFromLocalStorage(name);
     // Jeśli klucz odpowiednio "watched" lub "queue" zawiera id filmu to wykonaj
     if (get.includes(idNumber)) {
-      const remove = get.filter(val => val !== idNumber);
+      const remove = get.filter(val => val !== idNumber); // ma być idNumber
       setToLocalStorage(name, remove);
     } else {
       switch (name) {
@@ -38,7 +38,7 @@ function localStorageSupport(evt) {
           }
           const getNext = getFromLocalStorage(next);
           if (getNext.includes(idNumber)) {
-            const removeNext = getNext.filter(val => val !== idNumber);
+            const removeNext = getNext.filter(val => val !== idNumber); // ma być idNumber
             // Notify Set to watched!
 
             setToLocalStorage(next, removeNext);
@@ -52,7 +52,7 @@ function localStorageSupport(evt) {
           }
           const getPrev = getFromLocalStorage(prev);
           if (getPrev.includes(idNumber)) {
-            const removePrev = getPrev.filter(val => val !== idNumber);
+            const removePrev = getPrev.filter(val => val !== idNumber); // ma być idNumber
             // Notify set to queue!
 
             setToLocalStorage(prev, removePrev);

@@ -11,14 +11,12 @@ export default function createPagination(totalPages, page) {
 
   if (page > 1) {
     //show the next button if the page value is greater than 1
-    liTag += `<li class="btn prev" data-page="${page - 1}" id="page_${
-      page - 1
-    }"></li>`;
+    liTag += `<li class="btn prev" data-page="${page - 1}"></li>`;
   }
 
   if (page > 2) {
     //if page value is less than 2 then add 1 after the previous button
-    liTag += `<li class="first numb" data=page="1" id="page_1">1</li>`;
+    liTag += `<li class="first numb" data=page="1">1</li>`;
     if (page > 3) {
       //if page value is greater than 3 then add this (...) after the first li or page
       liTag += `<li class="dots" data-page="dots">...</li>`;
@@ -58,7 +56,7 @@ export default function createPagination(totalPages, page) {
       active = '';
     }
 
-    liTag += `<li class="numb ${active}" data-page="${plength}" id="page_${plength}">${plength}</li>`;
+    liTag += `<li class="numb ${active}" data-page="${plength}">${plength}</li>`;
   }
 
   if (page < totalPages - 1) {
@@ -67,14 +65,12 @@ export default function createPagination(totalPages, page) {
       //if page value is less than totalPage value by -2 then add this (...) before the last li or page
       liTag += `<li class="dots" data-page="dots">...</li>`;
     }
-    liTag += `<li class="last numb" data-page="${totalPages}"  id="page_${totalPages} ">${totalPages}</li>`;
+    liTag += `<li class="last numb" data-page="${totalPages}">${totalPages}</li>`;
   }
 
   if (page < totalPages) {
     //show the next button if the page value is less than totalPage(20)
-    liTag += `<li class="btn next" data-page="${page + 1}" id="page_${
-      page + 1
-    }"></li>`;
+    liTag += `<li class="btn next" data-page="${page + 1}"></li>`;
   }
 
   element.innerHTML = liTag; //add li tag inside ul tag
