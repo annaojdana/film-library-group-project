@@ -1,10 +1,8 @@
 import getGenresNames from '../getGenresNames/getGenresNames';
 import { fetchMovieByQuery } from '../fetchMoviesSearch/fetchMovieSearch';
-
-function notificationRender()
-{
-
-}
+import createPagination from '../pagination/pagination';
+import { paginationSupport } from '../changePage/changePage';
+function notificationRender() {}
 
 const htmlMarkup = data =>
   data
@@ -34,15 +32,23 @@ const htmlMarkup = data =>
     )
     .join('');
 
-export function renderCollection(searchQuery) {
+export function renderCollection(searchQuery, pageNum) {
   const filmList = document.querySelector('[data-markup-output]');
-  fetchMovieByQuery(searchQuery).then(response => {
+  fetchMovieByQuery(searchQuery, pageNum).then(response => {
     console.log(response);
 
     if (response.total_results === 0) {
       document.querySelector('.not-found').classList.remove('is-hidden');
-    }else{document.querySelector('.not-found').classList.add('is-hidden');}
+    } else {
+      document.querySelector('.not-found').classList.add('is-hidden');
+    }
     filmList.innerHTML = htmlMarkup(response.results);
+    page = response.page;
+    totalPages = response.total_pages;
+    const element = document.querySelector('.pagination ul');
+    element.innerHTML = createPagination(totalPages, page);
+    paginationSupport(searchQuery, 'search')
   });
 }
+
 
