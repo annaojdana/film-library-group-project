@@ -38,7 +38,7 @@ function localStorageSupport(evt) {
           }
           const getNext = getFromLocalStorage(next);
           if (getNext.includes(idNumber)) {
-            const removeNext = getNext.filter(val => val !== val);
+            const removeNext = getNext.filter(val => val !== idNumber);
             // Notify Set to watched!
 
             setToLocalStorage(next, removeNext);
@@ -52,7 +52,7 @@ function localStorageSupport(evt) {
           }
           const getPrev = getFromLocalStorage(prev);
           if (getPrev.includes(idNumber)) {
-            const removePrev = getPrev.filter(val => val !== val);
+            const removePrev = getPrev.filter(val => val !== idNumber);
             // Notify set to queue!
 
             setToLocalStorage(prev, removePrev);
