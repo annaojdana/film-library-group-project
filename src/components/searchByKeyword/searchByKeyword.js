@@ -1,5 +1,3 @@
-import { fetchMovie } from '../fetchMoviesSearch/fetchMovieSearch';
-import { fetchMovieByQuery } from '../fetchMoviesSearch/fetchMovieSearch';
 import { renderCollection } from '../renderSearchMovie/renderSearchMovie';
 
 const search_form = document.querySelector('[data-input]');

@@ -30,9 +30,14 @@ const htmlMarkup = data =>
     .join('');
 
 export function renderCollection(searchQuery) {
+  
   const filmList = document.querySelector('[data-markup-output]');
   fetchMovieByQuery(searchQuery).then(response => {
     console.log(response);
+
+    if (response.total_results === 0) {
+      document.querySelector('.not-found').classList.remove('is-hidden');
+   }
     filmList.innerHTML = htmlMarkup(response.results);
   });
 }
