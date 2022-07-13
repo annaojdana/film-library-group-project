@@ -24,7 +24,7 @@
   border: 1px solid #ffffff;
   border-radius: 5px;
   background-color: transparent;
-  color: #ffffff;
+  color: $secondFontColor;
   text-transform: uppercase;
   @include size(12px);
   line-height: 1.143;
@@ -44,12 +44,12 @@
   &:hover {
     background: $mainBgColor;
     border: none;
-    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+    box-shadow: $libraryBntShadow
   }
   &--active {
     background: $mainBgColor;
     border: none;
-    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+    box-shadow: $libraryBntShadow
   }
 }
 

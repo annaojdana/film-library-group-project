@@ -41,9 +41,9 @@
 }
 
 .nav__item {
-  color: #fff;
+  color: $secondFontColor;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: $mainFontWieght;
   @include size(12px);
   line-height: 1.167;
 
@@ -91,9 +91,9 @@
 
 .header__title {
   display: none;
-  color: #fff;
+  color: $secondFontColor;
   padding-left: 12px;
-  font-weight: 500;
+  font-weight: $mainFontWieght;
   @include size(30px);
   line-height: 1.172;
 }
@@ -112,12 +112,12 @@
   border: none;
   border-bottom: 0.5px solid #fff;
   outline: none;
-  color: #fff;
+  color: $secondFontColor;
   padding-left: 1px;
   margin-right: -12px;
 
   &::placeholder {
-    color: #fff;
+    color: $secondFontColor;
     @include size(14px);
   }
 }
@@ -136,7 +136,7 @@
 .not-found {
   color: #ff001b;
   @include size(14px);
-  font-weight: 400;
+  font-weight: $secondFontWieght;
   line-height: 1.143;
   margin-top: 22px;
   display: flex;

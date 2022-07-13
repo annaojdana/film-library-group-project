@@ -12,12 +12,12 @@
     padding: 8px;
 
     & li {
-      color: #000000;
+      color: $fontColor;
       list-style: none;
       line-height: 1.33;
       text-align: center;
       @include size(12px);
-      font-weight: 500;
+      font-weight: $mainFontWieght;
       cursor: pointer;
       user-select: none;
       transition: all 0.3s ease;
@@ -89,7 +89,7 @@
   & .numb:hover,
   & .first:hover,
   & .last:hover {
-  color: #fff;
+  color: $secondFontColor;
   background: $mainBgColor;
   }
 }

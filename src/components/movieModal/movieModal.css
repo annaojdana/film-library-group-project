@@ -53,7 +53,7 @@
   height: 44px;
   border: 1px solid #000;
   border-radius: 5px;
-  color: #000;
+  color: #000000;
   background-color: #ffffff;
   text-transform: uppercase;
 }
@@ -67,7 +67,7 @@
 .modal__btns:hover, .modal__btns:active {
   background: #ff6b08;
   border-color: #ff6b08;
-  color: #fff;
+  color: #ffffff;
 }
 
 .movie__image {
@@ -126,7 +126,7 @@
 }
 .details__rating {
   padding: 1px 10px;
-  color: #fff;
+  color: #ffffff;
   background-color: #ff6b08;
   border-radius: 5px;
 }

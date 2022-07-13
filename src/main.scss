@@ -5,11 +5,9 @@
 body {
   box-sizing: border-box;
   font-family: $mainFont;
-  // font-size: $mainFontSize;
-  // color: $mainFontColor;
   background-color: $bodyBgColor;
   @include size(12px);
-  color: #000000;
+  color: $fontColor;
 }
 
 h1,

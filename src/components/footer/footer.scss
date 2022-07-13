@@ -39,7 +39,7 @@
     }
     &__copyright {
       display: inline;
-      font-size: 16px;
+      @include size(16px);
       line-height: 1.188;
 
       &:not(:last-child) {

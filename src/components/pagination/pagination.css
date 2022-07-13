@@ -72,6 +72,6 @@
   background-image: url(./images/arrow-right-hover.svg);
 }
 .pagination .active, .pagination .numb:hover, .pagination .first:hover, .pagination .last:hover {
-  color: #fff;
+  color: #ffffff;
   background: #ff6b08;
 }/*# sourceMappingURL=pagination.css.map */

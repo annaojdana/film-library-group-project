@@ -31,7 +31,7 @@
 }
 
 .nav__item {
-  color: #fff;
+  color: #ffffff;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 12px;
@@ -77,7 +77,7 @@
 
 .header__title {
   display: none;
-  color: #fff;
+  color: #ffffff;
   padding-left: 12px;
   font-weight: 500;
   font-size: 30px;
@@ -96,20 +96,20 @@
   border: none;
   border-bottom: 0.5px solid #fff;
   outline: none;
-  color: #fff;
+  color: #ffffff;
   padding-left: 1px;
   margin-right: -12px;
 }
 .header__input::-moz-placeholder {
-  color: #fff;
+  color: #ffffff;
   font-size: 14px;
 }
 .header__input:-ms-input-placeholder {
-  color: #fff;
+  color: #ffffff;
   font-size: 14px;
 }
 .header__input::placeholder {
-  color: #fff;
+  color: #ffffff;
   font-size: 14px;
 }
 

@@ -33,8 +33,7 @@
   height: 100%;
   overflow: auto;
   background-color: $modalBgColor;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: $modalShadow;
 
   &__close {
     padding: 0;
@@ -61,7 +60,7 @@
     height: 44px;
     border: 1px solid #000;
     border-radius: 5px;
-    color: #000;
+    color: $fontColor;
     background-color: $modalBgColor;
     text-transform: uppercase;
 
@@ -78,13 +77,13 @@
     &:active{
       background: $mainBgColor;
       border-color: $mainBgColor;
-      color: #fff;
+      color: $secondFontColor;
     }
   }
 }
 
 .movie {
-  &__image {
+    &__image {
     max-width: max-content;
     width: 100%;
     height: auto;
@@ -94,7 +93,7 @@
 
   &__title {
     margin-bottom: 20px;
-    font-weight: 500;
+    font-weight: $mainFontWieght;
     @include size(20px);
     line-height: 1.15;
     text-transform: uppercase;
@@ -106,7 +105,7 @@
 
   &__label {
     margin-bottom: 10px;
-    font-weight: 500;
+    font-weight: $mainFontWieght;
     @include size(12px);
     line-height: 1.333;
     text-transform: uppercase;
@@ -114,7 +113,7 @@
 
   &__about {
     margin-bottom: 20px;
-    font-weight: 500;
+    font-weight: $mainFontWieght;
     @include size(12px);
     line-height: 1.667;
     text-align: justify;
@@ -134,21 +133,21 @@
 
   &__label {
     display: block;
-    font-weight: 500;
-    @include size(12px);
+  font-weight: $mainFontWieght;
+      @include size(12px);
     line-height: 1.333;
     color: $modalLabelFontColor;
   }
 
   &__value {
-    font-weight: 500;
+    font-weight: $mainFontWieght;
     @include size(12px);
     line-height: 1.167;
   }
 
   &__rating {
     padding: 1px 10px;
-    color: #fff;
+    color: $secondFontColor;
     background-color: $mainBgColor;
     border-radius: 5px;
   }
