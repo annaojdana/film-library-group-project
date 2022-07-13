@@ -5,8 +5,15 @@ console.log(search_form);
 const search_btn = document.querySelector('[data-search]');
 console.log(search_btn);
 
+
 function searchHandler() {
   const searchQuery = search_form.value;
+  if (searchQuery === '') {
+    document.querySelector('.not-found').classList.remove('is-hidden');
+    return;
+  }else{
+    document.querySelector('.not-found').classList.add('is-hidden');
+  }
   renderCollection(searchQuery);
 }
 

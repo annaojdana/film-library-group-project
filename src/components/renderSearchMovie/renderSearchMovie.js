@@ -1,6 +1,11 @@
 import getGenresNames from '../getGenresNames/getGenresNames';
 import { fetchMovieByQuery } from '../fetchMoviesSearch/fetchMovieSearch';
 
+function notificationRender()
+{
+
+}
+
 const htmlMarkup = data =>
   data
     .map(
@@ -30,14 +35,14 @@ const htmlMarkup = data =>
     .join('');
 
 export function renderCollection(searchQuery) {
-  
   const filmList = document.querySelector('[data-markup-output]');
   fetchMovieByQuery(searchQuery).then(response => {
     console.log(response);
 
     if (response.total_results === 0) {
       document.querySelector('.not-found').classList.remove('is-hidden');
-   }
+    }else{document.querySelector('.not-found').classList.add('is-hidden');}
     filmList.innerHTML = htmlMarkup(response.results);
   });
 }
+
