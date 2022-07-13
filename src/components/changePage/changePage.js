@@ -2,6 +2,7 @@ import moviesListMarkup from '../moviesListMarkup/moviesListMarkup';
 import loadMoviesList from '../loadMoviesList/loadMoviesList';
 import { initializeModal } from '../movieModal/movieModal';
 
+
 const element = document.querySelector('.pagination ul');
 element.addEventListener('click', supportForChangePage);
 
