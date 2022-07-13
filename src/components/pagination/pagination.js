@@ -1,4 +1,5 @@
 import './pagination.scss';
+import './pagination-mediaQuery';
 
 const element = document.querySelector('.pagination ul');
 //calling function with passing parameters and adding inside element which is ul tag
@@ -11,12 +12,14 @@ export default function createPagination(totalPages, page) {
 
   if (page > 1) {
     //show the next button if the page value is greater than 1
-    liTag += `<li class="btn prev" data-page="${page - 1}" id="page_${
+    liTag += `<li class="pag-btn prev" data-page="${page - 1}" id="page_${
       page - 1
     }"></li>`;
   }
 
-  if (page > 3) {
+
+  
+  if (page > 3 && window.innerWidth > 768) {
     //if page value is less than 2 then add 1 after the previous button
     liTag += `<li class="first numb mobile" data=page="1" id="page_1">1</li>`;
     if (page > 4) {
@@ -65,7 +68,7 @@ export default function createPagination(totalPages, page) {
     liTag += `<li class="numb ${active}" data-page="${plength}" id="page_${plength}">${plength}</li>`;
   }
 
-  if (page < totalPages - 2) {
+  if (page < totalPages - 2 && window.innerWidth > 768) {
     //if page value is less than totalPage value by -2 then show the last li or page
     if (page < totalPages - 3) {
       //if page value is less than totalPage value by -3 then add this (...) before the last li or page
@@ -76,7 +79,7 @@ export default function createPagination(totalPages, page) {
 
   if (page < totalPages) {
     //show the next button if the page value is less than totalPage(20)
-    liTag += `<li class="btn next" data-page="${page + 1}" id="page_${
+    liTag += `<li class="pag-btn next" data-page="${page + 1}" id="page_${
       page + 1
     }"></li>`;
   }

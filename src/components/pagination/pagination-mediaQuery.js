@@ -9,15 +9,5 @@ function paginationSizeChange(query) {
 
 const mediaQuery = window.matchMedia('(max-width: 767px)');
 
-paginationSizeChange(mediaQuery);
 mediaQuery.addListener(paginationSizeChange);
-
-
-
-
-
-
-
-
-
-
+paginationSizeChange(mediaQuery);
