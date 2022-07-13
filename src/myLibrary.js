@@ -1,6 +1,7 @@
+// Style podstawowe + container
 import './main.scss';
 
+// Nagłówek
 import './components/headerLibrary/headerLibrary';
-import './components/header/header';
-import './components/libraryMovies/libraryMovies'
+import './components/loadMoviesList/loadMoviesList';
 import './components/footer/footer';

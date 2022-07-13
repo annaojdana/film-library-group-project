@@ -1,7 +1,11 @@
 // Importing API handler - trending movies list
 import fetchTrendyMovies from '../fetchTrendyMovies/fetchTrendyMovies';
+import fetchMovieById from '../fetchMovieById/fetchMovieById';
 import getGenresNames from '../getGenresNames/getGenresNames';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
+import createPagination from '../pagination/pagination';
+// Selecting output tag
+const markupOutput = document.querySelector('[data-markup-output]');
 
 // Internal function for creating HTML markup
 const htmlMarkup = data =>
@@ -21,56 +25,106 @@ const htmlMarkup = data =>
       `
     )
     .join('');
+
+// Function fot displaying cards from localStorage's id array
+function displayFromIdArray(source) {
+  const displayedIdArray = getFromLocalStorage(source);
+
+  if (displayedIdArray === null || displayedIdArray.length === 0) {
+    displayEmptyListInfo();
+    return console.log('Queue is empty!');
+  } else {
+    const fetchedDataArray = [];
+    const counter = displayedIdArray.length;
+    let idArray = [];
+
+    for (const id of displayedIdArray) {
+      fetchMovieById(id)
+        .then(response => {
+          fetchedDataArray.push(response);
+
+          if (fetchedDataArray.length === counter) {
+            for (let i = 0; i < fetchedDataArray.length; i++) {
+              const genres = fetchedDataArray[i].genres;
+
+              for (const genre of genres) {
+                const id = genre.id;
+                idArray.push(id);
+
+                if (genres.length === idArray.length) {
+                  fetchedDataArray[i].genre_ids = idArray;
+                  idArray = [];
+                }
+              }
+            }
+
+            return (markupOutput.innerHTML = htmlMarkup(fetchedDataArray));
+          } else {
+          }
+        })
+        .catch(error => console.error(error));
+    }
+  }
+}
+
 // Main function for HTML markup output
-export default function moviesListMarkup(whatToOutput = 'trending') {
+export default function moviesListMarkup(
+  whatToOutput = 'trending',
+  pageNumber = 1
+) {
   // Variable for selecting output tag
   const markupOutput = document.querySelector('[data-markup-output]');
- 
   switch (whatToOutput) {
     case 'trending':
-      fetchTrendyMovies()
+      fetchTrendyMovies(pageNumber)
         .then(response => {
-          console.log(`output markupu dla 'trending'`);
-          return markupOutput.insertAdjacentHTML(
+          page = response.page;
+          totalPages = response.total_pages;
+
+          markupOutput.innerHTML = '';
+
+          markupOutput.insertAdjacentHTML(
             'beforeend',
             htmlMarkup(response.results)
           );
+
+          const element = document.querySelector('.pagination ul');
+          element.innerHTML = createPagination(totalPages, page);
         })
         .catch(error => console.error(error));
       break;
 
     case 'watched':
-      console.log(`output markupu dla 'watched'`);
       if (getFromLocalStorage('watched') !== []) {
-        return markupOutput.insertAdjacentHTML(
-          'beforeend',
-          htmlMarkup(getFromLocalStorage('watched'))
-        );
+        return displayFromIdArray('watched');
       } else {
-        console.log('localStorage queue empty');
+        displayEmptyListInfo();
       }
       break;
 
     case 'queue':
-      console.log(`output markupu dla 'queue'`);
       if (getFromLocalStorage('queue') !== []) {
-        return markupOutput.insertAdjacentHTML(
-          'beforeend',
-          htmlMarkup(getFromLocalStorage('queue'))
-        );
+        return displayFromIdArray('queue');
       } else {
-        console.log('localStorage queue empty');
+        displayEmptyListInfo();
       }
       break;
 
     default:
       fetchTrendyMovies()
         .then(response => {
-          return htmlMarkup(response.results);
+          console.log(`output markupu dla 'trending'`);
+          return (markupOutput.innerHTML = htmlMarkup(response.results));
         })
         .catch(error => console.error(error));
       break;
   }
+}
+
+// Internal function for displaying info,
+// for empty "watched" and "queue" localStorage
+function displayEmptyListInfo() {
+  markupOutput.innerHTML = `<h2 class="movies__empty-info">Sorry! Collection is empty!</h2>`;
 }
 
 // Użycie:
