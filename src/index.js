@@ -1,6 +1,18 @@
+// Style podstawowe + container
 import './main.scss';
 
-// Tutaj wczytujemy importy plików .js strony głownej
-// Przykład:
+// Nagłówek
+import './components/header/header';
+import './components/loadMoviesList/loadMoviesList';
+import './components/footer/footer';
 
-// import './components/katalog_komponentu/komponent.js';
+// Rendering popularnych filmów na stronę główną i wywołanie funkcji dla 'trending'
+import moviesListMarkup from './components/moviesListMarkup/moviesListMarkup';
+moviesListMarkup();
+
+// Szukajka
+import './components/searchByKeyword/searchByKeyword';
+
+// Paginacja
+import createPagination from './components/pagination/pagination';
+import './components/changePage/changePage';

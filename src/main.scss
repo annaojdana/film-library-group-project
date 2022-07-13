@@ -1,8 +1,14 @@
+@import 'scss/container.scss';
+
 body {
   box-sizing: border-box;
-  // font-family: $mainFont;
+  font-family: 'Roboto', sans-serif;
   // font-size: $mainFontSize;
   // color: $mainFontColor;
+  background-color: #E5E5E5;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: #000000;
 }
 
 h1,
@@ -29,4 +35,8 @@ img {
 
 button {
   cursor: pointer;
+}
+
+li {
+  list-style: none;
 }
