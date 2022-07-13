@@ -10,6 +10,9 @@ import './components/footer/footer';
 import moviesListMarkup from './components/moviesListMarkup/moviesListMarkup';
 moviesListMarkup();
 
+// Szukajka
+import './components/searchByKeyword/searchByKeyword';
+
 // Paginacja
 import createPagination from './components/pagination/pagination';
 import './components/changePage/changePage';
