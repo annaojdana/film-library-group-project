@@ -10,21 +10,22 @@
       integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link 
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" 
-      rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <!-- W taki sposbu dodajemy fragmenty w główny HTML-plik strony. -->
-    <!-- <include src="./components/katalog_komponentu/komponent.html"></include> -->
 
+  <body>
     <include src="./components/header/header.html"></include>
-    <include src="./components/popularMovies/popularMovies.html"></include>
+    <include src="./components/loadMoviesList/loadMoviesList.html"></include>
     <include src="./components/movieModal/movieModal.html"></include>
+    <include src="./components/pagination/pagination.html"></include>
     <include src="./components/footer/footer.html"></include>
 
     <script src="./index.js" type="module"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </body>
 </html>
