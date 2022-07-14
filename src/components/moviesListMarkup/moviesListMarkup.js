@@ -13,7 +13,22 @@ const markupOutput = document.querySelector('[data-markup-output]');
 const htmlMarkup = data =>
   data
     .map(
-      ({ poster_path, title, genre_ids, release_date, vote_average, id }) => `
+      ({ poster_path, title, genre_ids, release_date, vote_average, id }) => {
+        if (poster_path === null) {
+        return `
+        <div class="item" data-id="${id}" data-modal-open>
+        <img class="item__image" src="./img/no_image.png" alt="Placeholder no image" />
+        <div class="item__info">
+          <h3 class="item__title">${title}</h3>
+          <p class="item__genres" data-genres>${getGenresNames(genre_ids)}</p>
+          <span class)="item__separator">|</span>
+          <p class="item__year">${new Date(release_date).getFullYear()}</p>
+          <p class="item__rating">${Number(vote_average).toFixed(1)}</p>
+        </div>
+      </div>
+      `
+        }
+       return `
       <div class="item" data-id="${id}" data-modal-open>
         <img class="item__image" src="https://image.tmdb.org/t/p/w300${poster_path}" alt=" Poster of: ${title}" />
         <div class="item__info">
@@ -25,6 +40,7 @@ const htmlMarkup = data =>
         </div>
       </div>
       `
+      }
     )
     .join('');
 
@@ -81,7 +97,6 @@ export default function moviesListMarkup(
       fetchTrendyMovies(pageNumber)
         .then(response => {
           Loading.remove();
-
           page = response.page;
           totalPages = response.total_pages;
 
