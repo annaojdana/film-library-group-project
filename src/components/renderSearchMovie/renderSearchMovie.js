@@ -1,6 +1,7 @@
 import getGenresNames from '../getGenresNames/getGenresNames';
 import { fetchMovieByQuery } from '../fetchMoviesSearch/fetchMovieSearch';
 import createPagination from '../pagination/pagination';
+import { initializeModal } from '../movieModal/movieModal';
 import { paginationSupport } from '../changePage/changePage';
 function notificationRender() {}
 
@@ -50,5 +51,7 @@ export function renderCollection(searchQuery, pageNum) {
     const element = document.querySelector('.pagination ul');
     element.innerHTML = createPagination(totalPages, page);
     markupOutput.dataset.outputType = 'search';
+    initializeModal();
   });
+
 }
