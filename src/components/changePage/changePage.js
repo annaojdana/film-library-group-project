@@ -1,8 +1,10 @@
 import moviesListMarkup from '../moviesListMarkup/moviesListMarkup';
 import loadMoviesList from '../loadMoviesList/loadMoviesList';
 import { initializeModal } from '../movieModal/movieModal';
+import { renderCollection } from '../renderSearchMovie/renderSearchMovie';
+import { searchQuery } from '../searchByKeyword/searchByKeyword';
 
-
+const markupOutput = document.querySelector('[data-markup-output]');
 const element = document.querySelector('.pagination ul');
 element.addEventListener('click', supportForChangePage);
 
@@ -14,8 +16,26 @@ function supportForChangePage(evt) {
     console.log('Selected dots, doing nothing...');
     return;
   }
-
   header.scrollIntoView({ behavior: 'smooth' });
-  moviesListMarkup('trending', pageNum);
+
+  const switchValue = markupOutput.dataset.outputType;
+  console.log(switchValue);
+
+  switch (switchValue) {
+    case 'trending':
+      moviesListMarkup('trending', pageNum);
+      break;
+
+    case 'search':
+      renderCollection(searchQuery, pageNum);
+      break;
+
+    case 'watched' || 'query':
+      break;
+
+    default:
+      console.log('Invalid switch value!');
+      break;
+  }
   initializeModal();
 }

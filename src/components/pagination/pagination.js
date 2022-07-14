@@ -17,14 +17,14 @@ export default function createPagination(totalPages, page) {
     }"></li>`;
   }
 
-
-  
   if (page > 3 && window.innerWidth > 768) {
     //if page value is less than 2 then add 1 after the previous button
     liTag += `<li class="first numb mobile" data=page="1" id="page_1">1</li>`;
     if (page > 4) {
-      //if page value is greater than 3 then add this (...) after the first li or page
-      liTag += `<li class="dots mobile" data-page="dots">...</li>`;
+      if (totalPages > 6) {
+        //if page value is greater than 3 then add this (...) after the first li or page
+        liTag += `<li class="dots mobile" data-page="dots">...</li>`;
+      }
     }
   }
 
@@ -71,8 +71,10 @@ export default function createPagination(totalPages, page) {
   if (page < totalPages - 2 && window.innerWidth > 768) {
     //if page value is less than totalPage value by -2 then show the last li or page
     if (page < totalPages - 3) {
-      //if page value is less than totalPage value by -3 then add this (...) before the last li or page
-      liTag += `<li class="dots mobile" data-page="dots">...</li>`;
+      if (totalPages > 6) {
+        //if page value is less than totalPage value by -3 then add this (...) before the last li or page
+        liTag += `<li class="dots mobile" data-page="dots">...</li>`;
+      }
     }
     liTag += `<li class="last numb mobile" data-page="${totalPages}"  id="page_${totalPages} ">${totalPages}</li>`;
   }
