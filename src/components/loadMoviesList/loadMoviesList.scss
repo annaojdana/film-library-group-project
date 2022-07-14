@@ -25,9 +25,11 @@
 
 .item {
   width: 280px;
-  min-height: 440px;
+  min-height: 470px;
   margin-bottom: 20px;
   cursor: pointer;
+  box-shadow: 4px 4px 5px rgb(0 0 0 / 40%);
+  border-bottom-right-radius: 15px;
 
   &__image {
     width: 100%;
@@ -42,6 +44,7 @@
   &__title {
     margin-top: 10px;
     margin-bottom: 3px;
+    margin-left: 5px;
     @include size(12px);
     line-height: 1.333;
     text-transform: uppercase;
@@ -55,6 +58,7 @@
     line-height: 1.172;
     font-weight: $mainFontWieght;
     color: $mainFontColor;
+    margin-left: 3px;
   }
 
   &__rating {
