@@ -5,6 +5,7 @@ import './main.scss';
 import './components/header/header';
 import './components/loadMoviesList/loadMoviesList';
 import './components/footer/footer';
+import './components/teamModal/teamModal';
 
 // Rendering popularnych filmów na stronę główną i wywołanie funkcji dla 'trending'
 import moviesListMarkup from './components/moviesListMarkup/moviesListMarkup';
@@ -23,4 +24,3 @@ import createPagination from './components/pagination/pagination';
 import './components/changePage/changePage';
 
 import paginationSizeChange from './components/pagination/pagination-mediaQuery';
-

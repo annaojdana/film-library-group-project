@@ -19,7 +19,7 @@ export function closeModal() {
 }
 
 // Funkcja jest lokalna, ponieważ nie jest potrzebna poza tym plikiem
-function openModal(evt) {
+export function openModal(evt) {
   modal.classList.remove('is-hidden');
   page.addEventListener('keydown', closeModalEscKey); //musi być body, jeżeli damy tylko kontenr modala to aby zamknąć modal Esc trzeba najpierw nacisnąć Tab
   if (evt.currentTarget.classList.contains('item')) {
@@ -27,7 +27,7 @@ function openModal(evt) {
     movieModalMarkup(movieId);
   }
 }
-function closeModalEscKey(e) {
+ export function closeModalEscKey(e) {
   let keyCode = e.keyCode;
 
   if (keyCode === 27) {
@@ -36,7 +36,7 @@ function closeModalEscKey(e) {
   }
 }
 
-function closeModalByClick(e) {
+export default function closeModalByClick(e) {
   if (e.target === modal) {
     closeModal();
   }
