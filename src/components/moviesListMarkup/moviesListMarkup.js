@@ -14,28 +14,31 @@ const htmlMarkup = data =>
   data
     .map(
       ({ poster_path, title, genre_ids, release_date, vote_average, id }) => {
+        let imgSrc = `https://image.tmdb.org/t/p/w300${poster_path}`;
+        let movieYear = new Date(release_date).getFullYear();
+        let imgAlt = `Poster of: ${title}`;
+        let genresName = getGenresNames(genre_ids);
         if (poster_path === null) {
-        return `
-        <div class="item" data-id="${id}" data-modal-open>
-        <img class="item__image" src="./img/no_image.png" alt="Placeholder no image" />
-        <div class="item__info">
-          <h3 class="item__title">${title}</h3>
-          <p class="item__genres" data-genres>${getGenresNames(genre_ids)}</p>
-          <span class)="item__separator">|</span>
-          <p class="item__year">${new Date(release_date).getFullYear()}</p>
-          <p class="item__rating">${Number(vote_average).toFixed(1)}</p>
-        </div>
-      </div>
-      `
+          imgSrc = `./img/no_image.png`;
+          imgAlt = `There is no picture for this video. Placeholder no image`
+        };
+
+        if (release_date === "") {
+          movieYear = "unknown";
+        };
+
+        if (genre_ids.length === 0) {
+          genresName = "no movie genre"
         }
+
        return `
       <div class="item" data-id="${id}" data-modal-open>
-        <img class="item__image" src="https://image.tmdb.org/t/p/w300${poster_path}" alt=" Poster of: ${title}" />
+        <img class="item__image" src="${imgSrc}" alt="${imgAlt}" />
         <div class="item__info">
           <h3 class="item__title">${title}</h3>
-          <p class="item__genres" data-genres>${getGenresNames(genre_ids)}</p>
+          <p class="item__genres" data-genres>${genresName}</p>
           <span class)="item__separator">|</span>
-          <p class="item__year">${new Date(release_date).getFullYear()}</p>
+          <p class="item__year">${movieYear}</p>
           <p class="item__rating">${Number(vote_average).toFixed(1)}</p>
         </div>
       </div>
@@ -97,6 +100,7 @@ export default function moviesListMarkup(
       fetchTrendyMovies(pageNumber)
         .then(response => {
           Loading.remove();
+          console.log(response);
           page = response.page;
           totalPages = response.total_pages;
 
