@@ -15,7 +15,7 @@ teamLink.addEventListener('click', openModal);
 
 function closeModal() {
   modal.classList.add('is-hidden');
-  // page.removeEventListener('keydown', closeModalEscKey);
+  page.removeEventListener('keydown', closeModalEscKey);
 };
 
 function openModal() {
