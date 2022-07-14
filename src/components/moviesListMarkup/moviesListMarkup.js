@@ -14,12 +14,14 @@ const htmlMarkup = data =>
   data
     .map(
       ({ poster_path, title, genre_ids, release_date, vote_average, id }) => {
+        
         let imgSrc = `https://image.tmdb.org/t/p/w300${poster_path}`;
         let movieYear = new Date(release_date).getFullYear();
         let imgAlt = `Poster of: ${title}`;
         let genresName = getGenresNames(genre_ids);
+
         if (poster_path === null) {
-          imgSrc = `./img/no_image.png`;
+          imgSrc = `https://iv.pl/images/78021b6c9c10ba13606ac3151fc220b3.png`;
           imgAlt = `There is no picture for this video. Placeholder no image`
         };
 

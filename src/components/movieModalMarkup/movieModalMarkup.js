@@ -33,10 +33,18 @@ const htmlMarkup = ({
   const watchedlabel = btnLabel[0];
   const queuelabel = btnLabel[1];
 
+  let imgSrc = `https://image.tmdb.org/t/p/w300${poster_path}`;
+  let imgAlt = `Poster of: ${title}`;
+
+  if (poster_path === null) {
+    imgSrc = `https://iv.pl/images/78021b6c9c10ba13606ac3151fc220b3.png`;
+    imgAlt = `There is no picture for this video. Placeholder no image`
+  };
+
   // Render of a modal for the selected movie
   return `
   <div class="movie__card--wrapper">
-    <img class="movie__image" src="https://image.tmdb.org/t/p/w300${poster_path}" alt="Poster of: ${title}">
+    <img class="movie__image" src="${imgSrc}" alt="Poster of: ${imgAlt}">
     <div class="movie__info">
       <h2 class="movie__title">${title}</h2>
       <ul class="movie__details">
