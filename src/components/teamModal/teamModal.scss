@@ -1,0 +1,102 @@
+@import '../../scss/mixin';
+@import '../../scss/variables';
+
+.team{
+  &--wrapper{
+    padding: 48px 25px 41px;
+  }
+  &__heading{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__icon{
+    margin: 0 10px;
+    width: 20px;
+  }
+
+}
+
+.students{
+  &--wrapper{
+   padding: 30px 0 0 15px;;
+  }}
+
+  .student{
+    margin-bottom: 18px;
+    &__img{
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+    }
+    &__name{
+      font-size: 18px;
+      line-height: 40px;
+    }
+    &__linkedin{
+      display: flex;
+      outline: none;
+      text-decoration: none;
+      color: #000;
+      &:hover,
+      &:focus {
+        color: $mainBgColor;
+      }
+    }
+
+  }
+@media screen and (min-width: 768px) {
+  .team {
+    &--wrapper {
+        padding: 48px 35px 41px;
+      }
+  &__heading {
+      font-size: 26px;
+    }
+
+    &__icon {
+      width: 26px;
+    }
+  }
+}
+
+  .student {
+
+    &__img {
+      width: 55px;
+      height: 55px;
+      margin-right: 20px;
+    }
+
+    &__name {
+      font-size: 22px;
+      line-height: 55px;
+    }
+}
+@media screen and(min-width: 1024px) {
+  .team {
+      &__heading {
+        font-size: 30px;
+      }
+
+      &__icon {
+        width: 30px;
+      }
+    }
+  }
+
+  .student {
+
+    &__img {
+      width: 70px;
+      height: 70px;
+      margin-right: 30px;
+    }
+
+    &__name {
+      font-size: 25px;
+      line-height: 70px;
+    }
+}
