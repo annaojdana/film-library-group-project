@@ -3,7 +3,8 @@ import { initializeApp } from 'firebase/app';
 import { 
   getAuth,
   connectAuthEmulator,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword
 } from 'firebase/auth';
 import showLoginError from '../showLoginError/showLoginError';
 
@@ -43,3 +44,17 @@ const loginWithEmailAndPassword = async () => {
 
 btnLogin.addEventListener('click', loginWithEmailAndPassword); // (btnLogin) Here we need use name of constant for button "Sign In" obtained by querySelector
 
+const createAccount = async () => {
+  const loginEmail = emailField.value;          // (emailField) Here we need use name of constant for email input obtained by querySelector
+  const loginPassword = passwordField.value;    // (passwordField) Here we need use name of constant for password input obtained by querySelector
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, loginEmail, loginPassword);
+    console.log(userCredential.user);
+  } catch (error) {
+    console.log(error);
+    showLoginError();
+  }
+}
+
+btnSignUp.addEventListener('click', createAccount);
