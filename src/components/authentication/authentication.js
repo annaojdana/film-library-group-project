@@ -4,9 +4,13 @@ import {
   getAuth,
   connectAuthEmulator,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
 } from 'firebase/auth';
-import showLoginError from '../showLoginError/showLoginError';
+import { hideLoginError, showFilmLibraryPage, showLoginError, showLoginForm, showLoginState } from '../authSupport/authSupport';
+
+
 
 // Firebase config
 const firebaseConfig = {
@@ -44,6 +48,7 @@ const loginWithEmailAndPassword = async () => {
 
 btnLogin.addEventListener('click', loginWithEmailAndPassword); // (btnLogin) Here we need use name of constant for button "Sign In" obtained by querySelector
 
+// Sign In and logging into account after sign in
 const createAccount = async () => {
   const loginEmail = emailField.value;          // (emailField) Here we need use name of constant for email input obtained by querySelector
   const loginPassword = passwordField.value;    // (passwordField) Here we need use name of constant for password input obtained by querySelector
@@ -58,3 +63,27 @@ const createAccount = async () => {
 }
 
 btnSignUp.addEventListener('click', createAccount);
+
+// Registration of closure when login status changes
+const checkAuthState = async () => {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      console.log(user);
+      showFilmLibraryPage();
+      showLoginState(user);
+
+      hideLoginError();
+    } else {
+      showLoginForm();
+      labelForAuthState.innerHTML = "You are not logged in.";   // (labelForAuthState) - Here we need use name of constant obtained by querySelector for state message
+    }
+  });
+}
+
+checkAuthState();
+
+const logout = async () => {
+  await signOut(auth);
+}
+
+btnLogout.addEventListener('click', logout);  // (btnLogout) Here we need use name of constant for button "Logout" obtained by querySelector
