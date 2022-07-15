@@ -1,10 +1,57 @@
 import './pagination.scss';
 import './pagination-mediaQuery';
 
+import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage';
+
 const element = document.querySelector('.pagination ul');
 //calling function with passing parameters and adding inside element which is ul tag
 
-export default function createPagination(totalPages, page) {
+// ! ! ! ! ! Zmienna dla ilości wyświetlanych kart na stronie ! ! ! ! !
+// By zmienić ilość wyświetlanych kart na stronie w My Library,
+// Wystarczy zmienić wartość zmiennej na żądaną ilość
+export const CARDS_PER_PAGE = 3;
+
+// Funkcja dla obsługi paginacji dla strony "My library"
+function getTotalPagesForMyLibrary() {
+  // Wybranie głownego kontenera dla jego atrybutu [data-output-type]
+  const markupOutput = document.querySelector('[data-output-type]');
+  // Zmienna dla przechowania rekordów z localStorage
+  let idArray = [];
+  // Zmienna dla klucza pobierania danych z localStorage
+  let whatToOutput;
+  // Zmienna dla obliczenia całkowitej ilości stron
+  let totalPages;
+
+  if (markupOutput.dataset.outputType === '') {
+    whatToOutput = 'queue';
+  } else {
+    whatToOutput = markupOutput.dataset.outputType;
+  }
+
+  // Załadowanie tablicy z ID filmów
+  idArray = getFromLocalStorage(whatToOutput);
+  // Operator obliczeń ilości kart na stronę
+  const totalCards = idArray.length;
+
+  if (totalCards < CARDS_PER_PAGE || totalCards === CARDS_PER_PAGE) {
+    totalPages = 1;
+  }
+  if (totalCards > CARDS_PER_PAGE) {
+    totalPages = Math.floor(totalCards / CARDS_PER_PAGE);
+    if (totalCards % CARDS_PER_PAGE !== 0) {
+      totalPages += 1;
+    }
+  }
+  return totalPages;
+}
+
+export function createPagination(totalPages, page) {
+  // Wywołanie funkcji dla My Library
+  if (window.location.pathname === '/myLibrary.html') {
+    console.log('Paginacja: pobieranie ilości stron dla generacji szukajki');
+    totalPages = getTotalPagesForMyLibrary();
+  }
+
   let liTag = '';
   let active;
   let beforePage = page - 1;
@@ -88,4 +135,8 @@ export default function createPagination(totalPages, page) {
 
   element.innerHTML = liTag; //add li tag inside ul tag
   return liTag; //reurn the li tag
+}
+
+export function removePagination() {
+  element.innerHTML = '';
 }

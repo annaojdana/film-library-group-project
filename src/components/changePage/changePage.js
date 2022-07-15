@@ -12,6 +12,7 @@ const header = document.querySelector('header');
 
 function supportForChangePage(evt) {
   pageNum = evt.target.dataset.page;
+  console.log(pageNum);
   if (evt.target.dataset.page === 'dots') {
     console.log('Selected dots, doing nothing...');
     return;
@@ -30,7 +31,12 @@ function supportForChangePage(evt) {
       renderCollection(searchQuery, pageNum);
       break;
 
-    case 'watched' || 'query':
+    case 'watched':
+      moviesListMarkup('watched', pageNum);
+      break;
+
+    case 'queue':
+      moviesListMarkup('queue', pageNum);
       break;
 
     default:
