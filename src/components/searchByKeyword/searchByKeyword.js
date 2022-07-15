@@ -4,7 +4,10 @@ export let searchQuery;
 // Warunek dla sprawdzania zawartości whatToOutput,
 // przy ładowaniu strony jest on wstępnie pusty
 
-if (window.location.pathname === '/index.html') {
+if (
+  window.location.pathname === '/index.html' ||
+  window.location.pathname === '/'
+) {
   const search_form = document.querySelector('[data-input]');
   const search_btn = document.querySelector('[data-search]');
 
