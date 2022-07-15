@@ -42,7 +42,6 @@ function getTotalPagesForMyLibrary() {
       totalPages += 1;
     }
   }
-  console.log('totalPages:', totalPages);
   return totalPages;
 }
 
@@ -52,6 +51,8 @@ export function createPagination(totalPages, page) {
     console.log('Paginacja: pobieranie ilości stron dla generacji szukajki');
     totalPages = getTotalPagesForMyLibrary();
   }
+  console.log('totalPages:', totalPages);
+  console.log('page:', page);
 
   let liTag = '';
   let active;
@@ -91,8 +92,10 @@ export function createPagination(totalPages, page) {
     }
 
     for (let plength = beforePage - 1; plength <= afterPage + 1; plength++) {
+      console.log('plength:', plength);
       if (plength > totalPages) {
         //if plength is greater than totalPage length then continue
+        console.log('continue');
         continue;
       }
 
