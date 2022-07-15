@@ -70,27 +70,27 @@ export function createPagination(totalPages, page) {
       //if page value is less than 2 then add 1 after the previous button
       liTag += `<li class="first numb mobile" data=page="1" id="page_1">1</li>`;
       if (page > 4) {
-        if (totalPages > 6) {
+        if (totalPages > 5) {
           //if page value is greater than 3 then add this (...) after the first li or page
           liTag += `<li class="dots mobile" data-page="dots">...</li>`;
         }
       }
     }
+    if (totalPages > 4) {
+      // how many pages or li show before the current li
+      if (page == totalPages) {
+        beforePage = beforePage - 1;
+      } else if (page == totalPages - 1) {
+        beforePage = beforePage;
+      }
 
-    // how many pages or li show before the current li
-    if (page == totalPages) {
-      beforePage = beforePage - 1;
-    } else if (page == totalPages - 1) {
-      beforePage = beforePage;
+      // how many pages or li show after the current li
+      if (page == 1) {
+        afterPage = afterPage + 1;
+      } else if (page == 2) {
+        afterPage = afterPage;
+      }
     }
-
-    // how many pages or li show after the current li
-    if (page == 1) {
-      afterPage = afterPage + 1;
-    } else if (page == 2) {
-      afterPage = afterPage;
-    }
-
     for (let plength = beforePage - 1; plength <= afterPage + 1; plength++) {
       console.log('plength:', plength);
       if (plength > totalPages) {
@@ -122,7 +122,7 @@ export function createPagination(totalPages, page) {
     if (page < totalPages - 2 && window.innerWidth > 768) {
       //if page value is less than totalPage value by -2 then show the last li or page
       if (page < totalPages - 3) {
-        if (totalPages > 6) {
+        if (totalPages > 5) {
           //if page value is less than totalPage value by -3 then add this (...) before the last li or page
           liTag += `<li class="dots mobile" data-page="dots">...</li>`;
         }
