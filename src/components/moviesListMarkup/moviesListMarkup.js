@@ -4,10 +4,13 @@ import fetchMovieById from '../fetchMovieById/fetchMovieById';
 import getGenresNames from '../getGenresNames/getGenresNames';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import createPagination from '../pagination/pagination';
+import { createPagination, removePagination } from '../pagination/pagination';
+import { CARDS_PER_PAGE } from '../pagination/pagination';
 
 // Selecting output tag
 const markupOutput = document.querySelector('[data-markup-output]');
+// Pagination selector placement
+const element = document.querySelector('.pagination ul');
 
 // Internal function for creating HTML markup
 const htmlMarkup = data =>
@@ -28,12 +31,42 @@ const htmlMarkup = data =>
     )
     .join('');
 
+function getArrayForPage(whatToOutput, page) {
+  console.log(page);
+  // Zmienna dla tablicy renderowanych wyników na stronę
+  let pageCardsArray = [];
+  // Zmienna dla indeksu pierwszej ładowanej karty
+  const loadFromIndex = page * CARDS_PER_PAGE - CARDS_PER_PAGE;
+  // Zmienna dla indeksu ostatniej ładowanej karty
+  const loadToIndex = page * CARDS_PER_PAGE;
+  // Załadowanie tablicy z ID filmów
+  const fetchedArray = getFromLocalStorage(whatToOutput);
+  // Operator obliczeń ilości kart na stronę
+  const totalCards = fetchedArray.length;
+
+  if (totalCards < CARDS_PER_PAGE || totalCards === CARDS_PER_PAGE) {
+    totalPages = 1;
+  }
+  if (totalCards > CARDS_PER_PAGE) {
+    totalPages = Math.floor(totalCards / CARDS_PER_PAGE);
+    if (totalCards % CARDS_PER_PAGE !== 0) {
+    }
+  }
+
+  // Selekcja identyfikatorów filmów z tablicy
+  pageCardsArray = fetchedArray.slice(loadFromIndex, loadToIndex);
+  console.log(fetchedArray);
+  return pageCardsArray;
+}
+
 // Function fot displaying cards from localStorage's id array
-function displayFromIdArray(source) {
-  const displayedIdArray = getFromLocalStorage(source);
+function displayFromIdArray(whatToOutput, page = 1) {
+  const displayedIdArray = getArrayForPage(whatToOutput, page);
+  console.log(displayedIdArray);
 
   if (displayedIdArray === null || displayedIdArray.length === 0) {
     displayEmptyListInfo();
+    removePagination();
     return console.log('Queue is empty!');
   } else {
     const fetchedDataArray = [];
@@ -59,8 +92,9 @@ function displayFromIdArray(source) {
                 }
               }
             }
-            markupOutput.dataSet.outputType = source;
-            return (markupOutput.innerHTML = htmlMarkup(fetchedDataArray));
+            markupOutput.dataset.outputType = whatToOutput;
+            markupOutput.innerHTML = htmlMarkup(fetchedDataArray);
+            element.innerHTML = createPagination(totalPages, page);
           } else {
           }
         })
@@ -92,7 +126,6 @@ export default function moviesListMarkup(
             htmlMarkup(response.results)
           );
 
-          const element = document.querySelector('.pagination ul');
           element.innerHTML = createPagination(totalPages, page);
           markupOutput.dataset.outputType = 'trending';
           console.log(markupOutput.dataset);
@@ -104,7 +137,8 @@ export default function moviesListMarkup(
       if (getFromLocalStorage('watched') !== []) {
         Loading.remove();
 
-        return displayFromIdArray('watched');
+        displayFromIdArray('watched', pageNumber);
+        markupOutput.dataset.outputType = 'watched';
       } else {
         displayEmptyListInfo();
       }
@@ -114,7 +148,8 @@ export default function moviesListMarkup(
       Loading.remove();
 
       if (getFromLocalStorage('queue') !== []) {
-        return displayFromIdArray('queue');
+        displayFromIdArray('queue', pageNumber);
+        markupOutput.dataset.outputType = 'queue';
       } else {
         displayEmptyListInfo();
       }

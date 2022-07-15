@@ -1,6 +1,6 @@
 import getGenresNames from '../getGenresNames/getGenresNames';
 import { fetchMovieByQuery } from '../fetchMoviesSearch/fetchMovieSearch';
-import createPagination from '../pagination/pagination';
+import { createPagination, removePagination } from '../pagination/pagination';
 import { initializeModal } from '../movieModal/movieModal';
 import { paginationSupport } from '../changePage/changePage';
 function notificationRender() {}
@@ -42,6 +42,9 @@ export function renderCollection(searchQuery, pageNum) {
 
     if (response.total_results === 0) {
       document.querySelector('.not-found').classList.remove('is-hidden');
+      filmList.innerHTML = '';
+      removePagination();
+      return;
     } else {
       document.querySelector('.not-found').classList.add('is-hidden');
     }
@@ -53,5 +56,4 @@ export function renderCollection(searchQuery, pageNum) {
     markupOutput.dataset.outputType = 'search';
     initializeModal();
   });
-
 }
