@@ -2,8 +2,6 @@
 import './main.scss';
 import './components/loadMoviesList/loadMoviesList.scss';
 
-import './components/authentication/authentication';
-
 // Nagłówek
 import './components/header/header';
 import './components/loadMoviesList/loadMoviesList';
