@@ -1,0 +1,77 @@
+<div class="sign--backdrop is-hidden" data-signIn>
+
+  <div class="logo--wrapper">
+    <a class="logo__link" href="./index.html">
+      <svg class="logo__icon">
+        <use href="./images/sprite.svg#film"></use>
+      </svg>
+      <h1 class="logo__title">Filmoteka</h1>
+    </a>
+  </div>
+  <div class="sign__window" data-sign-window>
+    <div class="sign__form--wrapper">
+      <div class="sign__form login">
+        <span class="sign__form-title">Login</span>
+
+        <form action="#">
+          <div class="sign__form-field">
+            <input class="sign__form-input" type="email" placeholder="Enter your email" required>
+          </div>
+
+          <div class="sign__form-field">
+            <input class="sign__form-input" type="password" class="password" placeholder="Enter your password" required>
+          </div>
+
+          <div class="sign__form-checkbox--wrapper">
+            <div class="sign__form-checkbox">
+              <input id="rememberMe" class="sign__form-checkbox--box" type="checkbox">
+              <label for="rememberMe" class="sign__form-text">Remember me</label>
+            </div>
+
+            <a href="#" class="sign__form-text--link">Forgot password?</a>
+          </div>
+          <button type="submit" class="sign__form-button">Login</button>
+        </form>
+
+        <div class="sign__form-footer">
+          <span class="sign__form-text">Not a member?
+            <a href="#" class="sign__form-text--link signup-link">Signup now</a>
+          </span>
+        </div>
+      </div>
+
+
+
+
+      <div class="sign__form signup">
+        <span class="sign__form-title">Registration</span>
+
+        <form action="#">
+          <div class="sign__form-field">
+            <input class="sign__form-input" type="email" placeholder="Enter your email" required>
+          </div>
+          <div class="sign__form-field">
+            <input class="sign__form-input" type="password" placeholder="Create a password" required>
+          </div>
+          <div class="sign__form-field">
+            <input class="sign__form-input" type="password" class="password" placeholder="Confirm a password" required>
+          </div>
+
+          <div class="sign__form-checkbox--wrapper">
+            <div class="sign__form-checkbox">
+              <input id="terms" class="sign__form-checkbox--box" type="checkbox">
+              <label for="terms" class="sign__form-text">I accept all terms & conditions</label>
+            </div>
+          </div>
+
+            <button type="submit" class="sign__form-button">Sign up</button>
+        </form>
+        <div class="sign__form-footer">
+          <span class="sign__form-text">Already have an account?
+            <a href="#" class="sign__form-text--link login-link">Login now</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

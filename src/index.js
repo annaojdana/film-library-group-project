@@ -12,3 +12,5 @@ moviesListMarkup();
 
 // Szukajka
 import './components/searchByKeyword/searchByKeyword';
+
+import './components/signInUp/signInUp'
