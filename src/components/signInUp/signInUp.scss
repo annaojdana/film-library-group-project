@@ -20,12 +20,11 @@
 
 .logo{
   &--wrapper{
-    width: 240px;
     margin-bottom: 20px;
   }
 
   &__link{
-    color: #c7c5c5;
+    color: #ffffff;
     font-size: 20px;
     text-decoration: none;
     display: flex;
@@ -34,13 +33,15 @@
   }
 
   &__icon{
-    width: 50px;
-    height: 50px;
+    margin-right: 15px;
+    width: 30px;
+    height: 30px;
   }
 }
 
 .sign {
   &--backdrop {
+<<<<<<< HEAD
     position: fixed;
     left: 0;
     top: 0;
@@ -56,6 +57,23 @@
     opacity: 1;
     pointer-events: auto;
     transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
+=======
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 20px;
+  background: linear-gradient(45deg, rgba(2, 0, 36, 1) 16%, rgba(255, 107, 8, 1) 100%, rgba(255, 255, 255, 1) 100%);
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
+>>>>>>> f07862e74d8415dab6d1b5b472b8c7006dc663b0
     opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 99;
   }
