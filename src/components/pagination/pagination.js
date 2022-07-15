@@ -51,6 +51,8 @@ export function createPagination(totalPages, page) {
     console.log('Paginacja: pobieranie ilości stron dla generacji szukajki');
     totalPages = getTotalPagesForMyLibrary();
   }
+  console.log('totalPages:', totalPages);
+  console.log('page:', page);
 
   let liTag = '';
   let active;
@@ -90,8 +92,10 @@ export function createPagination(totalPages, page) {
     }
 
     for (let plength = beforePage - 1; plength <= afterPage + 1; plength++) {
+      console.log('plength:', plength);
       if (plength > totalPages) {
         //if plength is greater than totalPage length then continue
+        console.log('continue');
         continue;
       }
 
@@ -127,6 +131,7 @@ export function createPagination(totalPages, page) {
     }
 
     if (page < totalPages) {
+      page = parseInt(page);
       //show the next button if the page value is less than totalPage(20)
       liTag += `<li class="pag-btn next" data-page="${page + 1}" id="page_${
         page + 1
