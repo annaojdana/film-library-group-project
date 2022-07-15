@@ -36,7 +36,7 @@ const htmlMarkup = data =>
           genresName = "no movie genre"
         }
 
-       return `
+        return `
       <div class="item" data-id="${id}" data-modal-open>
         <img class="item__image" src="${imgSrc}" alt="${imgAlt}" />
         <div class="item__info">
@@ -48,6 +48,7 @@ const htmlMarkup = data =>
         </div>
       </div>
       `
+      }
     )
     .join('');
 
