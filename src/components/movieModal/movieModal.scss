@@ -16,8 +16,7 @@
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
-  transition:
-    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
     opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 99;
 }
@@ -50,7 +49,7 @@
     }
   }
 
-  &--wrapper{
+  &--wrapper {
     padding: 48px 20px 41px;
   }
 
@@ -67,13 +66,13 @@
       margin-right: 15px;
     }
 
-    &--wrapper{
+    &--wrapper {
       display: flex;
       justify-content: center;
     }
 
     &:hover,
-    &:active{
+    &:active {
       background: $mainBgColor;
       border-color: $mainBgColor;
       color: $secondFontColor;
@@ -82,7 +81,7 @@
 }
 
 .movie {
-    &__image {
+  &__image {
     max-width: max-content;
     width: 100%;
     height: auto;
@@ -132,8 +131,8 @@
 
   &__label {
     display: block;
-  font-weight: $mainFontWieght;
-      @include size(12px);
+    font-weight: $mainFontWieght;
+    @include size(12px);
     line-height: 1.333;
     color: $modalLabelFontColor;
   }
@@ -165,14 +164,14 @@
     width: 618px;
     height: auto;
 
-    &--wrapper{
+    &--wrapper {
       padding: 42px 30px 40px 28px;
     }
 
     &__btns {
       width: 125px;
 
-      &--wrapper{
+      &--wrapper {
         justify-content: right;
       }
     }
@@ -199,14 +198,14 @@
   .modal {
     width: 882px;
 
-    &--wrapper{
+    &--wrapper {
       padding: 50px 30px 40px;
     }
 
     &__btns {
       width: 136px;
 
-      &--wrapper{
+      &--wrapper {
         justify-content: left;
       }
     }

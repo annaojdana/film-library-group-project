@@ -17,9 +17,16 @@
 
   &__cards {
     display: flex;
-    justify-content: center;
+    gap: 30px;
+    // justify-content: flex-end;
     flex-wrap: wrap;
     margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  &__empty-info {
+    width: 100%;
+    text-align: center;
   }
 }
 
@@ -54,7 +61,7 @@
   &__separator,
   &__year {
     display: inline;
-    @include size(12px);;
+    @include size(12px);
     line-height: 1.172;
     font-weight: $mainFontWieght;
     color: $mainFontColor;
@@ -81,15 +88,15 @@
   .movies {
     padding-top: 60px;
     padding-bottom: 60px;
+
+    &__cards {
+      margin-top: 60px;
+    }
   }
 
   .item {
     width: 294px;
-    margin-bottom: 30px;
-
-    &:not(:nth-child(2n)) {
-      margin-right: 20px;
-    }
+    // margin-bottom: 30px;
 
     &__image {
       width: 100%;
@@ -102,14 +109,17 @@
   .movies {
     padding-top: 60px;
     padding-bottom: 60px;
+    &__cards {
+      margin-top: 60px;
+    }
   }
 
   .item {
     width: 274px;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
 
     &:not(:nth-child(3n)) {
-      margin-right: 30px;
+      // margin-right: 30px;
     }
   }
 }
