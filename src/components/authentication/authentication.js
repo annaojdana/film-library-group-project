@@ -10,8 +10,6 @@ import {
 } from 'firebase/auth';
 import { hideLoginError, showFilmLibraryPage, showLoginError, showLoginForm, showLoginState } from '../authSupport/authSupport';
 
-
-
 // Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyBuVZAFPTm7sItk6996NRNHvCOEK_6lP0A",
