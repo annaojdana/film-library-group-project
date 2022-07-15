@@ -28,7 +28,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 
 // Connecting with Firebase Emulator Suite package (personal instance for testing - working locally)
-connectAuthEmulator(auth, "http://localhost:9099");
+// connectAuthEmulator(auth, "http://localhost:9099");
 
 // Logging into account
 const loginWithEmailAndPassword = async () => {

@@ -1,6 +1,8 @@
 // Style podstawowe + container
 import './main.scss';
 
+import './components/authentication/authentication';
+
 // Nagłówek
 import './components/header/header';
 import './components/loadMoviesList/loadMoviesList';
@@ -23,4 +25,3 @@ import createPagination from './components/pagination/pagination';
 import './components/changePage/changePage';
 
 import paginationSizeChange from './components/pagination/pagination-mediaQuery';
-
