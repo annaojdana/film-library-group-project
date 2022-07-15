@@ -17,17 +17,26 @@
 
   &__cards {
     display: flex;
-    justify-content: center;
+    gap: 30px;
+    // justify-content: flex-end;
     flex-wrap: wrap;
     margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  &__empty-info {
+    width: 100%;
+    text-align: center;
   }
 }
 
 .item {
   width: 280px;
-  min-height: 440px;
+  min-height: 470px;
   margin-bottom: 20px;
   cursor: pointer;
+  box-shadow: 4px 4px 5px rgb(0 0 0 / 40%);
+  border-bottom-right-radius: 15px;
 
   &__image {
     width: 100%;
@@ -42,6 +51,7 @@
   &__title {
     margin-top: 10px;
     margin-bottom: 3px;
+    margin-left: 5px;
     @include size(12px);
     line-height: 1.333;
     text-transform: uppercase;
@@ -51,10 +61,11 @@
   &__separator,
   &__year {
     display: inline;
-    @include size(12px);;
+    @include size(12px);
     line-height: 1.172;
     font-weight: $mainFontWieght;
     color: $mainFontColor;
+    margin-left: 3px;
   }
 
   &__rating {
@@ -77,15 +88,15 @@
   .movies {
     padding-top: 60px;
     padding-bottom: 60px;
+
+    &__cards {
+      margin-top: 60px;
+    }
   }
 
   .item {
     width: 294px;
-    margin-bottom: 30px;
-
-    &:not(:nth-child(2n)) {
-      margin-right: 20px;
-    }
+    // margin-bottom: 30px;
 
     &__image {
       width: 100%;
@@ -98,14 +109,17 @@
   .movies {
     padding-top: 60px;
     padding-bottom: 60px;
+    &__cards {
+      margin-top: 60px;
+    }
   }
 
   .item {
     width: 274px;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
 
     &:not(:nth-child(3n)) {
-      margin-right: 30px;
+      // margin-right: 30px;
     }
   }
 }

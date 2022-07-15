@@ -5,6 +5,13 @@ import setToLocalStorage from '../setToLocalStorage/setToLocalStorage';
 // Okno modalne
 const modalWrapper = document.querySelector('.modal--wrapper');
 
+// Bugfix - gdy brak klucza, stwórz go
+if (localStorage.getItem('queue') === null) {
+  localStorage.setItem('queue', '[]');
+}
+if (localStorage.getItem('watched') === null) {
+  localStorage.setItem('watched', '[]');
+}
 
 modalWrapper.addEventListener('click', localStorageSupport);
 
@@ -14,7 +21,6 @@ if (modalWrapper.querySelector('.modal__btns')) {
 
 function localStorageSupport(evt) {
   if (evt.target.classList.contains('modal__btns')) {
-
     const btn = evt.target;
     const { id, name } = btn.dataset;
     const idNumber = Number(id);
