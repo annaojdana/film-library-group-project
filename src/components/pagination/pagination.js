@@ -42,6 +42,7 @@ function getTotalPagesForMyLibrary() {
       totalPages += 1;
     }
   }
+  console.log('totalPages:', totalPages);
   return totalPages;
 }
 
@@ -127,6 +128,7 @@ export function createPagination(totalPages, page) {
     }
 
     if (page < totalPages) {
+      page = parseInt(page);
       //show the next button if the page value is less than totalPage(20)
       liTag += `<li class="pag-btn next" data-page="${page + 1}" id="page_${
         page + 1
