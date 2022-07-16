@@ -28,6 +28,4 @@ if (
       searchHandler();
     }
   });
-} else {
-  console.log('searchByKeyword not active!');
 }

@@ -19,13 +19,13 @@
         </button>
         <span class="sign__form-title">Login</span>
 
-        <form action="#">
+        <form class="login-form" action="#">
           <div class="sign__form-field">
-            <input class="sign__form-input" type="email" placeholder="Enter your email" required>
+            <input class="sign__form-input" type="email" name="email" autocomplete="email" placeholder="Enter your email" required>
           </div>
 
           <div class="sign__form-field">
-            <input class="sign__form-input" type="password" class="password" placeholder="Enter your password" required>
+            <input class="sign__form-input" type="password" name="password" autocomplete="currentPassword" placeholder="Enter your password" required>
           </div>
 
           <div class="sign__form-checkbox--wrapper">
@@ -36,7 +36,7 @@
 
             <a href="#" class="sign__form-text--link">Forgot password?</a>
           </div>
-          <button type="submit" class="sign__form-button">Login</button>
+          <button type="submit" class="sign__form-button login-btn">Login</button>
         </form>
 
         <div class="sign__form-footer">
@@ -57,15 +57,15 @@
     </button>
         <span class="sign__form-title">Registration</span>
 
-        <form action="#">
+        <form class="sign-up-form" action="#">
           <div class="sign__form-field">
-            <input class="sign__form-input" type="email" placeholder="Enter your email" required>
+            <input class="sign__form-input" type="email" autocomplete="newEmail" name="newEmail"placeholder="Enter your email" required>
           </div>
           <div class="sign__form-field">
-            <input class="sign__form-input" type="password" placeholder="Create a password" required>
+            <input class="sign__form-input" type="password" name="newPassword" autocomplete="newPassword" placeholder="Create a password" required>
           </div>
           <div class="sign__form-field">
-            <input class="sign__form-input" type="password" class="password" placeholder="Confirm a password" required>
+            <input class="sign__form-input" type="password" name="confirmNewPassword" autocomplete="confirmNewPassword" placeholder="Confirm a password" required>
           </div>
 
           <div class="sign__form-checkbox--wrapper">
@@ -75,7 +75,7 @@
             </div>
           </div>
 
-            <button type="submit" class="sign__form-button">Sign up</button>
+            <button type="submit" class="sign__form-button sign-up-btn">Sign up</button>
         </form>
         <div class="sign__form-footer">
           <span class="sign__form-text">Already have an account?

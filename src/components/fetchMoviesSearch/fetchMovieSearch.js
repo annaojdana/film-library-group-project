@@ -7,8 +7,6 @@ export async function fetchMovieByQuery(searchQuery, pageNum = 1) {
     );
 
     const results = await response.json();
-
-    console.log(results);
     return results;
   } catch (error) {
     console.log(error);
