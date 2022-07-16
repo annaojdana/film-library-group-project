@@ -25,7 +25,7 @@
 
   &__link{
     color: #ffffff;
-    font-size: 20px;
+    font-size: 18px;
     text-decoration: none;
     display: flex;
     justify-content: space-between;
@@ -34,8 +34,8 @@
 
   &__icon{
     margin-right: 15px;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -59,7 +59,17 @@
     opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 99;
   }
-
+  &__close{
+    position: absolute;
+    top:8px;
+    right: 8px;
+    background-color: transparent;
+    border: none;
+    &-btn{
+      width: 30px;
+      height: 30px;
+    }
+  }
   &__window  {
     position: relative;
     max-width: 430px;
@@ -70,7 +80,7 @@
 
   &__form {
     width: 50%;
-    padding: 30px;
+    padding: 20px;
     border-radius: 12px;
     background: #fff;
     transition: margin-left 0.36s ease;
@@ -84,7 +94,7 @@
 
     &-title {
       position: relative;
-      font-size: 27px;
+      font-size: 25px;
       font-weight: 600;
     }
 
@@ -133,13 +143,15 @@
     }
 
     &-text {
+      display: flex;
+      flex-direction: column;
       color: #333;
-      font-size: 14px;
+      font-size: 12px;
 
       &--link {
         color: #ff6b08;
         text-decoration: none;
-        
+
         &:hover,
         &:focus {
           text-decoration: underline;
@@ -182,4 +194,35 @@
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+}
+
+@media screen and (min-width: 480px) {
+  .logo {
+      &__link {
+        font-size: 22px;
+      }
+      &__icon {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .sign {
+      &__form {
+        padding: 30px;
+
+        &-title {
+          font-size: 27px;
+        }
+
+        &-text {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          &--link{
+           margin-left: 10px;
+          }
+      }
+    }
+}
 }

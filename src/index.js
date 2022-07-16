@@ -2,7 +2,7 @@
 import './main.scss';
 import './components/loadMoviesList/loadMoviesList.scss';
 
-import './components/authentication/authentication';
+// import './components/authentication/authentication';
 
 // Nagłówek
 import './components/header/header';
@@ -17,7 +17,7 @@ import './components/searchByKeyword/searchByKeyword';
 
 
 // Obsługa spinnera
-import './components/loader/loader'
+// import './components/loader/loader'
 
 // Paginacja
 import createPagination from './components/pagination/pagination';
