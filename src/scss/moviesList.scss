@@ -28,6 +28,9 @@
   min-height: 440px;
   margin-bottom: 20px;
   cursor: pointer;
+  &__info {
+    padding-left: 15px;
+  }
 
   &__image {
     width: 100%;
@@ -50,7 +53,7 @@
   &__genres,
   &__separator,
   &__year {
-    display: inline;   
+    display: inline;
     @include size(12px);
     line-height: 1.172;
     font-weight: $mainFontWieght;
