@@ -2,13 +2,15 @@
 import { initializeApp } from 'firebase/app';
 import { 
   getAuth,
-  connectAuthEmulator,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  updateProfile,
   signOut
 } from 'firebase/auth';
-import { hideLoginError, showFilmLibraryPage, showLoginError, showLoginForm, showLoginState } from '../authSupport/authSupport';
+import { hideSignIn, showSignIn, hideLoginForm, showLoginError, showLoginState } from '../authSupport/authSupport';
+import Notiflix from 'notiflix';
+import 'notiflix/dist/notiflix-3.2.5.min.css';
 
 // Firebase config
 const firebaseConfig = {
@@ -27,53 +29,81 @@ const firebaseApp = initializeApp(firebaseConfig);
 // Firebase authentication initiaization (creating instance of auth)
 const auth = getAuth(firebaseApp);
 
-// Connecting with Firebase Emulator Suite package (personal instance for testing - working locally)
-// connectAuthEmulator(auth, "http://localhost:9099");
+// Inputs for login form
+const loginForm = document.querySelector(".login-form");
+const [email, password, rememberMe] = loginForm.elements;
+const loginBtn = document.querySelector(".login-btn");
+
+// Inputs for sign up form
+const signUpForm = document.querySelector(".sign-up-form");
+const [newEmail, newPassword, confirmNewPassword, terms] = signUpForm.elements;
+const signUpBtn = document.querySelector(".sign-up-btn");
+
+const logoutBtn = document.querySelector(".logout-link");
 
 // Logging into account
-const loginWithEmailAndPassword = async () => {
-  const loginEmail = emailField.value;          // (emailField) Here we need use name of constant for email input obtained by querySelector
-  const loginPassword = passwordField.value;    // (passwordField) Here we need use name of constant for password input obtained by querySelector
+const loginWithEmailAndPassword = async (evt) => {
+  evt.preventDefault();
+  const loginEmail = email.value;
+  const loginPassword = password.value;
 
   try {
     const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-    console.log(userCredential.user);
   } catch (error) {
     console.log(error);
     showLoginError();
   }
 };
 
-btnLogin.addEventListener('click', loginWithEmailAndPassword); // (btnLogin) Here we need use name of constant for button "Sign In" obtained by querySelector
+loginBtn.addEventListener('click', loginWithEmailAndPassword);
 
-// Sign In and logging into account after sign in
-const createAccount = async () => {
-  const loginEmail = emailField.value;          // (emailField) Here we need use name of constant for email input obtained by querySelector
-  const loginPassword = passwordField.value;    // (passwordField) Here we need use name of constant for password input obtained by querySelector
+// Sign Up and logging into account after sign up
+const createAccount = async (evt) => {
+  evt.preventDefault();
+  const signUpEmail = newEmail.value;
+  const signUpPassword = newPassword.value;
+  const signUpPasswordConfirm = confirmNewPassword.value;
 
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, loginEmail, loginPassword);
-    console.log(userCredential.user);
-  } catch (error) {
-    console.log(error);
-    showLoginError();
+  if (!signUpEmail) {
+    Notiflix.Notify.warning("Complete the email field!");
+  } else if (!signUpPassword) {
+    Notiflix.Notify.warning("Complete the password field!");
+  } else if (signUpPassword.length < 6) {
+    Notiflix.Notify.warning("Password should be at least 6 characters");
+  } else if (!signUpPasswordConfirm) {
+    Notiflix.Notify.warning("Confirm your password!");
+  } else if (signUpPassword !== signUpPasswordConfirm) {
+    Notiflix.Notify.warning("Password and confirmation password do not match.");
+  } else if (terms.checked === false) {
+    Notiflix.Notify.warning("The terms have not been accepted.");
+  } else {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
+      const user = auth.currentUser;
+      const email = user.email;
+      const username = email.split("@").shift();
+      updateProfile(auth.currentUser, {displayName: username});
+    } catch (error) {
+      console.log(error);
+      showLoginError(error);
+    }
   }
 }
 
-btnSignUp.addEventListener('click', createAccount);
+signUpBtn.addEventListener('click', createAccount);
 
 // Registration of closure when login status changes
 const checkAuthState = async () => {
   onAuthStateChanged(auth, user => {
     if (user) {
       console.log(user);
-      showFilmLibraryPage();
+      hideLoginForm();
       showLoginState(user);
 
-      hideLoginError();
+      hideSignIn();
     } else {
-      showLoginForm();
-      labelForAuthState.innerHTML = "You are not logged in.";   // (labelForAuthState) - Here we need use name of constant obtained by querySelector for state message
+      showSignIn();
+      Notiflix.Notify.info("You are not logged in.");
     }
   });
 }
@@ -84,4 +114,4 @@ const logout = async () => {
   await signOut(auth);
 }
 
-btnLogout.addEventListener('click', logout);  // (btnLogout) Here we need use name of constant for button "Logout" obtained by querySelector
+logoutBtn.addEventListener('click', logout);

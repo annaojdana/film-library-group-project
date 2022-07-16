@@ -1,29 +1,38 @@
 import { AuthErrorCodes } from "firebase/auth";
+import Notiflix from 'notiflix';
+import 'notiflix/dist/notiflix-3.2.5.min.css';
+
+const signModal = document.querySelector("[data-signIn]");
+const signInLink = document.querySelector(".nav__signIn");
+const logoutLink = document.querySelector(".nav__logout");
 
 export function showLoginForm() {
-  loginForm.style.display = "block";        // (loginForm) - Here we need use name of constant for login form obtained by querySelector
-  filmLibraryPage.style.display = "none";   // (filmLibraryPage) - Here we need use name of constant for "Filmoteka" page form obtained by querySelector
+  signModal.classList.remove("is-hidden");
 }
 
-export function showFilmLibraryPage() {
-  loginForm.style.display = "none";         // (loginForm) - Here we need use name of constant for login form obtained by querySelector
-  filmLibraryPage.style.display = "block";  // (filmLibraryPage) - Here we need use name of constant for "Filmoteka" page form obtained by querySelector
+export function hideLoginForm() {
+  signModal.classList.add("is-hidden");
 }
 
-export function showLoginError(error) {
-  loginErrMessWrapper.style.display = "block";                    // (loginErrMessContainer) - Here we need use name of constant for output wrapper to show message obtained by querySelector
-  if (error.code == AuthErrorCodes.INVALID_PASSWORD) {
-    loginErrorMessage.innerHTML = "Wrong password! Try again.";   // (loginErrorMessage) - Here we need use name of constant for output to show message obtained by querySelector
+export function showLoginError() {
+  console.log(error);
+  if (error.message === AuthErrorCodes.INVALID_PASSWORD) {
+    Notiflix.Notify.failure("Wrong password! Try again.");
   } else {
-    loginErrorMessage.innerHTML = `Error: ${error.message}`;      // (loginErrorMessage) - Here we need use name of constant for output to show message obtained by querySelector
+    Notiflix.Notify.failure(`Error: ${error.message}`);
   }
 }
 
-export function hideLoginError() {
-  loginErrMessWrapper.style.display = "none";       // (loginErrMessContainer) - Here we need use name of constant for output wrapper to show message obtained by querySelector
-  loginErrorMessage.innerHTML = '';                 // (loginErrorMessage) - Here we need use name of constant for output to show message obtained by querySelector
+export function hideSignIn() {
+  signInLink.style.display = "none";
+  logoutLink.style.display = "list-item";
+}
+
+export function showSignIn() {
+  logoutLink.style.display = "none";
+  signInLink.style.display = "list-item";
 }
 
 export function showLoginState(user) {
-  labelForAuthState.innerHTML = `You are logged in as ${user.displayName}`;   // (labelForAuthState) - Here we need use name of constant obtained by querySelector for state message
+  Notiflix.Notify.success(`You are logged in as ${user.displayName}`);
 }
