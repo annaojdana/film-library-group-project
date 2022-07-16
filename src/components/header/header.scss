@@ -38,6 +38,7 @@
 
 .nav__list {
   display: flex;
+  justify-content: space-between;
 }
 
 .nav__item {
@@ -47,8 +48,8 @@
   @include size(12px);
   line-height: 1.167;
 
-  &:last-child {
-    padding-left: 40px;
+  &:not(:last-child){
+    margin-right: 30px;
   }
 }
 

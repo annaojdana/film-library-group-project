@@ -25,16 +25,24 @@
 
 .student {
   margin-bottom: 18px;
+
   &__img {
     border-radius: 50%;
     width: 40px;
     height: 40px;
     margin-right: 20px;
+
+    &--dawid {
+      object-fit: cover;
+      object-position: top left;
+    }
   }
+
   &__name {
     font-size: 18px;
     line-height: 40px;
   }
+
   &__linkedin {
     display: flex;
     outline: none;

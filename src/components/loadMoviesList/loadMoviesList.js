@@ -5,7 +5,6 @@ import '../teamModal/teamModal';
 import './loadMoviesList.scss';
 
 // Bazowe składniki
-// import '../loadMoviesList/loadMoviesList';
 import '../footer/footer';
 
 // Fetch i renderowanie kart

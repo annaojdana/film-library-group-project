@@ -53,6 +53,7 @@ export function createPagination(totalPages, page) {
   }
   console.log('totalPages:', totalPages);
   console.log('page:', page);
+  page = Number(page);
 
   let liTag = '';
   let active;
@@ -68,7 +69,7 @@ export function createPagination(totalPages, page) {
 
     if (page > 3 && window.innerWidth > 768) {
       //if page value is less than 2 then add 1 after the previous button
-      liTag += `<li class="first numb mobile" data=page="1" id="page_1">1</li>`;
+      liTag += `<li class="first numb mobile" data-page="1" id="page_1">1</li>`;
       if (page > 4) {
         if (totalPages > 5) {
           //if page value is greater than 3 then add this (...) after the first li or page
@@ -78,37 +79,38 @@ export function createPagination(totalPages, page) {
     }
     if (totalPages > 4) {
       // how many pages or li show before the current li
-      if (page == totalPages) {
+      if (page === totalPages) {
         beforePage = beforePage - 1;
-      } else if (page == totalPages - 1) {
+      } else if (page === totalPages - 1) {
         beforePage = beforePage;
       }
 
       // how many pages or li show after the current li
-      if (page == 1) {
+      if (page === 1) {
         afterPage = afterPage + 1;
-      } else if (page == 2) {
+      } else if (page === 2) {
         afterPage = afterPage;
       }
     }
     for (let plength = beforePage - 1; plength <= afterPage + 1; plength++) {
       console.log('plength:', plength);
+      console.log(afterPage + 1);
       if (plength > totalPages) {
-        //if plength is greater than totalPage length then continue
-        console.log('continue');
-        continue;
+        //if plength is greater than totalPage length then break
+        console.log('break');
+        break;
       }
 
       if (plength < 0) {
         plength = plength + 2;
       }
 
-      if (plength == 0) {
+      if (plength === 0) {
         //if plength is 0 than add +1 in plength value
         plength = plength + 1;
       }
 
-      if (page == plength) {
+      if (page === plength) {
         //if page is equal to plength than assign active string in the active variable
         active = 'active';
       } else {
