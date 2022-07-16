@@ -1,12 +1,14 @@
 // Firebase imports
 import { initializeApp } from 'firebase/app';
-import { 
+import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   updateProfile,
-  signOut
+  signOut,
+  setPersistence,
+  browserSessionPersistence
 } from 'firebase/auth';
 import { hideSignIn, showSignIn, hideLoginForm, showLoginError, showLoginState } from '../authSupport/authSupport';
 import Notiflix from 'notiflix';
@@ -28,7 +30,6 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 // Firebase authentication initiaization (creating instance of auth)
 const auth = getAuth(firebaseApp);
-
 // Inputs for login form
 const loginForm = document.querySelector(".login-form");
 const [email, password, rememberMe] = loginForm.elements;
@@ -46,12 +47,35 @@ const loginWithEmailAndPassword = async (evt) => {
   evt.preventDefault();
   const loginEmail = email.value;
   const loginPassword = password.value;
-
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-  } catch (error) {
-    console.log(error);
-    showLoginError();
+  if (!loginEmail) {
+    Notiflix.Notify.warning("Complete the email field!");
+  } else if (!loginPassword) {
+    Notiflix.Notify.warning("Complete the password field!");
+  } else if (loginPassword.length < 6) {
+    Notiflix.Notify.warning("Password should be at least 6 characters");
+  } else {
+    try {
+      if (rememberMe.checked === false) {
+       setPersistence(auth, browserSessionPersistence)
+      .then(() => {
+        // Existing and future Auth states are now persisted in the current
+        // session only. Closing the window would clear any existing state even
+        // if a user forgets to sign out.
+        // ...
+        // New sign-in will be persisted with session persistence.
+        return signInWithEmailAndPassword(auth, email, password);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+      }
+      const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+    } catch (error) {
+      console.log(error);
+      showLoginError();
+    }
   }
 };
 
