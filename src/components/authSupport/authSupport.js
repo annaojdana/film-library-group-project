@@ -18,6 +18,10 @@ export function showLoginError(error) {
   console.log(error);
   if (error.code === "auth/wrong-password") {
     Notiflix.Notify.failure("Wrong password! Try again.");
+  } else if (error.code === "auth/invalid-email") {
+    Notiflix.Notify.failure("Invalid email! Try again.");
+  } else if (error.code === "auth/user-not-found") {
+    Notiflix.Notify.failure("User not found! Try again or sign up");
   } else {
     Notiflix.Notify.failure(`Error: ${error.message}`);
   }
