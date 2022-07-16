@@ -80,7 +80,7 @@ function getArrayForPage(whatToOutput, page) {
   return pageCardsArray;
 }
 
-// Function fot displaying cards from localStorage's id array
+// Function for displaying cards from localStorage's id array
 function displayFromIdArray(whatToOutput, page = 1) {
   const displayedIdArray = getArrayForPage(whatToOutput, page);
   console.log(displayedIdArray);
@@ -116,7 +116,6 @@ function displayFromIdArray(whatToOutput, page = 1) {
             markupOutput.dataset.outputType = whatToOutput;
             markupOutput.innerHTML = htmlMarkup(fetchedDataArray);
             element.innerHTML = createPagination(totalPages, page);
-          } else {
           }
         })
         .catch(error => console.error(error));
