@@ -26,7 +26,6 @@ function switchActiveButton(event) {
       break;
 
     default:
-      console.log('invalid target');
       break;
   }
 }
@@ -34,21 +33,18 @@ function switchActiveButton(event) {
 function myLibraryDisplaySelectorHandler(event) {
   switch (event.target.dataset.displaySelector) {
     case 'watched':
-      console.log('Displaying watched...');
       switchActiveButton(event);
       moviesListMarkup('watched');
       initializeModal();
       break;
 
     case 'queue':
-      console.log('Displaying queue...');
       switchActiveButton(event);
       moviesListMarkup('queue');
       initializeModal();
       break;
 
     default:
-      console.log('invalid target');
       break;
   }
 }

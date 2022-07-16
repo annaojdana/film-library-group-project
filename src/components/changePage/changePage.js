@@ -12,15 +12,12 @@ const header = document.querySelector('header');
 
 function supportForChangePage(evt) {
   pageNum = evt.target.dataset.page;
-  console.log(pageNum);
   if (evt.target.dataset.page === 'dots') {
-    console.log('Selected dots, doing nothing...');
     return;
   }
   header.scrollIntoView({ behavior: 'smooth' });
 
   const switchValue = markupOutput.dataset.outputType;
-  console.log(switchValue);
 
   switch (switchValue) {
     case 'trending':
@@ -40,7 +37,6 @@ function supportForChangePage(evt) {
       break;
 
     default:
-      console.log('Invalid switch value!');
       break;
   }
   initializeModal();

@@ -56,7 +56,6 @@ const htmlMarkup = data =>
     .join('');
 
 function getArrayForPage(whatToOutput, page) {
-  console.log(page);
   // Zmienna dla tablicy renderowanych wyników na stronę
   let pageCardsArray = [];
   // Zmienna dla indeksu pierwszej ładowanej karty
@@ -79,19 +78,17 @@ function getArrayForPage(whatToOutput, page) {
 
   // Selekcja identyfikatorów filmów z tablicy
   pageCardsArray = fetchedArray.slice(loadFromIndex, loadToIndex);
-  console.log(fetchedArray);
   return pageCardsArray;
 }
 
 // Function for displaying cards from localStorage's id array
 function displayFromIdArray(whatToOutput, page = 1) {
   const displayedIdArray = getArrayForPage(whatToOutput, page);
-  console.log(displayedIdArray);
 
   if (displayedIdArray === null || displayedIdArray.length === 0) {
     displayEmptyListInfo();
     removePagination();
-    return console.log('Queue is empty!');
+    return;
   } else {
     const fetchedDataArray = [];
     const counter = displayedIdArray.length;
@@ -150,7 +147,6 @@ export default function moviesListMarkup(
 
           element.innerHTML = createPagination(totalPages, page);
           markupOutput.dataset.outputType = 'trending';
-          console.log(markupOutput.dataset);
         })
         .catch(error => console.error(error));
       break;
@@ -182,7 +178,6 @@ export default function moviesListMarkup(
         .then(response => {
           Loading.remove();
 
-          console.log(`output markupu dla 'trending'`);
           return (markupOutput.innerHTML = htmlMarkup(response.results));
         })
         .catch(error => console.error(error));

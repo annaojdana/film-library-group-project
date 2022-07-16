@@ -48,11 +48,9 @@ function getTotalPagesForMyLibrary() {
 export function createPagination(totalPages, page) {
   // Wywołanie funkcji dla My Library
   if (window.location.pathname === '/myLibrary.html') {
-    console.log('Paginacja: pobieranie ilości stron dla generacji szukajki');
     totalPages = getTotalPagesForMyLibrary();
   }
-  console.log('totalPages:', totalPages);
-  console.log('page:', page);
+
   page = Number(page);
 
   let liTag = '';
@@ -93,11 +91,8 @@ export function createPagination(totalPages, page) {
       }
     }
     for (let plength = beforePage - 1; plength <= afterPage + 1; plength++) {
-      console.log('plength:', plength);
-      console.log(afterPage + 1);
       if (plength > totalPages) {
         //if plength is greater than totalPage length then break
-        console.log('break');
         break;
       }
 
