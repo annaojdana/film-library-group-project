@@ -14,9 +14,9 @@ export function hideLoginForm() {
   signModal.classList.add("is-hidden");
 }
 
-export function showLoginError() {
+export function showLoginError(error) {
   console.log(error);
-  if (error.message === AuthErrorCodes.INVALID_PASSWORD) {
+  if (error.code === "auth/wrong-password") {
     Notiflix.Notify.failure("Wrong password! Try again.");
   } else {
     Notiflix.Notify.failure(`Error: ${error.message}`);

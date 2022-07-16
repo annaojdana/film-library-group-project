@@ -73,8 +73,7 @@ const loginWithEmailAndPassword = async (evt) => {
       }
       const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
     } catch (error) {
-      console.log(error);
-      showLoginError();
+      showLoginError(error);
     }
   }
 };
