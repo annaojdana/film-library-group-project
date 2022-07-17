@@ -1,3 +1,8 @@
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import spinner from '../loader/loader';
+import loader from '../loader/loader';
+
+
 import { renderCollection } from '../renderSearchMovie/renderSearchMovie';
 export let searchQuery;
 
@@ -20,6 +25,8 @@ if (
       document.querySelector('.not-found').classList.add('is-hidden');
     }
     renderCollection(searchQuery);
+    spinner();
+
   }
 
   search_btn.addEventListener('click', searchHandler);

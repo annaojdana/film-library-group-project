@@ -1,9 +1,11 @@
 import getGenresNames from '../getGenresNames/getGenresNames';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { fetchMovieByQuery } from '../fetchMoviesSearch/fetchMovieSearch';
 import { createPagination, removePagination } from '../pagination/pagination';
 import { initializeModal } from '../movieModal/movieModal';
 import { paginationSupport } from '../changePage/changePage';
-function notificationRender() {}
+function notificationRender() { };
+
 
 const markupOutput = document.querySelector('[data-markup-output]');
 
@@ -57,6 +59,7 @@ const htmlMarkup = data =>
 export function renderCollection(searchQuery, pageNum) {
   const filmList = document.querySelector('[data-markup-output]');
   fetchMovieByQuery(searchQuery, pageNum).then(response => {
+    Loading.remove();
     if (response.total_results === 0) {
       document.querySelector('.not-found').classList.remove('is-hidden');
       filmList.innerHTML = '';
