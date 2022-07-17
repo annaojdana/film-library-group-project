@@ -57,5 +57,5 @@ export function initializeModal() {
       }
       clearInterval(timer);
     }
-  }, 100);
+  }, 500);
 }
