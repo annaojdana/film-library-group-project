@@ -116,8 +116,8 @@ const createAccount = async (evt) => {
 signUpBtn.addEventListener('click', createAccount);
 
 // Registration of closure when login status changes
-const checkAuthState = async () => {
-  onAuthStateChanged(auth, user => {
+export const checkAuthState = async () => {
+  await onAuthStateChanged(auth, user => {
     if (user) {
       console.log(user);
       hideLoginForm();

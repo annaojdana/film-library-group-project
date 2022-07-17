@@ -37,6 +37,11 @@ export function showSignIn() {
   signInLink.style.display = "list-item";
 }
 
+export function startHiding() {
+  signInLink.style.display = "none";
+  logoutLink.style.display = "none";
+};
+
 export function showLoginState(user) {
   Notiflix.Notify.success(`You are logged in as ${user.displayName}`);
 }
