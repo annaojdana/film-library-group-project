@@ -136,7 +136,7 @@ export default function moviesListMarkup(
       fetchTrendyMovies(pageNumber)
         .then(response => {
           Loading.remove();
-          page = response.page;
+          const page = response.page;
           totalPages = response.total_pages;
 
           markupOutput.innerHTML = '';
