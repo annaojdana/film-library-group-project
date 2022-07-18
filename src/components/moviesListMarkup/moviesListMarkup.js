@@ -137,7 +137,7 @@ export default function moviesListMarkup(
         .then(response => {
           Loading.remove();
           let page = response.page;
-          totalPages = response.total_pages;
+          let totalPages = response.total_pages;
 
           markupOutput.innerHTML = '';
 
