@@ -9,7 +9,7 @@ export let searchQuery;
 // przy ładowaniu strony jest on wstępnie pusty
 
 if (
-  window.location.pathname.includes('/') ||
+  window.location.pathname === '/' ||
   window.location.pathname.includes('/index.html') ||
   window.location.pathname.includes('/film-library-group-project/') ||
   window.location.pathname.includes('/film-library-group-project/index.html')
