@@ -11,7 +11,7 @@ element.addEventListener('click', supportForChangePage);
 const header = document.querySelector('header');
 
 function supportForChangePage(evt) {
-  pageNum = evt.target.dataset.page;
+  let pageNum = evt.target.dataset.page;
   if (evt.target.dataset.page === 'dots') {
     return;
   }

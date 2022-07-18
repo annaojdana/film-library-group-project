@@ -47,7 +47,7 @@ function getTotalPagesForMyLibrary() {
 
 export function createPagination(totalPages, page) {
   // Wywołanie funkcji dla My Library
-  if (window.location.pathname === '/myLibrary.html') {
+  if (totalPages === 'mylibrary') {
     totalPages = getTotalPagesForMyLibrary();
   }
 
