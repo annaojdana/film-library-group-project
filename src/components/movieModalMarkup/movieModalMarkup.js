@@ -51,7 +51,7 @@ const htmlMarkup = ({
   // Render of a modal for the selected movie
   return `
   <div class="movie__card--wrapper">
-    <img class="movie__image" src="${imgSrc}" alt="Poster of: ${imgAlt}">
+    <img class="movie__image" src="${imgSrc}" alt="Poster of: ${imgAlt}" loading="lazy">
     <div class="movie__info">
       <h2 class="movie__title">${title}</h2>
       <ul class="movie__details">
