@@ -27,8 +27,8 @@ const htmlMarkup = data =>
           title = title.substring(0, 34) + "...";
         };
         if (poster_path === null) {
-          imgSrc = `https://iv.pl/images/78021b6c9c10ba13606ac3151fc220b3.png`;
-          imgAlt = `There is no picture for this video. Placeholder no image`
+          imgSrc = `./images/no_image.png`;
+          imgAlt = `There is no picture for this video. Placeholder no image`;
         };
 
         if (release_date === "") {
