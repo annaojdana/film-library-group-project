@@ -42,7 +42,7 @@ const htmlMarkup = data =>
 
         return `
       <div class="item" data-id="${id}" data-modal-open>
-        <img class="item__image" src="${imgSrc}" alt="${imgAlt}" />
+        <img class="item__image" src="${imgSrc}" alt="${imgAlt}" loading="lazy" />
         <div class="item__info">
           <h3 class="item__title">${title}</h3>
           <p class="item__genres" data-genres>${genresName}</p>
@@ -68,7 +68,7 @@ export function renderCollection(searchQuery, pageNum) {
     } else {
       document.querySelector('.not-found').classList.add('is-hidden');
     }
-    
+
     filmList.innerHTML = htmlMarkup(response.results);
     page = response.page;
     totalPages = response.total_pages;
