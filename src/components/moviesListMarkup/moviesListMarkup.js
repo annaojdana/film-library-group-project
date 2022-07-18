@@ -68,7 +68,7 @@ function getArrayForPage(whatToOutput, page) {
   const totalCards = fetchedArray.length;
 
   if (totalCards < CARDS_PER_PAGE || totalCards === CARDS_PER_PAGE) {
-    totalPages = 1;
+    let totalPages = 1;
   }
   if (totalCards > CARDS_PER_PAGE) {
     totalPages = Math.floor(totalCards / CARDS_PER_PAGE);
