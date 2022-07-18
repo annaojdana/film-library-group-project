@@ -66,9 +66,9 @@ function getArrayForPage(whatToOutput, page) {
   const fetchedArray = getFromLocalStorage(whatToOutput);
   // Operator obliczeń ilości kart na stronę
   const totalCards = fetchedArray.length;
-
+  let totalPages;
   if (totalCards < CARDS_PER_PAGE || totalCards === CARDS_PER_PAGE) {
-    let totalPages = 1;
+    totalPages = 1;
   }
   if (totalCards > CARDS_PER_PAGE) {
     totalPages = Math.floor(totalCards / CARDS_PER_PAGE);
