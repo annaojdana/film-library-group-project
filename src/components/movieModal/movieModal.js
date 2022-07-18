@@ -6,7 +6,7 @@ import supportForMyLibrary from '../supportForMyLibrary/supportForMyLibrary';
 
 const closeModalBtn = document.querySelector('[data-modal-close]');
 const modal = document.querySelector('[data-modal]');
-const page = document.querySelector('body');
+const backdrop = document.querySelector('body');
 const htmlOutput = document.querySelector('.modal--wrapper');
 
 closeModalBtn.addEventListener('click', closeModal);
@@ -14,7 +14,7 @@ modal.addEventListener('click', closeModalByClick);
 
 export function closeModal() {
   modal.classList.add('is-hidden');
-  page.removeEventListener('keydown', closeModalEscKey);
+  backdrop.removeEventListener('keydown', closeModalEscKey);
 }
 
 // Funkcja jest lokalna, ponieważ nie jest potrzebna poza tym plikiem
@@ -22,7 +22,7 @@ export function openModal(evt) {
   htmlOutput.innerHTML = ``;
 
   modal.classList.remove('is-hidden');
-  page.addEventListener('keydown', closeModalEscKey); //musi być body, jeżeli damy tylko kontenr modala to aby zamknąć modal Esc trzeba najpierw nacisnąć Tab
+  backdrop.addEventListener('keydown', closeModalEscKey); //musi być body, jeżeli damy tylko kontenr modala to aby zamknąć modal Esc trzeba najpierw nacisnąć Tab
   if (evt.currentTarget.classList.contains('item')) {
     const movieId = evt.currentTarget.dataset.id;
     movieModalMarkup(movieId);
