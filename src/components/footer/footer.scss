@@ -1,14 +1,16 @@
+@import '../../scss/mixin';
+@import '../../scss/variables';
 // Mobile first
 .footer {
   padding-top: 28.5px;
   padding-bottom: 29.5px;
-  background-color: #f7f7f7;
+  background-color: $footerBgColor;
 
   &__copyright {
-    font-size: 14px;
+    @include size(14px);
     line-height: 1.143;
     text-align: center;
-    color: #545454;
+    color: $footerFontColor;
 
     &:not(:last-child) {
       margin-bottom: 10px;
@@ -37,11 +39,12 @@
     }
     &__copyright {
       display: inline;
-      font-size: 16px;
+      @include size(16px);
       line-height: 1.188;
 
       &:not(:last-child) {
         margin-bottom: 0;
+        margin-right: 4px;
       }
     }
   }

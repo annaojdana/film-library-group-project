@@ -1,3 +1,6 @@
+@import '../../scss/mixin';
+@import '../../scss/variables';
+
 .main-backdrop {
   position: fixed;
   left: 0;
@@ -13,8 +16,7 @@
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
-  transition: 
-    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+  transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
     opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 99;
 }
@@ -27,11 +29,9 @@
 
 .modal {
   width: 100%;
-  height: 100%;
   overflow: auto;
-  background-color: white;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: $modalBgColor;
+  box-shadow: $modalShadow;
 
   &__close {
     padding: 0;
@@ -40,7 +40,7 @@
     right: 8px;
     border-radius: 50%;
     border: none;
-    background-color: white;
+    background-color: $modalBgColor;
     float: right;
 
     &-btn {
@@ -49,7 +49,7 @@
     }
   }
 
-  &--wrapper{
+  &--wrapper {
     padding: 48px 20px 41px;
   }
 
@@ -58,24 +58,24 @@
     height: 44px;
     border: 1px solid #000;
     border-radius: 5px;
-    color: #000;
-    background-color: #fff;
+    color: $fontColor;
+    background-color: $modalBgColor;
     text-transform: uppercase;
 
     &:not(:last-child) {
       margin-right: 15px;
     }
 
-    &--wrapper{
+    &--wrapper {
       display: flex;
       justify-content: center;
     }
 
     &:hover,
-    &:active{
-      background: #ff6b01;
-      border-color: #ff6b01;
-      color: #fff;
+    &:active {
+      background: $mainBgColor;
+      border-color: $mainBgColor;
+      color: $secondFontColor;
     }
   }
 }
@@ -91,8 +91,8 @@
 
   &__title {
     margin-bottom: 20px;
-    font-weight: 500;
-    font-size: 20px;
+    font-weight: $mainFontWieght;
+    @include size(20px);
     line-height: 1.15;
     text-transform: uppercase;
   }
@@ -103,16 +103,16 @@
 
   &__label {
     margin-bottom: 10px;
-    font-weight: 500;
-    font-size: 12px;
+    font-weight: $mainFontWieght;
+    @include size(12px);
     line-height: 1.333;
     text-transform: uppercase;
   }
 
   &__about {
     margin-bottom: 20px;
-    font-weight: 500;
-    font-size: 12px;
+    font-weight: $mainFontWieght;
+    @include size(12px);
     line-height: 1.667;
     text-align: justify;
   }
@@ -131,22 +131,22 @@
 
   &__label {
     display: block;
-    font-weight: 500;
-    font-size: 12px;
+    font-weight: $mainFontWieght;
+    @include size(12px);
     line-height: 1.333;
-    color: #8C8C8C;
+    color: $modalLabelFontColor;
   }
 
   &__value {
-    font-weight: 500;
-    font-size: 12px;
+    font-weight: $mainFontWieght;
+    @include size(12px);
     line-height: 1.167;
   }
 
   &__rating {
     padding: 1px 10px;
-    color: #fff;
-    background-color: #FF6B01;
+    color: $secondFontColor;
+    background-color: $mainBgColor;
     border-radius: 5px;
   }
 
@@ -159,24 +159,24 @@
   .main-backdrop {
     padding: 0;
   }
-  
+
   .modal {
     width: 618px;
     height: auto;
-  
-    &--wrapper{
+
+    &--wrapper {
       padding: 42px 30px 40px 28px;
     }
-  
+
     &__btns {
       width: 125px;
-  
-      &--wrapper{
+
+      &--wrapper {
         justify-content: right;
       }
     }
   }
-  
+
   .movie {
     &__card {
       &--wrapper {
@@ -197,20 +197,20 @@
 @media screen and (min-width: 1024px) {
   .modal {
     width: 882px;
-  
-    &--wrapper{
+
+    &--wrapper {
       padding: 50px 30px 40px;
     }
-  
+
     &__btns {
       width: 136px;
 
-      &--wrapper{
+      &--wrapper {
         justify-content: left;
       }
     }
   }
-  
+
   .movie {
     &__image {
       max-width: 396px;

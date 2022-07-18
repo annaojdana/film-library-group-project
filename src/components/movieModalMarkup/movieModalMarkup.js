@@ -1,11 +1,13 @@
 // Imports
 // import getGenresNames from '../getGenresNames/getGenresNames';
 import fetchMoviesById from '../fetchMovieById/fetchMovieById';
-import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage';
+import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 
 // Internal function for creating HTML markup
 const htmlMarkup = ({
-  backdrop_path,
+  poster_path,
   title,
   vote_average,
   vote_count,
@@ -22,7 +24,7 @@ const htmlMarkup = ({
     } else if (getFromLocalStorage(name).length === 0) {
       return (name = `Add to ${name}`);
     } else if (getFromLocalStorage(name).includes(id)) {
-      return (name = `Remove form ${name}`);
+      return (name = `Remove from ${name}`);
     } else {
       return (name = `Add to ${name}`);
     }
@@ -31,10 +33,25 @@ const htmlMarkup = ({
   const watchedlabel = btnLabel[0];
   const queuelabel = btnLabel[1];
 
+
+  let imgSrc = `https://image.tmdb.org/t/p/w300${poster_path}`;
+  let imgAlt = `Poster of: ${title}`;
+  let genresNames = `${genres
+    .map(g => g.name)
+    .join(', ')}`;
+
+  if (poster_path === null) {
+    imgSrc = `https://iv.pl/images/78021b6c9c10ba13606ac3151fc220b3.png`;
+    imgAlt = `There is no picture for this video. Placeholder no image.`
+  };
+  if (genres.length === 0) {
+    genresNames = "no movie genre";
+        }
+
   // Render of a modal for the selected movie
   return `
   <div class="movie__card--wrapper">
-    <img class="movie__image" src="https://image.tmdb.org/t/p/w300${backdrop_path}" alt="Poster of: ${title}">
+    <img class="movie__image" src="${imgSrc}" alt="Poster of: ${imgAlt}" loading="lazy">
     <div class="movie__info">
       <h2 class="movie__title">${title}</h2>
       <ul class="movie__details">
@@ -47,9 +64,7 @@ const htmlMarkup = ({
         ).toFixed(0)}</span></li>
         <li class="details__item"><span class=" details__label">Original Title</span><span class="details__value details__title">${title}</span>
         </li>
-        <li class="details__item"><span class=" details__label">Genre</span><span class="details__value">${genres
-          .map(g => g.name)
-          .join(', ')}</span></li>
+        <li class="details__item"><span class=" details__label">Genre</span><span class="details__value">${genresNames}</span></li>
       </ul>
       <h3 class="movie__label">About</h3>
       <p class="movie__about">${overview}</p>
@@ -63,17 +78,19 @@ const htmlMarkup = ({
   `;
 };
 
+
 export default function movieModalMarkup(id) {
   // Variable for selecting output tag
   const htmlOutput = document.querySelector('.modal--wrapper');
 
   fetchMoviesById(id)
     .then(response => {
+      console.log(response);
+ Loading.remove();
       console.log(`output markupu dla 'modal'`);
       return htmlOutput.insertAdjacentHTML('beforeend', htmlMarkup(response));
     })
     .catch(error => console.error(error));
-
 }
 
 // Użycie:

@@ -3,36 +3,92 @@ import fetchTrendyMovies from '../fetchTrendyMovies/fetchTrendyMovies';
 import fetchMovieById from '../fetchMovieById/fetchMovieById';
 import getGenresNames from '../getGenresNames/getGenresNames';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
-import createPagination from '../pagination/pagination';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { createPagination, removePagination } from '../pagination/pagination';
+import { CARDS_PER_PAGE } from '../pagination/pagination';
+
 // Selecting output tag
 const markupOutput = document.querySelector('[data-markup-output]');
+// Pagination selector placement
+const element = document.querySelector('.pagination ul');
 
 // Internal function for creating HTML markup
 const htmlMarkup = data =>
   data
     .map(
-      ({ poster_path, title, genre_ids, release_date, vote_average, id }) => `
+      ({ poster_path, title, genre_ids, release_date, vote_average, id }) => {
+
+        let imgSrc = `https://image.tmdb.org/t/p/w300${poster_path}`;
+        let movieYear = new Date(release_date).getFullYear();
+        let imgAlt = `Poster of: ${title}`;
+        let genresName = getGenresNames(genre_ids);
+
+        if (title.length > 35) {
+          title = title.substring(0, 34) + "...";
+        };
+        if (poster_path === null) {
+          imgSrc = `https://iv.pl/images/78021b6c9c10ba13606ac3151fc220b3.png`;
+          imgAlt = `There is no picture for this video. Placeholder no image`
+        };
+
+        if (release_date === "") {
+          movieYear = "unknown";
+        };
+
+        if (genre_ids.length === 0) {
+          genresName = "no movie genre"
+        }
+
+        return `
       <div class="item" data-id="${id}" data-modal-open>
-        <img class="item__image" src="https://image.tmdb.org/t/p/w300${poster_path}" alt=" Poster of: ${title}" />
+        <img class="item__image" src="${imgSrc}" alt="${imgAlt}" loading="lazy" />
         <div class="item__info">
           <h3 class="item__title">${title}</h3>
-          <p class="item__genres" data-genres>${getGenresNames(genre_ids)}</p>
+          <p class="item__genres" data-genres>${genresName}</p>
           <span class)="item__separator">|</span>
-          <p class="item__year">${new Date(release_date).getFullYear()}</p>
+          <p class="item__year">${movieYear}</p>
           <p class="item__rating">${Number(vote_average).toFixed(1)}</p>
         </div>
       </div>
       `
+      }
     )
     .join('');
 
-// Function fot displaying cards from localStorage's id array
-function displayFromIdArray(source) {
-  const displayedIdArray = getFromLocalStorage(source);
+function getArrayForPage(whatToOutput, page) {
+  // Zmienna dla tablicy renderowanych wyników na stronę
+  let pageCardsArray = [];
+  // Zmienna dla indeksu pierwszej ładowanej karty
+  const loadFromIndex = page * CARDS_PER_PAGE - CARDS_PER_PAGE;
+  // Zmienna dla indeksu ostatniej ładowanej karty
+  const loadToIndex = page * CARDS_PER_PAGE;
+  // Załadowanie tablicy z ID filmów
+  const fetchedArray = getFromLocalStorage(whatToOutput);
+  // Operator obliczeń ilości kart na stronę
+  const totalCards = fetchedArray.length;
+
+  if (totalCards < CARDS_PER_PAGE || totalCards === CARDS_PER_PAGE) {
+    totalPages = 1;
+  }
+  if (totalCards > CARDS_PER_PAGE) {
+    totalPages = Math.floor(totalCards / CARDS_PER_PAGE);
+    if (totalCards % CARDS_PER_PAGE !== 0) {
+    }
+  }
+
+  // Selekcja identyfikatorów filmów z tablicy
+  pageCardsArray = fetchedArray.slice(loadFromIndex, loadToIndex);
+  return pageCardsArray;
+}
+
+// Function for displaying cards from localStorage's id array
+function displayFromIdArray(whatToOutput, page = 1) {
+  const displayedIdArray = getArrayForPage(whatToOutput, page);
 
   if (displayedIdArray === null || displayedIdArray.length === 0) {
     displayEmptyListInfo();
-    return console.log('Queue is empty!');
+    removePagination();
+    return;
   } else {
     const fetchedDataArray = [];
     const counter = displayedIdArray.length;
@@ -41,6 +97,7 @@ function displayFromIdArray(source) {
     for (const id of displayedIdArray) {
       fetchMovieById(id)
         .then(response => {
+          Loading.remove();
           fetchedDataArray.push(response);
 
           if (fetchedDataArray.length === counter) {
@@ -57,9 +114,9 @@ function displayFromIdArray(source) {
                 }
               }
             }
-
-            return (markupOutput.innerHTML = htmlMarkup(fetchedDataArray));
-          } else {
+            markupOutput.dataset.outputType = whatToOutput;
+            markupOutput.innerHTML = htmlMarkup(fetchedDataArray);
+            element.innerHTML = createPagination(totalPages, page);
           }
         })
         .catch(error => console.error(error));
@@ -73,11 +130,12 @@ export default function moviesListMarkup(
   pageNumber = 1
 ) {
   // Variable for selecting output tag
-  const markupOutput = document.querySelector('[data-markup-output]');
+  // const markupOutput = document.querySelector('[data-markup-output]');
   switch (whatToOutput) {
     case 'trending':
       fetchTrendyMovies(pageNumber)
         .then(response => {
+          Loading.remove();
           page = response.page;
           totalPages = response.total_pages;
 
@@ -88,23 +146,29 @@ export default function moviesListMarkup(
             htmlMarkup(response.results)
           );
 
-          const element = document.querySelector('.pagination ul');
           element.innerHTML = createPagination(totalPages, page);
+          markupOutput.dataset.outputType = 'trending';
         })
         .catch(error => console.error(error));
       break;
 
     case 'watched':
       if (getFromLocalStorage('watched') !== []) {
-        return displayFromIdArray('watched');
+        Loading.remove();
+
+        displayFromIdArray('watched', pageNumber);
+        markupOutput.dataset.outputType = 'watched';
       } else {
         displayEmptyListInfo();
       }
       break;
 
     case 'queue':
+      Loading.remove();
+
       if (getFromLocalStorage('queue') !== []) {
-        return displayFromIdArray('queue');
+        displayFromIdArray('queue', pageNumber);
+        markupOutput.dataset.outputType = 'queue';
       } else {
         displayEmptyListInfo();
       }
@@ -113,7 +177,8 @@ export default function moviesListMarkup(
     default:
       fetchTrendyMovies()
         .then(response => {
-          console.log(`output markupu dla 'trending'`);
+          Loading.remove();
+
           return (markupOutput.innerHTML = htmlMarkup(response.results));
         })
         .catch(error => console.error(error));

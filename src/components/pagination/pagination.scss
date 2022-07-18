@@ -1,20 +1,24 @@
+@import '../../scss/mixin';
+@import '../../scss/variables';
+
 .pagination {
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
 
   & ul {
     display: flex;
     flex-wrap: wrap;
-    background: #e5e5e5;
+    background: $paginationBgColor;
     padding: 8px;
 
     & li {
-      color: #000000;
+      color: $fontColor;
       list-style: none;
       line-height: 1.33;
       text-align: center;
-      font-size: 12px;
-      font-weight: 500;
+      @include size(12px);
+      font-weight: $mainFontWieght;
       cursor: pointer;
       user-select: none;
       transition: all 0.3s ease;
@@ -36,14 +40,14 @@
   }
 
   .last {
-    margin: 0px -15px 0 1px;
+    margin: 0px 4px 0 1px;
   }
 
   .dots {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 22px;
+    @include size(22px);
     cursor: default;
   }
 
@@ -52,7 +56,7 @@
     background-position: center;
   }
 
-  .btn {
+  .pag-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,7 +64,7 @@
     width: 40px;
     padding: 0 20px;
     border-radius: 5px;
-    background-color: #f7f7f7;
+    background-color: $paginationBntBgColor;
     border: none;
 
     &.prev {
@@ -68,6 +72,7 @@
       @extend %icons-setting;
 
       &:hover {
+        background-color: $mainBgColor;
         background-image: url(./images/arrow-left-hover.svg);
       }
     }
@@ -77,6 +82,7 @@
       @extend %icons-setting;
 
       &:hover {
+        background-color: $mainBgColor;
         background-image: url(./images/arrow-right-hover.svg);
       }
     }
@@ -86,10 +92,13 @@
   & .numb:hover,
   & .first:hover,
   & .last:hover {
-  color: #fff;
-  background: #ff6b08;
+
+  color: $secondFontColor;
+  background: $mainBgColor;
+
   }
 }
 
-
-
+.display-none {
+  display: none !important;
+}

@@ -1,3 +1,6 @@
+@import '../../scss/mixin';
+@import '../../scss/variables';
+
 @keyframes flash {
   0% {
     opacity: 0.2;
@@ -14,22 +17,34 @@
 
   &__cards {
     display: flex;
+    gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
     margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  &__empty-info {
+    width: 100%;
+    text-align: center;
   }
 }
 
 .item {
   width: 280px;
-  min-height: 440px;
-  margin-bottom: 20px;
+  min-height: 470px;
   cursor: pointer;
+  // -webkit-box-shadow: 0px 0px 10px 15px rgba(0,0,0,0.7);
+  // -moz-box-shadow: 0px 0px 10px 15px rgba(0,0,0,0.7);
+  box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.6);
+  border-radius: 15px;
 
   &__image {
     width: 100%;
     height: 402px;
-    border-radius: 5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
     &:hover {
       opacity: 1;
       animation: flash 1.8s;
@@ -39,7 +54,8 @@
   &__title {
     margin-top: 10px;
     margin-bottom: 3px;
-    font-size: 12px;
+    margin-left: 5px;
+    @include size(12px);
     line-height: 1.333;
     text-transform: uppercase;
   }
@@ -48,19 +64,20 @@
   &__separator,
   &__year {
     display: inline;
-    font-size: 12px;
+    @include size(12px);
     line-height: 1.172;
-    font-weight: 500;
-    color: #ff6b08;
+    font-weight: $mainFontWieght;
+    color: $mainFontColor;
+    margin-left: 3px;
   }
 
   &__rating {
     display: inline;
-    font-weight: 500;
-    font-size: 12px;
+    font-weight: $mainFontWieght;
+    @include size(12px);
     line-height: 1.16;
-    color: #ffffff;
-    background-color: #ff6b08;
+    color: $secondFontColor;
+    background-color: $mainBgColor;
     text-align: center;
     width: 36px;
     height: 16px;
@@ -74,15 +91,15 @@
   .movies {
     padding-top: 60px;
     padding-bottom: 60px;
+
+    &__cards {
+      justify-content: space-between;
+      margin-top: 60px;
+    }
   }
 
   .item {
     width: 294px;
-    margin-bottom: 30px;
-
-    &:not(:nth-child(2n)) {
-      margin-right: 20px;
-    }
 
     &__image {
       width: 100%;
@@ -95,14 +112,10 @@
   .movies {
     padding-top: 60px;
     padding-bottom: 60px;
-  }
-
-  .item {
-    width: 274px;
-    margin-bottom: 30px;
-
-    &:not(:nth-child(3n)) {
-      margin-right: 30px;
+    &__cards {
+      gap: 20px 21px;
+      justify-content: left;
+      margin-top: 60px;
     }
   }
 }

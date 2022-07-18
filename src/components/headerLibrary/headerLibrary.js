@@ -1,9 +1,12 @@
 import './headerLibrary.scss';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 import { initializeModal } from '../movieModal/movieModal';
 
 // Rendering popularnych filmów na stronę główną i wywołanie funkcji dla 'trending'
 import moviesListMarkup from '../moviesListMarkup/moviesListMarkup';
 moviesListMarkup('queue');
+
 
 // Selektory przycisków "watched" i "queue"
 const selectorButtons = document.querySelectorAll('[data-display-selector]');
@@ -26,7 +29,6 @@ function switchActiveButton(event) {
       break;
 
     default:
-      console.log('invalid target');
       break;
   }
 }
@@ -34,21 +36,18 @@ function switchActiveButton(event) {
 function myLibraryDisplaySelectorHandler(event) {
   switch (event.target.dataset.displaySelector) {
     case 'watched':
-      console.log('Displaying watched...');
       switchActiveButton(event);
       moviesListMarkup('watched');
       initializeModal();
       break;
 
     case 'queue':
-      console.log('Displaying queue...');
       switchActiveButton(event);
       moviesListMarkup('queue');
       initializeModal();
       break;
 
     default:
-      console.log('invalid target');
       break;
   }
 }

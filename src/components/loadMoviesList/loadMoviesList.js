@@ -1,20 +1,30 @@
+// Modal z twórcami
+import '../teamModal/teamModal';
+
 // Style SCSS dla wyświetlania kart
 import './loadMoviesList.scss';
 
-// Obsługa modala
-import '../movieModal/movieModal';
+// Bazowe składniki
+import '../footer/footer';
 
-// Obsługa dodawania filmów do "watched" lub "queue"
-import '../supportForMyLibrary/supportForMyLibrary';
+// Fetch i renderowanie kart
+import moviesListMarkup from '../moviesListMarkup/moviesListMarkup';
 
 // Zapisywanie  "genres_name" do localStorage
 import memorizeGenres from '../memorizeGenres/memorizeGenres';
 
-// Paginacja
+// Obsługa dodawania filmów do "watched" lub "queue"
+import '../supportForMyLibrary/supportForMyLibrary';
+
+// Paginacja;
 // import createPagination from '../pagination/pagination';
-// import '../changePage/changePage';
+import '../changePage/changePage';
+import paginationSizeChange from '../pagination/pagination-mediaQuery';
 
 // Inicjalizacia modala
 import '../movieModal/movieModal';
 import { initializeModal } from '../movieModal/movieModal';
 initializeModal();
+
+// // Obsługa spinnera
+// import '../loader/loader';
