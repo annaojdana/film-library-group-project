@@ -26,7 +26,7 @@ const htmlMarkup = data =>
           title = title.substring(0, 34) + '...';
         }
         if (poster_path === null) {
-          imgSrc = `./images/no_image.png`;
+          imgSrc = `./no_image.png`;
           imgAlt = `There is no picture for this video. Placeholder no image`;
         };
 
