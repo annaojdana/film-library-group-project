@@ -88,6 +88,7 @@ function displayFromIdArray(whatToOutput, page = 1) {
   if (displayedIdArray === null || displayedIdArray.length === 0) {
     displayEmptyListInfo();
     removePagination();
+    Loading.remove();
     return;
   } else {
     const fetchedDataArray = [];
@@ -159,18 +160,23 @@ export default function moviesListMarkup(
         displayFromIdArray('watched', pageNumber);
         markupOutput.dataset.outputType = 'watched';
       } else {
+        
         displayEmptyListInfo();
       }
       break;
 
     case 'queue':
-      Loading.remove();
+      
 
       if (getFromLocalStorage('queue') !== []) {
+        
+
         displayFromIdArray('queue', pageNumber);
         markupOutput.dataset.outputType = 'queue';
       } else {
+        
         displayEmptyListInfo();
+        
       }
       break;
 
@@ -189,7 +195,9 @@ export default function moviesListMarkup(
 // Internal function for displaying info,
 // for empty "watched" and "queue" localStorage
 function displayEmptyListInfo() {
+  
   markupOutput.innerHTML = `<h2 class="movies__empty-info">Sorry! Collection is empty!</h2>`;
+  Loading.remove();
 }
 
 // Użycie:

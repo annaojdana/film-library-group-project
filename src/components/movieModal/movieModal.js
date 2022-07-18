@@ -3,6 +3,8 @@ import './movieModal.scss';
 import movieModalMarkup from '../movieModalMarkup/movieModalMarkup';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage';
 import supportForMyLibrary from '../supportForMyLibrary/supportForMyLibrary';
+import moviesListMarkup from '../moviesListMarkup/moviesListMarkup';
+
 
 const closeModalBtn = document.querySelector('[data-modal-close]');
 const modal = document.querySelector('[data-modal]');
@@ -41,6 +43,16 @@ export default function closeModalByClick(e) {
   if (e.target === modal) {
     closeModal();
   }
+  else if ((e.target.textContent === "Add to queue" || e.target.textContent === "Remove from watched" || e.target.textContent === "Remove from queue") && window.location.pathname.includes('/myLibrary.html')) {
+    moviesListMarkup('queue');
+    initializeModal();
+  }
+  if ((e.target.textContent === "Add to watched" || e.target.textContent === "Remove from watched" || e.target.textContent === "Remove from queue") && window.location.pathname.includes('/myLibrary.html')) {
+
+    moviesListMarkup('watched');
+    initializeModal();
+  }
+  
 }
 /*  Funkcja dla inicjalizacji modala dla listy filmów,
     funkcja dodajelistener dla każdej wyświetlonej karty.
