@@ -1,9 +1,8 @@
 // Style podstawowe + container
 import './main.scss';
 import './components/loadMoviesList/loadMoviesList.scss';
-
-
-
+import { startHiding } from './components/authSupport/authSupport';
+startHiding();
 
 // Nagłówek
 import './components/header/header';
@@ -21,7 +20,8 @@ moviesListMarkup();
 // Szukajka
 import './components/searchByKeyword/searchByKeyword';
 
-
+// Obsługa spinnera
+// import './components/loader/loader'
 
 // Paginacja
 import createPagination from './components/pagination/pagination';
