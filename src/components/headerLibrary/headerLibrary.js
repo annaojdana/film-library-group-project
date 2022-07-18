@@ -1,9 +1,12 @@
 import './headerLibrary.scss';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 import { initializeModal } from '../movieModal/movieModal';
 
 // Rendering popularnych filmów na stronę główną i wywołanie funkcji dla 'trending'
 import moviesListMarkup from '../moviesListMarkup/moviesListMarkup';
 moviesListMarkup('queue');
+
 
 // Selektory przycisków "watched" i "queue"
 const selectorButtons = document.querySelectorAll('[data-display-selector]');

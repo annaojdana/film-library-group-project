@@ -97,6 +97,7 @@ function displayFromIdArray(whatToOutput, page = 1) {
     for (const id of displayedIdArray) {
       fetchMovieById(id)
         .then(response => {
+          Loading.remove();
           fetchedDataArray.push(response);
 
           if (fetchedDataArray.length === counter) {
