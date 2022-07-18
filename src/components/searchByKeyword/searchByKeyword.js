@@ -11,7 +11,7 @@ export let searchQuery;
 if (
   window.location.pathname === '/' ||
   window.location.pathname.includes('/index.html') ||
-  window.location.pathname.includes('/film-library-group-project/') ||
+  window.location.pathname === '/film-library-group-project/' ||
   window.location.pathname.includes('/film-library-group-project/index.html')
 ) {
   const search_form = document.querySelector('[data-input]');
