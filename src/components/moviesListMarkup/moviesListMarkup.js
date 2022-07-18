@@ -17,26 +17,26 @@ const htmlMarkup = data =>
   data
     .map(
       ({ poster_path, title, genre_ids, release_date, vote_average, id }) => {
-
         let imgSrc = `https://image.tmdb.org/t/p/w300${poster_path}`;
         let movieYear = new Date(release_date).getFullYear();
         let imgAlt = `Poster of: ${title}`;
         let genresName = getGenresNames(genre_ids);
 
         if (title.length > 35) {
-          title = title.substring(0, 34) + "...";
-        };
+          title = title.substring(0, 34) + '...';
+        }
         if (poster_path === null) {
           imgSrc = `./images/no_image.png`;
           imgAlt = `There is no picture for this video. Placeholder no image`;
         };
 
-        if (release_date === "") {
-          movieYear = "unknown";
-        };
+
+        if (release_date === '') {
+          movieYear = 'unknown';
+        }
 
         if (genre_ids.length === 0) {
-          genresName = "no movie genre"
+          genresName = 'no movie genre';
         }
 
         return `
@@ -50,7 +50,7 @@ const htmlMarkup = data =>
           <p class="item__rating">${Number(vote_average).toFixed(1)}</p>
         </div>
       </div>
-      `
+      `;
       }
     )
     .join('');
@@ -116,7 +116,7 @@ function displayFromIdArray(whatToOutput, page = 1) {
             }
             markupOutput.dataset.outputType = whatToOutput;
             markupOutput.innerHTML = htmlMarkup(fetchedDataArray);
-            element.innerHTML = createPagination(totalPages, page);
+            element.innerHTML = createPagination('mylibrary', page);
           }
         })
         .catch(error => console.error(error));

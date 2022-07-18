@@ -2,7 +2,6 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import spinner from '../loader/loader';
 import loader from '../loader/loader';
 
-
 import { renderCollection } from '../renderSearchMovie/renderSearchMovie';
 export let searchQuery;
 
@@ -10,8 +9,10 @@ export let searchQuery;
 // przy ładowaniu strony jest on wstępnie pusty
 
 if (
-  window.location.pathname === '/index.html' ||
-  window.location.pathname === '/'
+  window.location.pathname.includes('/') ||
+  window.location.pathname.includes('/index.html') ||
+  window.location.pathname.includes('/film-library-group-project/') ||
+  window.location.pathname.includes('/film-library-group-project/index.html')
 ) {
   const search_form = document.querySelector('[data-input]');
   const search_btn = document.querySelector('[data-search]');
@@ -24,9 +25,8 @@ if (
     } else {
       document.querySelector('.not-found').classList.add('is-hidden');
     }
-    renderCollection(searchQuery);
+    renderCollection(searchQuery, 1);
     spinner();
-
   }
 
   search_btn.addEventListener('click', searchHandler);
