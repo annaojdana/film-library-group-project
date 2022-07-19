@@ -6,6 +6,7 @@ import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { createPagination, removePagination } from '../pagination/pagination';
 import { CARDS_PER_PAGE } from '../pagination/pagination';
+import spinnerStop from '../loader/loaderStop';
 
 // Selecting output tag
 const markupOutput = document.querySelector('[data-markup-output]');
@@ -26,7 +27,10 @@ const htmlMarkup = data =>
           title = title.substring(0, 34) + '...';
         }
         if (poster_path === null) {
-          imgSrc = `./images/no_image.png`;
+          imgSrc = new URL(
+            '../../images/no_image.png',
+            import.meta.url
+          );
           imgAlt = `There is no picture for this video. Placeholder no image`;
         };
 
@@ -88,6 +92,7 @@ function displayFromIdArray(whatToOutput, page = 1) {
   if (displayedIdArray === null || displayedIdArray.length === 0) {
     displayEmptyListInfo();
     removePagination();
+    Loading.remove();
     return;
   } else {
     const fetchedDataArray = [];
@@ -154,30 +159,30 @@ export default function moviesListMarkup(
 
     case 'watched':
       if (getFromLocalStorage('watched') !== []) {
-        Loading.remove();
-
         displayFromIdArray('watched', pageNumber);
         markupOutput.dataset.outputType = 'watched';
       } else {
+        
         displayEmptyListInfo();
       }
       break;
 
     case 'queue':
-      Loading.remove();
-
       if (getFromLocalStorage('queue') !== []) {
+        
+
         displayFromIdArray('queue', pageNumber);
         markupOutput.dataset.outputType = 'queue';
       } else {
+        
         displayEmptyListInfo();
+        
       }
       break;
 
     default:
       fetchTrendyMovies()
         .then(response => {
-          Loading.remove();
 
           return (markupOutput.innerHTML = htmlMarkup(response.results));
         })
@@ -189,7 +194,9 @@ export default function moviesListMarkup(
 // Internal function for displaying info,
 // for empty "watched" and "queue" localStorage
 function displayEmptyListInfo() {
+  
   markupOutput.innerHTML = `<h2 class="movies__empty-info">Sorry! Collection is empty!</h2>`;
+  Loading.remove();
 }
 
 // Użycie:

@@ -147,6 +147,9 @@
       flex-direction: column;
       color: #333;
       font-size: 12px;
+      &--reset{
+        padding-top: 20px;
+      }
 
       &--link {
         color: #ff6b08;
@@ -194,6 +197,10 @@
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+}
+.reset__window{
+  height: 500px;
+  box-shadow: none;
 }
 
 @media screen and (min-width: 480px) {

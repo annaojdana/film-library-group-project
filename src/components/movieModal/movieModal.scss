@@ -32,6 +32,8 @@
   overflow: auto;
   background-color: $modalBgColor;
   box-shadow: $modalShadow;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 3px #0009;
 
   &__close {
     padding: 0;
@@ -87,6 +89,7 @@
     height: auto;
     margin: 0 auto;
     margin-bottom: 30px;
+    border-radius: 15px;
   }
 
   &__title {
