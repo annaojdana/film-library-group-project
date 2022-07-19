@@ -8,11 +8,13 @@ import {
   updateProfile,
   signOut,
   setPersistence,
-  browserSessionPersistence
+  browserSessionPersistence,
+  sendPasswordResetEmail
 } from 'firebase/auth';
 import { hideSignIn, showSignIn, hideLoginForm, showLoginError, showLoginState } from '../authSupport/authSupport';
 import Notiflix from 'notiflix';
 import 'notiflix/dist/notiflix-3.2.5.min.css';
+import resetWindowClose from '../signInUp/signInUp';
 
 // Firebase config
 const firebaseConfig = {
@@ -39,6 +41,12 @@ const loginBtn = document.querySelector(".login-btn");
 const signUpForm = document.querySelector(".sign-up-form");
 const [newEmail, newPassword, confirmNewPassword, terms] = signUpForm.elements;
 const signUpBtn = document.querySelector(".sign-up-btn");
+
+// Inputs for reset form
+const resetForm = document.querySelector(".reset-form");
+const [emailForReset] = resetForm.elements;
+const resetBtn = document.querySelector(".reset-btn");
+
 
 const logoutBtn = document.querySelector(".logout-link");
 
@@ -116,6 +124,27 @@ const createAccount = async (evt) => {
 }
 
 signUpBtn.addEventListener('click', createAccount);
+
+// Reset password
+
+const resetPassword = async (evt) => {
+  evt.preventDefault();
+  const emailValue = emailForReset.value;
+
+  if (!emailValue) {
+    Notiflix.Notify.warning("Complete the email field!");
+  } else {
+    sendPasswordResetEmail(auth, emailValue)
+      .then(() => {
+        Notiflix.Notify.success("Check your email.")
+        resetWindowClose();
+      })
+      .catch((error) => {
+        showLoginError(error);
+      });
+  }
+}
+resetBtn.addEventListener('click', resetPassword);
 
 // Registration of closure when login status changes
 export const checkAuthState = async () => {
