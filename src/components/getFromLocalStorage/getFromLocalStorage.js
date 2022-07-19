@@ -4,7 +4,7 @@ export default function getFromLocalStorage(key) {
     return JSON.parse(localData);
   }
   catch (error) {
-    console.log(error.name + ": " + error.mesage);
+    console.log(error.name + ": " + error.message);
   }
   
 };
