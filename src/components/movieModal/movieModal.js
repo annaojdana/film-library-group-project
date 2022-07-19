@@ -45,12 +45,23 @@ export default function closeModalByClick(e) {
   if (e.target === modal) {
     closeModal();
   }
-  else if (e.target.classList[0] == "modal__btns" && queueBnt.classList.contains("btn--active") && window.location.pathname.includes('/myLibrary.html')) {
+  else if (
+    e.target.classList[0] == 'modal__btns' &&
+    queueBnt.classList.contains('btn--active') &&
+    window.location.pathname.includes(
+      '/film-library-group-project/myLibrary.html'
+    )
+  ) {
     moviesListMarkup('queue');
     initializeModal();
   }
-  if (e.target.classList[0] == "modal__btns" && watchedBnt.classList.contains("btn--active") && window.location.pathname.includes('/myLibrary.html')) {
-
+  if (
+    e.target.classList[0] == 'modal__btns' &&
+    watchedBnt.classList.contains('btn--active') &&
+    window.location.pathname.includes(
+      '/film-library-group-project/myLibrary.html'
+    )
+  ) {
     moviesListMarkup('watched');
     initializeModal();
   }
