@@ -41,12 +41,15 @@ const htmlMarkup = ({
     .join(', ')}`;
 
   if (poster_path === null) {
-    imgSrc = `https://iv.pl/images/78021b6c9c10ba13606ac3151fc220b3.png`;
+    imgSrc = new URL(
+      '../../images/no_image.png',
+      import.meta.url
+    );
     imgAlt = `There is no picture for this video. Placeholder no image.`
   };
   if (genres.length === 0) {
     genresNames = "no movie genre";
-        }
+  }
 
   // Render of a modal for the selected movie
   return `
@@ -85,9 +88,7 @@ export default function movieModalMarkup(id) {
 
   fetchMoviesById(id)
     .then(response => {
-      console.log(response);
- Loading.remove();
-      console.log(`output markupu dla 'modal'`);
+      Loading.remove();
       return htmlOutput.insertAdjacentHTML('beforeend', htmlMarkup(response));
     })
     .catch(error => console.error(error));
