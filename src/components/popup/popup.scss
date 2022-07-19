@@ -11,7 +11,7 @@
   z-index: 10000;
 
   &.hidden {
-      opacity: 0;
+      display: none;
   }
 }
 
