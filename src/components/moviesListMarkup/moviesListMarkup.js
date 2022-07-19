@@ -6,6 +6,7 @@ import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage.js';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { createPagination, removePagination } from '../pagination/pagination';
 import { CARDS_PER_PAGE } from '../pagination/pagination';
+import spinnerStop from '../loader/loaderStop';
 
 // Selecting output tag
 const markupOutput = document.querySelector('[data-markup-output]');
@@ -26,7 +27,10 @@ const htmlMarkup = data =>
           title = title.substring(0, 34) + '...';
         }
         if (poster_path === null) {
-          imgSrc = `./no_image.png`;
+          imgSrc = new URL(
+            '../../images/no_image.png',
+            import.meta.url
+          );
           imgAlt = `There is no picture for this video. Placeholder no image`;
         };
 
@@ -155,8 +159,6 @@ export default function moviesListMarkup(
 
     case 'watched':
       if (getFromLocalStorage('watched') !== []) {
-        Loading.remove();
-
         displayFromIdArray('watched', pageNumber);
         markupOutput.dataset.outputType = 'watched';
       } else {
@@ -166,8 +168,6 @@ export default function moviesListMarkup(
       break;
 
     case 'queue':
-      
-
       if (getFromLocalStorage('queue') !== []) {
         
 
@@ -183,7 +183,6 @@ export default function moviesListMarkup(
     default:
       fetchTrendyMovies()
         .then(response => {
-          Loading.remove();
 
           return (markupOutput.innerHTML = htmlMarkup(response.results));
         })
