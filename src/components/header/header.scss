@@ -48,8 +48,8 @@
   @include size(12px);
   line-height: 1.167;
 
-  &:not(:last-child){
-    margin-right: 30px;
+  &:not(:first-child){
+    margin-left: 30px;
   }
 }
 
@@ -148,7 +148,7 @@
   display: none;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 768px) {
   .header__title {
     display: inline-block;
   }

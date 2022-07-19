@@ -63,7 +63,7 @@ const loginWithEmailAndPassword = async (evt) => {
         // if a user forgets to sign out.
         // ...
         // New sign-in will be persisted with session persistence.
-        return signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(auth, email, password);
       })
       .catch((error) => {
         // Handle Errors here.
@@ -72,6 +72,7 @@ const loginWithEmailAndPassword = async (evt) => {
       });
       }
       const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+      showLoginState(userCredential.user);
     } catch (error) {
       showLoginError(error);
     }
@@ -102,10 +103,11 @@ const createAccount = async (evt) => {
   } else {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
-      const user = auth.currentUser;
+      const user = userCredential.user;
       const email = user.email;
       const username = email.split("@").shift();
-      updateProfile(auth.currentUser, {displayName: username});
+      await updateProfile(auth.currentUser, {displayName: username});
+      showLoginState(userCredential.user);
     } catch (error) {
       console.log(error);
       showLoginError(error);
@@ -121,12 +123,10 @@ export const checkAuthState = async () => {
     if (user) {
       console.log(user);
       hideLoginForm();
-      showLoginState(user);
 
       hideSignIn();
     } else {
       showSignIn();
-      Notiflix.Notify.info("You are not logged in.");
     }
   });
 }
@@ -135,6 +135,7 @@ checkAuthState();
 
 const logout = async () => {
   await signOut(auth);
+  Notiflix.Notify.info("You have been logged out.");
 }
 
 logoutBtn.addEventListener('click', logout);

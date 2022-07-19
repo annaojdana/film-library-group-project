@@ -5,6 +5,7 @@ import { initializeModal } from '../movieModal/movieModal';
 
 // Rendering popularnych filmów na stronę główną i wywołanie funkcji dla 'trending'
 import moviesListMarkup from '../moviesListMarkup/moviesListMarkup';
+import spinnerStop from '../loader/loaderStop';
 moviesListMarkup('queue');
 
 
@@ -36,12 +37,14 @@ function switchActiveButton(event) {
 function myLibraryDisplaySelectorHandler(event) {
   switch (event.target.dataset.displaySelector) {
     case 'watched':
+      spinnerStop();
       switchActiveButton(event);
       moviesListMarkup('watched');
       initializeModal();
       break;
 
     case 'queue':
+      spinnerStop();
       switchActiveButton(event);
       moviesListMarkup('queue');
       initializeModal();
