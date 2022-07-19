@@ -1,0 +1,32 @@
+#consent-popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 4rem;
+  background-color: black;
+  transition: opacity 1s ease;
+  color: white;
+  font-size: 20px;
+  z-index: 10000;
+
+  &.hidden {
+      opacity: 0;
+  }
+}
+
+
+#terms{
+  text-decoration: none;
+  color: orange;
+  font: bold;
+}
+#btn-pop
+{
+
+  float: right;
+}
+#popup-info
+{
+  margin-top: 5px;
+}
