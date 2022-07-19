@@ -8,6 +8,7 @@
   transition: opacity 1s ease;
   color: white;
   font-size: 20px;
+  z-index: 10000;
 
   &.hidden {
       opacity: 0;
