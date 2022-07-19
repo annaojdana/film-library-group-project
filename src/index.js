@@ -34,3 +34,6 @@ import './components/signInUp/signInUp'
 import './components/authentication/authentication';
 import { Loading } from 'notiflix';
 import spinner from './components/loader/loader';
+
+//popup
+import './components/popup/popup';
