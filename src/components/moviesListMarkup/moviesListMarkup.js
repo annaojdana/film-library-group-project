@@ -27,10 +27,10 @@ const htmlMarkup = data =>
           title = title.substring(0, 34) + '...';
         }
         if (poster_path === null) {
-          // imgSrc = new URL(
-          //   '../../images/no_image.png',
-          //   import.meta.url
-          // );
+          imgSrc = new URL(
+            '../../images/no_image.png',
+            import.meta.url
+          );
           imgAlt = `There is no picture for this video. Placeholder no image`;
         };
 
