@@ -1,3 +1,10 @@
 export default function getFromLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
+  try {
+    const localData = localStorage.getItem(key);
+    return JSON.parse(localData);
+  }
+  catch (error) {
+    console.log(error.name + ": " + error.mesage);
+  }
+  
 };
