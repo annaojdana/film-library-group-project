@@ -10,6 +10,8 @@ const closeModalBtn = document.querySelector('[data-modal-close]');
 const modal = document.querySelector('[data-modal]');
 const backdrop = document.querySelector('body');
 const htmlOutput = document.querySelector('.modal--wrapper');
+const queueBnt = document.querySelector('[data-display-selector="queue"]');
+const watchedBnt = document.querySelector('[data-display-selector="watched"]');
 
 closeModalBtn.addEventListener('click', closeModal);
 modal.addEventListener('click', closeModalByClick);
@@ -43,11 +45,11 @@ export default function closeModalByClick(e) {
   if (e.target === modal) {
     closeModal();
   }
-  else if ((e.target.textContent === "Add to queue" || e.target.textContent === "Remove from watched" || e.target.textContent === "Remove from queue") && window.location.pathname.includes('/myLibrary.html')) {
+  else if (e.target.classList[0] == "modal__btns" && queueBnt.classList.contains("btn--active") && window.location.pathname.includes('/myLibrary.html')) {
     moviesListMarkup('queue');
     initializeModal();
   }
-  if ((e.target.textContent === "Add to watched" || e.target.textContent === "Remove from watched" || e.target.textContent === "Remove from queue") && window.location.pathname.includes('/myLibrary.html')) {
+  if (e.target.classList[0] == "modal__btns" && watchedBnt.classList.contains("btn--active") && window.location.pathname.includes('/myLibrary.html')) {
 
     moviesListMarkup('watched');
     initializeModal();
