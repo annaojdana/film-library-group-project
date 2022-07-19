@@ -5,7 +5,6 @@ import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage';
 import supportForMyLibrary from '../supportForMyLibrary/supportForMyLibrary';
 import moviesListMarkup from '../moviesListMarkup/moviesListMarkup';
 
-
 const closeModalBtn = document.querySelector('[data-modal-close]');
 const modal = document.querySelector('[data-modal]');
 const backdrop = document.querySelector('body');
@@ -44,28 +43,26 @@ export function closeModalEscKey(e) {
 export default function closeModalByClick(e) {
   if (e.target === modal) {
     closeModal();
-  }
-  else if (
-    e.target.classList[0] == 'modal__btns' &&
-    queueBnt.classList.contains('btn--active') &&
+  } else if (
     window.location.pathname.includes(
       '/film-library-group-project/myLibrary.html'
-    )
+    ) &&
+    e.target.classList[0] == 'modal__btns' &&
+    queueBnt.classList.contains('btn--active')
   ) {
     moviesListMarkup('queue');
     initializeModal();
   }
   if (
-    e.target.classList[0] == 'modal__btns' &&
-    watchedBnt.classList.contains('btn--active') &&
     window.location.pathname.includes(
       '/film-library-group-project/myLibrary.html'
-    )
+    ) &&
+    e.target.classList[0] == 'modal__btns' &&
+    watchedBnt.classList.contains('btn--active')
   ) {
     moviesListMarkup('watched');
     initializeModal();
   }
-  
 }
 /*  Funkcja dla inicjalizacji modala dla listy filmów,
     funkcja dodajelistener dla każdej wyświetlonej karty.
