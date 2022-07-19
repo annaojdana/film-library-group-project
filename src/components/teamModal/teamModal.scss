@@ -1,6 +1,7 @@
 @import '../../scss/mixin';
 @import '../../scss/variables';
 
+
 .team {
   &--wrapper {
     padding: 48px 25px 41px;
@@ -19,12 +20,12 @@
 
 .students {
   &--wrapper {
-    padding: 30px 0 0 5px;
+    padding-top: 25px;
   }
 }
 
 .student {
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 
   &__img {
     border-radius: 50%;
@@ -39,12 +40,13 @@
   }
 
   &__name {
+    padding-top: 16px;
     font-size: 18px;
-    line-height: 40px;
   }
 
   &__linkedin {
     display: flex;
+    align-items: center;
     outline: none;
     text-decoration: none;
     color: #000;
@@ -54,9 +56,14 @@
     }
   }
 }
-
+@media screen and (min-width: 480px) {
+.team{
+  width: 450px;
+}
+}
 @media screen and (min-width: 768px) {
   .team {
+    width: 550px;
     &--wrapper {
       padding: 48px 35px 41px;
     }
@@ -81,13 +88,13 @@
     }
     &__name {
       font-size: 22px;
-      line-height: 55px;
     }
   }
 }
 
 @media screen and(min-width: 1024px) {
   .team {
+    width: 700px;
     &__heading {
       font-size: 30px;
     }
@@ -103,14 +110,14 @@
   }
   .student {
     &__img {
-      width: 100px;
-      height: 100px;
+      width: 85px;
+      height: 85px;
       margin-right: 30px;
     }
 
     &__name {
       font-size: 25px;
-      line-height: 100px;
+
     }
   }
 }

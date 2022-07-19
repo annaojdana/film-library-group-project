@@ -1,5 +1,5 @@
 <div class="main-backdrop is-hidden" data-team-modal>
-  <div class="modal" id="modalWindow" data-team-modal-window>
+  <div class="modal team" id="modalWindow" data-team-modal-window>
     <button class="modal__close" data-team-modal-close>
       <svg class="modal__close-btn">
         <use href="./images/sprite.svg#close"></use>
@@ -64,17 +64,25 @@
         </li>
         <li class="student">
           <a href="https://www.linkedin.com/in/patryk-tomasz-tomaszek-879ba5244/" class="student__linkedin"
-            target="_blank" rel="noopener" loading="lazy"><img class="student__img"
-              src="https://cdn.pixabay.com/photo/2016/04/22/04/57/graduation-1345143_960_720.png"
-              alt="student profile picture" />
+            target="_blank" rel="noopener" loading="lazy"><picture>
+              <source class="student__img" srcset="
+                            ./images/patryk_tomaszek_profile.jpg    1x,
+                            ./images/patryk_tomaszek_profile@2x.png 2x
+                          " />
+              <img class="student__img" src="./images/patryk_tomaszek_profile.jpg" alt="student profile picture" />
+            </picture>
             <p class="student__name">Patryk Tomasz Tomaszek</p>
           </a>
         </li>
         <li class="student">
           <a href="https://www.linkedin.com/in/rafa%C5%82-gawlak-220912201/" class="student__linkedin" target="_blank"
-            rel="noopener" loading="lazy"><img class="student__img"
-              src="https://cdn.pixabay.com/photo/2016/04/22/04/57/graduation-1345143_960_720.png"
-              alt="student profile picture" />
+            rel="noopener" loading="lazy"><picture>
+              <source class="student__img" srcset="
+                                        ./images/rafal_gawlak_profile.jpg    1x,
+                                        ./images/rafal_gawlak_profile@2x.png 2x
+                                      " />
+              <img class="student__img" src="./images/rafal_gawlak_profile.jpg" alt="student profile picture" />
+            </picture>
             <p class="student__name">Rafał Gawlak</p>
           </a>
         </li>
