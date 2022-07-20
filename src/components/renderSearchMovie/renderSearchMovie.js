@@ -55,7 +55,6 @@ const htmlMarkup = data =>
 export function renderCollection(searchQuery, pageNum) {
   const filmList = document.querySelector('[data-markup-output]');
   fetchMovieByQuery(searchQuery, pageNum).then(response => {
-    Loading.remove();
     if (response.total_results === 0) {
       document.querySelector('.not-found').classList.remove('is-hidden');
       filmList.innerHTML = '';
