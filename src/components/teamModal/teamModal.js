@@ -1,4 +1,3 @@
-import closeModalByClick, { closeModalEscKey } from '../movieModal/movieModal';
 import '../movieModal/movieModal.scss';
 import {
   disableScrolling,
@@ -8,23 +7,37 @@ import './teamModal.scss';
 
 const teamLink = document.querySelector('[data-team]');
 const closeModalBtn = document.querySelector('[data-team-modal-close]');
-const modal = document.querySelector('[data-team-modal]');
+const modalTeam = document.querySelector('[data-team-modal]');
 const backdrop = document.querySelector('body');
 
 closeModalBtn.addEventListener('click', closeModal);
-modal.addEventListener('click', closeModalByClick);
+modalTeam.addEventListener('click', closeByClick);
 teamLink.addEventListener('click', openModal);
 
-modal.classList.remove('is-hidden-bugfix'); //Bugfix
+modalTeam.classList.remove('is-hidden-bugfix'); //Bugfix
 
 function closeModal() {
-  modal.classList.add('is-hidden');
-  backdrop.removeEventListener('keydown', closeModalEscKey);
+  modalTeam.classList.add('is-hidden');
+  backdrop.removeEventListener('keydown', closeEscKey);
   enableScrolling();
 }
 
 function openModal() {
-  modal.classList.remove('is-hidden');
-  backdrop.addEventListener('keydown', closeModalEscKey);
+  modalTeam.classList.remove('is-hidden');
+  console.log(modalTeam);
+  backdrop.addEventListener('keydown', closeEscKey);
   disableScrolling();
+}
+function closeEscKey(e) {
+  let keyCode = e.keyCode;
+  if (keyCode === 27) {
+    //keycode is an Integer, not a String
+    closeModal();
+  }
+}
+
+function closeByClick(e) {
+  if (e.target === modalTeam) {
+    closeModal();
+  }
 }
