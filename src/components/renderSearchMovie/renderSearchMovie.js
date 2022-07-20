@@ -1,5 +1,4 @@
 import getGenresNames from '../getGenresNames/getGenresNames';
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { fetchMovieByQuery } from '../fetchMoviesSearch/fetchMovieSearch';
 import { createPagination, removePagination } from '../pagination/pagination';
 import { initializeModal } from '../movieModal/movieModal';
