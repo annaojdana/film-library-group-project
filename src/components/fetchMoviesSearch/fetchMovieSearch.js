@@ -1,6 +1,3 @@
-
-
-
 const API_KEY = '2f202abcab3fe0934220a17698275697';
 
 export async function fetchMovieByQuery(searchQuery, pageNum = 1) {

@@ -4,6 +4,11 @@ import movieModalMarkup from '../movieModalMarkup/movieModalMarkup';
 import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage';
 import supportForMyLibrary from '../supportForMyLibrary/supportForMyLibrary';
 import moviesListMarkup from '../moviesListMarkup/moviesListMarkup';
+import { displayModalLoader, removeModalLoader } from '../loader/loader';
+import {
+  disableScrolling,
+  enableScrolling,
+} from '../scrollToggle/scrollToggle';
 
 const closeModalBtn = document.querySelector('[data-modal-close]');
 const modal = document.querySelector('[data-modal]');
@@ -15,20 +20,26 @@ const watchedBnt = document.querySelector('[data-display-selector="watched"]');
 closeModalBtn.addEventListener('click', closeModal);
 modal.addEventListener('click', closeModalByClick);
 
+modal.classList.remove('is-hidden-bugfix');
+
 export function closeModal() {
   modal.classList.add('is-hidden');
   backdrop.removeEventListener('keydown', closeModalEscKey);
+  enableScrolling();
 }
 
 // Funkcja jest lokalna, ponieważ nie jest potrzebna poza tym plikiem
 export function openModal(evt) {
   htmlOutput.innerHTML = ``;
+  displayModalLoader();
 
+  modal;
   modal.classList.remove('is-hidden');
   backdrop.addEventListener('keydown', closeModalEscKey); //musi być body, jeżeli damy tylko kontenr modala to aby zamknąć modal Esc trzeba najpierw nacisnąć Tab
   if (evt.currentTarget.classList.contains('item')) {
     const movieId = evt.currentTarget.dataset.id;
     movieModalMarkup(movieId);
+    disableScrolling();
   }
 }
 export function closeModalEscKey(e) {

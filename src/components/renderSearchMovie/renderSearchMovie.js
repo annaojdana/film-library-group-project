@@ -1,10 +1,8 @@
 import getGenresNames from '../getGenresNames/getGenresNames';
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { fetchMovieByQuery } from '../fetchMoviesSearch/fetchMovieSearch';
 import { createPagination, removePagination } from '../pagination/pagination';
 import { initializeModal } from '../movieModal/movieModal';
-import { paginationSupport } from '../changePage/changePage';
-function notificationRender() {}
+import { removeLoader } from '../loader/loader';
 
 const markupOutput = document.querySelector('[data-markup-output]');
 
@@ -26,10 +24,7 @@ const htmlMarkup = data =>
         let genresName = getGenresNames(genre_ids);
 
         if (poster_path === null) {
-          imgSrc = new URL(
-      '../../images/no_image.png',
-      import.meta.url
-          );
+          imgSrc = new URL('../../images/no_image.png', import.meta.url);
           imgAlt = `There is no picture for this video. Placeholder no image`;
         }
 
@@ -60,11 +55,11 @@ const htmlMarkup = data =>
 export function renderCollection(searchQuery, pageNum) {
   const filmList = document.querySelector('[data-markup-output]');
   fetchMovieByQuery(searchQuery, pageNum).then(response => {
-    Loading.remove();
     if (response.total_results === 0) {
       document.querySelector('.not-found').classList.remove('is-hidden');
       filmList.innerHTML = '';
       removePagination();
+      removeLoader();
       return;
     } else {
       document.querySelector('.not-found').classList.add('is-hidden');
@@ -77,5 +72,6 @@ export function renderCollection(searchQuery, pageNum) {
     element.innerHTML = createPagination(totalPages, page);
     markupOutput.dataset.outputType = 'search';
     initializeModal();
+    removeLoader();
   });
 }

@@ -9,7 +9,7 @@ const element = document.querySelector('.pagination ul');
 // ! ! ! ! ! Zmienna dla ilości wyświetlanych kart na stronie ! ! ! ! !
 // By zmienić ilość wyświetlanych kart na stronie w My Library,
 // Wystarczy zmienić wartość zmiennej na żądaną ilość
-export const CARDS_PER_PAGE = 3;
+export const CARDS_PER_PAGE = 9;
 
 // Funkcja dla obsługi paginacji dla strony "My library"
 function getTotalPagesForMyLibrary() {

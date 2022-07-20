@@ -1,5 +1,4 @@
-<div class="sign--backdrop is-hidden" data-signIn>
-
+<div class="sign--backdrop is-hidden is-hidden-bugfix" data-signIn>
   <div class="logo--wrapper">
     <a class="logo__link" href="./index.html">
       <svg class="logo__icon">
@@ -9,7 +8,6 @@
     </a>
   </div>
   <div class="sign__window" data-sign-window>
-
     <div class="sign__form--wrapper">
       <div class="sign__form login">
         <button class="sign__close" data-sign-close>
@@ -21,64 +19,118 @@
 
         <form class="login-form" action="#">
           <div class="sign__form-field">
-            <input class="sign__form-input" type="email" name="email" autocomplete="email" placeholder="Enter your email" required>
+            <input
+              class="sign__form-input"
+              type="email"
+              name="email"
+              autocomplete="email"
+              placeholder="Enter your email"
+              required
+            />
           </div>
 
           <div class="sign__form-field">
-            <input class="sign__form-input" type="password" name="password" autocomplete="currentPassword" placeholder="Enter your password" required>
+            <input
+              class="sign__form-input"
+              type="password"
+              name="password"
+              autocomplete="currentPassword"
+              placeholder="Enter your password"
+              required
+            />
           </div>
 
           <div class="sign__form-checkbox--wrapper">
             <div class="sign__form-checkbox">
-              <input id="rememberMe" class="sign__form-checkbox--box" type="checkbox">
-              <label for="rememberMe" class="sign__form-text">Remember me</label>
+              <input
+                id="rememberMe"
+                class="sign__form-checkbox--box"
+                type="checkbox"
+              />
+              <label for="rememberMe" class="sign__form-text"
+                >Remember me</label
+              >
             </div>
 
-            <a href="#" class="sign__form-text--link reset-link">Forgot password?</a>
+            <a href="#" class="sign__form-text--link reset-link"
+              >Forgot password?</a
+            >
           </div>
-          <button type="submit" class="sign__form-button login-btn">Login</button>
+          <button type="submit" class="sign__form-button login-btn">
+            Login
+          </button>
         </form>
 
         <div class="sign__form-footer">
-          <span class="sign__form-text">Not a member?
-            <a href="#" class="sign__form-text--link signup-link">Sign up now</a>
+          <span class="sign__form-text"
+            >Not a member?
+            <a href="#" class="sign__form-text--link signup-link"
+              >Sign up now</a
+            >
           </span>
         </div>
       </div>
 
-
-
-
       <div class="sign__form signup">
-         <button class="sign__close" data-sign-close>
-      <svg class="sign__close-btn">
-        <use href="./images/sprite.svg#close"></use>
-      </svg>
-    </button>
+        <button class="sign__close" data-sign-close>
+          <svg class="sign__close-btn">
+            <use href="./images/sprite.svg#close"></use>
+          </svg>
+        </button>
         <span class="sign__form-title">Registration</span>
 
         <form class="sign-up-form" action="#">
           <div class="sign__form-field">
-            <input class="sign__form-input" type="email" autocomplete="newEmail" name="newEmail"placeholder="Enter your email" required>
+            <input
+              class="sign__form-input"
+              type="email"
+              autocomplete="newEmail"
+              name="newEmail"
+              placeholder="Enter your email"
+              required
+            />
           </div>
           <div class="sign__form-field">
-            <input class="sign__form-input" type="password" name="newPassword" autocomplete="newPassword" placeholder="Create a password" required>
+            <input
+              class="sign__form-input"
+              type="password"
+              name="newPassword"
+              autocomplete="newPassword"
+              placeholder="Create a password"
+              required
+            />
           </div>
           <div class="sign__form-field">
-            <input class="sign__form-input" type="password" name="confirmNewPassword" autocomplete="confirmNewPassword" placeholder="Confirm a password" required>
+            <input
+              class="sign__form-input"
+              type="password"
+              name="confirmNewPassword"
+              autocomplete="confirmNewPassword"
+              placeholder="Confirm a password"
+              required
+            />
           </div>
 
           <div class="sign__form-checkbox--wrapper">
             <div class="sign__form-checkbox">
-              <input id="terms" class="sign__form-checkbox--box" type="checkbox">
-              <label for="terms" class="sign__form-text">I accept all terms & conditions</label>
+              <input
+                id="terms"
+                class="sign__form-checkbox--box"
+                type="checkbox"
+              />
+              <label for="terms" class="sign__form-text"
+                >I accept all terms & conditions</label
+              >
             </div>
           </div>
 
-            <button type="submit" class="sign__form-button sign-up-btn">Sign up</button>
+          <button type="submit" class="sign__form-button sign-up-btn">
+            Sign up
+          </button>
         </form>
         <div class="sign__form-footer">
-          <span class="sign__form-text">Already have an account?
+          <span class="sign__form-text"
+            >Already have an account?
             <a href="#" class="sign__form-text--link login-link">Login now</a>
           </span>
         </div>
@@ -95,15 +147,24 @@
           </svg>
         </button>
         <span class="sign__form-title">Forgot your password?</span>
-        <p class="sign__form-text--reset">Don't worry! Enter your email address and we'll send you a link to reset your
-          password.
+        <p class="sign__form-text--reset">
+          Don't worry! Enter your email address and we'll send you a link to
+          reset your password.
         </p>
         <form class="reset-form" action="#">
           <div class="sign__form-field">
-            <input class="sign__form-input" type="email" name="email" autocomplete="email" placeholder="Enter your email"
-              required>
+            <input
+              class="sign__form-input"
+              type="email"
+              name="email"
+              autocomplete="email"
+              placeholder="Enter your email"
+              required
+            />
           </div>
-          <button type="submit" class="sign__form-button reset-btn">Reset password</button>
+          <button type="submit" class="sign__form-button reset-btn">
+            Reset password
+          </button>
         </form>
       </div>
     </div>

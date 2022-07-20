@@ -27,13 +27,22 @@
   pointer-events: none;
 }
 
+.is-hidden-bugfix {
+  display: none;
+}
+
 .modal {
   width: 100%;
+  min-height: 100px;
   overflow: auto;
   background-color: $modalBgColor;
   box-shadow: $modalShadow;
   border-radius: 15px;
   box-shadow: 0 0 10px 3px #0009;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &__close {
     padding: 0;
@@ -53,6 +62,10 @@
 
   &--wrapper {
     padding: 48px 20px 41px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__btns {
