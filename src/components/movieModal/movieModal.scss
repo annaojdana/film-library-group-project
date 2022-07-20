@@ -12,7 +12,8 @@
   width: 100vw;
 
   // Mobile url bar overflow bugfix
-  height: 100vh;
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
   padding: 0 20px;
 
   background-color: rgba(0, 0, 0, 0.2);
