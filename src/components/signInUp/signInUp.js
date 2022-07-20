@@ -21,6 +21,7 @@ openSignWindow.addEventListener('click', () => {
 closeBtn.forEach(item =>
   item.addEventListener('click', () => {
     signModal.classList.add('is-hidden');
+    signWindow.classList.remove('active');
   })
 );
 
