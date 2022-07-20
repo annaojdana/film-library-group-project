@@ -8,7 +8,6 @@ startHiding();
 import './components/header/header';
 import './components/loadMoviesList/loadMoviesList';
 
-// Obsługa spinnera
 
 // Rendering popularnych filmów na stronę główną i wywołanie funkcji dla 'trending'
 import moviesListMarkup from './components/moviesListMarkup/moviesListMarkup';
@@ -22,6 +21,7 @@ import createPagination from './components/pagination/pagination';
 import './components/changePage/changePage';
 import paginationSizeChange from './components/pagination/pagination-mediaQuery';
 
+// logowanie
 import './components/signInUp/signInUp';
 import './components/authentication/authentication';
 

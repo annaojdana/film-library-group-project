@@ -71,7 +71,8 @@ const loginWithEmailAndPassword = async (evt) => {
         // if a user forgets to sign out.
         // ...
         // New sign-in will be persisted with session persistence.
-        return signInWithEmailAndPassword(auth, email, password);
+        const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+        return userCredential;
       })
       .catch((error) => {
         // Handle Errors here.
