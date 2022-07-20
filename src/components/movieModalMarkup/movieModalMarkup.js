@@ -1,9 +1,8 @@
 // Imports
 // import getGenresNames from '../getGenresNames/getGenresNames';
 import fetchMoviesById from '../fetchMovieById/fetchMovieById';
-import getFromLocalStorage from "../getFromLocalStorage/getFromLocalStorage";
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
-
+import getFromLocalStorage from '../getFromLocalStorage/getFromLocalStorage';
+import { removeModalLoader } from '../loader/loader';
 
 // Internal function for creating HTML markup
 const htmlMarkup = ({
@@ -33,22 +32,16 @@ const htmlMarkup = ({
   const watchedlabel = btnLabel[0];
   const queuelabel = btnLabel[1];
 
-
   let imgSrc = `https://image.tmdb.org/t/p/w300${poster_path}`;
   let imgAlt = `Poster of: ${title}`;
-  let genresNames = `${genres
-    .map(g => g.name)
-    .join(', ')}`;
+  let genresNames = `${genres.map(g => g.name).join(', ')}`;
 
   if (poster_path === null) {
-    imgSrc = new URL(
-      '../../images/no_image.png',
-      import.meta.url
-    );
-    imgAlt = `There is no picture for this video. Placeholder no image.`
-  };
+    imgSrc = new URL('../../images/no_image.png', import.meta.url);
+    imgAlt = `There is no picture for this video. Placeholder no image.`;
+  }
   if (genres.length === 0) {
-    genresNames = "no movie genre";
+    genresNames = 'no movie genre';
   }
 
   // Render of a modal for the selected movie
@@ -81,15 +74,16 @@ const htmlMarkup = ({
   `;
 };
 
-
 export default function movieModalMarkup(id) {
   // Variable for selecting output tag
   const htmlOutput = document.querySelector('.modal--wrapper');
 
   fetchMoviesById(id)
     .then(response => {
-      Loading.remove();
-      return htmlOutput.insertAdjacentHTML('beforeend', htmlMarkup(response));
+      console.log('modal render');
+      htmlOutput.insertAdjacentHTML('beforeend', htmlMarkup(response));
+      removeModalLoader();
+      return;
     })
     .catch(error => console.error(error));
 }

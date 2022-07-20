@@ -1,7 +1,6 @@
 @import '../../scss/mixin';
 @import '../../scss/variables';
 
-
 .sign__window.active .login {
   margin-left: -50%;
   opacity: 0;
@@ -18,12 +17,12 @@
   transition: opacity 0.4s ease;
 }
 
-.logo{
-  &--wrapper{
+.logo {
+  &--wrapper {
     margin-bottom: 20px;
   }
 
-  &__link{
+  &__link {
     color: #ffffff;
     font-size: 18px;
     text-decoration: none;
@@ -32,7 +31,7 @@
     align-items: center;
   }
 
-  &__icon{
+  &__icon {
     margin-right: 15px;
     width: 20px;
     height: 20px;
@@ -51,26 +50,30 @@
     width: 100vw;
     height: 100vh;
     padding: 0 20px;
-    background: linear-gradient(180deg, rgba(2, 0, 36, 1) 25%, rgb(245, 132, 58) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(2, 0, 36, 1) 25%,
+      rgb(245, 132, 58) 100%
+    );
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
     transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 99;
   }
-  &__close{
+  &__close {
     position: absolute;
-    top:8px;
+    top: 8px;
     right: 8px;
     background-color: transparent;
     border: none;
-    &-btn{
+    &-btn {
       width: 30px;
       height: 30px;
     }
   }
-  &__window  {
+  &__window {
     position: relative;
     max-width: 430px;
     width: 100%;
@@ -126,11 +129,11 @@
       }
     }
 
-    &-checkbox{
+    &-checkbox {
       display: flex;
       align-items: center;
 
-      &--wrapper{
+      &--wrapper {
         display: flex;
         justify-content: space-between;
         margin-top: 20px;
@@ -147,7 +150,7 @@
       flex-direction: column;
       color: #333;
       font-size: 12px;
-      &--reset{
+      &--reset {
         padding-top: 20px;
       }
 
@@ -198,38 +201,44 @@
   opacity: 0;
   pointer-events: none;
 }
-.reset__window{
+
+// Bugfix dla skakających okien
+.is-hidden-bugfix {
+  display: none;
+}
+
+.reset__window {
   height: 500px;
   box-shadow: none;
 }
 
 @media screen and (min-width: 480px) {
   .logo {
-      &__link {
-        font-size: 22px;
-      }
-      &__icon {
-        width: 30px;
-        height: 30px;
-      }
+    &__link {
+      font-size: 22px;
     }
+    &__icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
 
-    .sign {
-      &__form {
-        padding: 30px;
+  .sign {
+    &__form {
+      padding: 30px;
 
-        &-title {
-          font-size: 27px;
+      &-title {
+        font-size: 27px;
+      }
+
+      &-text {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        &--link {
+          margin-left: 10px;
         }
-
-        &-text {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          &--link{
-           margin-left: 10px;
-          }
       }
     }
-}
+  }
 }

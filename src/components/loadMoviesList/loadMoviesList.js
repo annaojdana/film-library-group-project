@@ -25,6 +25,3 @@ import paginationSizeChange from '../pagination/pagination-mediaQuery';
 import '../movieModal/movieModal';
 import { initializeModal } from '../movieModal/movieModal';
 initializeModal();
-
-// // Obsługa spinnera
-// import '../loader/loader';

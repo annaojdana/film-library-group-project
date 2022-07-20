@@ -1,7 +1,4 @@
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import spinner from '../loader/loader';
-import loader from '../loader/loader';
-
+import { displayLoader } from '../loader/loader';
 import { renderCollection } from '../renderSearchMovie/renderSearchMovie';
 export let searchQuery;
 
@@ -18,6 +15,7 @@ if (
   const search_btn = document.querySelector('[data-search]');
 
   function searchHandler() {
+    displayLoader();
     searchQuery = search_form.value;
     if (searchQuery === '') {
       document.querySelector('.not-found').classList.remove('is-hidden');
@@ -26,7 +24,6 @@ if (
       document.querySelector('.not-found').classList.add('is-hidden');
     }
     renderCollection(searchQuery, 1);
-    spinner();
   }
 
   search_btn.addEventListener('click', searchHandler);
