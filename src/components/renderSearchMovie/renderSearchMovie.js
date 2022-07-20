@@ -56,13 +56,13 @@ export function renderCollection(searchQuery, pageNum) {
   const filmList = document.querySelector('[data-markup-output]');
   fetchMovieByQuery(searchQuery, pageNum).then(response => {
     if (response.total_results === 0) {
-      document.querySelector('.not-found').classList.remove('is-hidden');
+      document.querySelector('.not-found').classList.remove('display-none');
       filmList.innerHTML = '';
       removePagination();
       removeLoader();
       return;
     } else {
-      document.querySelector('.not-found').classList.add('is-hidden');
+      document.querySelector('.not-found').classList.add('display-none');
     }
 
     filmList.innerHTML = htmlMarkup(response.results);
