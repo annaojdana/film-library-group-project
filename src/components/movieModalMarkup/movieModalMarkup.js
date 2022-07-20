@@ -80,7 +80,6 @@ export default function movieModalMarkup(id) {
 
   fetchMoviesById(id)
     .then(response => {
-      console.log('modal render');
       htmlOutput.insertAdjacentHTML('beforeend', htmlMarkup(response));
       removeModalLoader();
       return;

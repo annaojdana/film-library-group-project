@@ -16,7 +16,7 @@ if (localStorage.getItem('watched') === null) {
 modalWrapper.addEventListener('click', localStorageSupport);
 
 if (modalWrapper.querySelector('.modal__btns')) {
-  console.log('tak ma');
+  console.log('');
 }
 
 function localStorageSupport(evt) {

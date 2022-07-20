@@ -74,7 +74,6 @@ export function renderCollection(searchQuery, pageNum) {
     element.innerHTML = createPagination(totalPages, page);
     markupOutput.dataset.outputType = 'search';
     initializeModal();
-    console.log('remove loader');
     removeLoader();
   });
 }

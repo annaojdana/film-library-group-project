@@ -160,8 +160,6 @@ export default function moviesListMarkup(
       break;
 
     case 'watched':
-      console.log('display loader');
-
       displayLoader();
 
       if (getFromLocalStorage('watched') !== []) {
@@ -174,7 +172,6 @@ export default function moviesListMarkup(
       break;
 
     case 'queue':
-      console.log('display loader');
       displayLoader();
 
       if (getFromLocalStorage('queue') !== []) {
