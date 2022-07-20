@@ -78,6 +78,7 @@ export default function movieModalMarkup(id) {
   // Variable for selecting output tag
   const htmlOutput = document.querySelector('.modal--wrapper');
 
+  htmlOutput;
   fetchMoviesById(id)
     .then(response => {
       htmlOutput.insertAdjacentHTML('beforeend', htmlMarkup(response));
