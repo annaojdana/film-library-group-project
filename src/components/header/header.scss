@@ -48,7 +48,7 @@
   @include size(12px);
   line-height: 1.167;
 
-  &:not(:first-child){
+  &:not(:first-child) {
     margin-left: 30px;
   }
 }
