@@ -27,7 +27,9 @@ const htmlMarkup = data =>
           imgSrc = new URL('../../images/no_image.png', import.meta.url);
           imgAlt = `There is no picture for this video. Placeholder no image`;
         }
-
+        if (title.length > 35) {
+          title = title.substring(0, 34) + '...';
+        }
         if (release_date === '') {
           movieYear = 'unknown';
         }
