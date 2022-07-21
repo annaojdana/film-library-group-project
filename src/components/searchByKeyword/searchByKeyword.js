@@ -18,10 +18,10 @@ if (
     displayLoader();
     searchQuery = search_form.value;
     if (searchQuery === '') {
-      document.querySelector('.not-found').classList.remove('is-hidden');
+      document.querySelector('.not-found').classList.remove('display-none');
       return;
     } else {
-      document.querySelector('.not-found').classList.add('is-hidden');
+      document.querySelector('.not-found').classList.add('display-none');
     }
     renderCollection(searchQuery, 1);
   }
