@@ -24,7 +24,6 @@ function closeModal() {
 
 function openModal() {
   modalTeam.classList.remove('is-hidden');
-  console.log(modalTeam);
   backdrop.addEventListener('keydown', closeEscKey);
   disableScrolling();
 }
