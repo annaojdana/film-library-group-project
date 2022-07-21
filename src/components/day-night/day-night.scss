@@ -20,6 +20,9 @@
       color: $mainBgColor;
     }
   }
+  & .modal {
+    background-color: $bodyBgNight;
+  }
 }
 
 .dark-theme--footer {
