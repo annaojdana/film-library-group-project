@@ -13,8 +13,12 @@
     color: $secondFontColor;
   }
 
-  & .student__name {
+  & .student__linkedin {
     color: $secondFontColor;
+    &:hover,
+    &:focus {
+      color: $mainBgColor;
+    }
   }
 }
 
