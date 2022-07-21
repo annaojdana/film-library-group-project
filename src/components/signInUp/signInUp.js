@@ -1,10 +1,6 @@
 import movieModalMarkup from '../movieModalMarkup/movieModalMarkup';
 import './signInUp.scss';
 
-//day-night
-import '../day-night/day-night';
-import '../day-night/day-night-LS';
-
 const signModal = document.querySelector('[data-signIn]');
 const closeBtn = document.querySelectorAll('[data-sign-close]');
 const closeResetBtn = document.querySelector('[data-reset-close]');
