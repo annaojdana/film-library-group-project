@@ -7,7 +7,7 @@ startHiding();
 // Nagłówek
 import './components/header/header';
 import './components/loadMoviesList/loadMoviesList';
-
+import './components/headerLibrary/headerLibrary';
 
 // Rendering popularnych filmów na stronę główną i wywołanie funkcji dla 'trending'
 import moviesListMarkup from './components/moviesListMarkup/moviesListMarkup';
@@ -27,3 +27,7 @@ import './components/authentication/authentication';
 
 //popup
 import './components/popup/popup';
+
+//day-night
+import './components/day-night/day-night';
+import './components/day-night/day-night-LS';

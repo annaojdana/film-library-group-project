@@ -4,7 +4,8 @@ import {
   enableScrolling,
 } from '../scrollToggle/scrollToggle';
 import './teamModal.scss';
-
+import { confetti } from './confetti'; 
+  
 const teamLink = document.querySelector('[data-team]');
 const closeModalBtn = document.querySelector('[data-team-modal-close]');
 const modalTeam = document.querySelector('[data-team-modal]');
@@ -26,6 +27,8 @@ function openModal() {
   modalTeam.classList.remove('is-hidden');
   backdrop.addEventListener('keydown', closeEscKey);
   disableScrolling();
+  confetti();
+
 }
 function closeEscKey(e) {
   let keyCode = e.keyCode;
@@ -40,3 +43,7 @@ function closeByClick(e) {
     closeModal();
   }
 }
+
+
+
+

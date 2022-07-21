@@ -21,10 +21,32 @@
     display: inline-block;
     width: 14px;
     height: 12px;
+    animation: heartbeat 1s infinite;
   }
 
   &__link {
     color: inherit;
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(0.75);
+  }
+  20% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.75);
+  }
+  60% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(0.75);
   }
 }
 
