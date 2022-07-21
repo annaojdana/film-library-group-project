@@ -1,0 +1,117 @@
+@import '../../scss/mixin';
+@import '../../scss/variables';
+
+.account {
+  &--backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 0 20px;
+    background: linear-gradient(
+      180deg,
+      rgba(2, 0, 36, 1) 25%,
+      rgb(245, 132, 58) 100%
+    );
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 99;
+  }
+  &__close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: transparent;
+    border: none;
+
+    &-btn {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &__side {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    width: 90%;
+    max-width: 700px;
+    height: 300px;
+    background: $modalBgColor;
+    border-radius: 15px;
+    &--left {
+      overflow: hidden;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      width: 20%;
+      height: 100%;
+      background: #fafafa;
+      border-right: solid 1px #ddd;
+    }
+    &--right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      width: 80%;
+    }
+  }
+  &__link {
+    text-decoration: none;
+    color: $fontColor;
+    font-weight: $mainFontWieght;
+  }
+  &__icon {
+    fill: $fontColor;
+    stroke: $fontColor;
+    width: 20px;
+    height: 20px;
+  }
+  &__title {
+    margin-bottom: 15px;
+    color: $fontColor;
+    font-size: 25px;
+    text-align: center;
+  }
+  &__text {
+    color: $fontColor;
+    font-size: 12px;
+  }
+}
+
+.checked {
+  color: #ff6b08;
+}
+
+#general,
+#avatar,
+#password,
+#delete-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  margin-top: -100px;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+#general.active-side,
+#password.active-side,
+#avatar.active-side,
+#dele-account.active-side {
+  margin-top: 0;
+  display: flex;
+  opacity: 1;
+}
