@@ -7,6 +7,8 @@ import {
 const closeAccountBtn = document.querySelector('[data-account-close]');
 const modalAccount = document.querySelector('[data-account]');
 const backdrop = document.querySelector('body');
+const avatarUplaoder = document.querySelector('.account__uploader');
+const avatarImage = document.querySelector('.account__img');
 
 const links = [...document.querySelectorAll('.account__link')];
 const cards = [...document.querySelectorAll('.account__card')];
@@ -25,17 +27,10 @@ const setCard = el => {
       : sib.classList.add('active-card');
   });
 };
-
 const accountSupport = el => {
   checkActiveIcon(el);
   setCard(el);
 };
-
-links.forEach(el =>
-  el.addEventListener('click', e => {
-    return accountSupport(el);
-  })
-);
 
 const closeModal = () => {
   console.log('object');
@@ -52,7 +47,6 @@ const openModal = () => {
 const closeEscKey = e => {
   let keyCode = e.keyCode;
   if (keyCode === 27) {
-    //keycode is an Integer, not a String
     closeModal();
   }
 };
@@ -62,5 +56,21 @@ const closeByClick = e => {
     closeModal();
   }
 };
+const setAvatar = input => {
+  let file = input.target.files[0];
+  let reader = new FileReader();
+
+  reader.onload = () => {
+    let dataUrl = reader.result;
+    avatarImage.style.backgroundImage = `url('${dataUrl}')`;
+  };
+  reader.readAsDataURL(file);
+};
 closeAccountBtn.addEventListener('click', closeModal);
 modalAccount.addEventListener('click', closeByClick);
+avatarUplaoder.addEventListener('change', setAvatar);
+links.forEach(el =>
+  el.addEventListener('click', e => {
+    return accountSupport(el);
+  })
+);
