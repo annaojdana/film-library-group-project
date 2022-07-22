@@ -1,7 +1,6 @@
 @import '../../scss/mixin';
 @import '../../scss/variables';
 
-
 .team {
   &--wrapper {
     padding: 48px 25px 41px;
@@ -15,6 +14,7 @@
   &__icon {
     margin: 0 10px;
     width: 20px;
+    animation: heartbeat 1s infinite;
   }
 }
 
@@ -57,9 +57,9 @@
   }
 }
 @media screen and (min-width: 480px) {
-.team{
-  width: 450px;
-}
+  .team {
+    width: 450px;
+  }
 }
 @media screen and (min-width: 768px) {
   .team {
@@ -117,7 +117,6 @@
 
     &__name {
       font-size: 25px;
-
     }
   }
 }

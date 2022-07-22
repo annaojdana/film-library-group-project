@@ -4,7 +4,7 @@ import 'notiflix/dist/notiflix-3.2.5.min.css';
 
 const signModal = document.querySelector('[data-signIn]');
 const signInLink = document.querySelector('.nav__signIn');
-const logoutLink = document.querySelector('.nav__logout');
+const accountBtn = document.querySelector('.nav__account');
 
 export function showLoginForm() {
   signModal.classList.remove('is-hidden');
@@ -29,17 +29,17 @@ export function showLoginError(error) {
 
 export function hideSignIn() {
   signInLink.style.display = 'none';
-  logoutLink.style.display = 'list-item';
+  accountBtn.style.display = 'list-item';
 }
 
 export function showSignIn() {
-  logoutLink.style.display = 'none';
+  accountBtn.style.display = 'none';
   signInLink.style.display = 'list-item';
 }
 
 export function startHiding() {
   signInLink.style.display = 'none';
-  logoutLink.style.display = 'none';
+  accountBtn.style.display = 'none';
 }
 
 export function showLoginState(user) {

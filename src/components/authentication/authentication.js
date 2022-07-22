@@ -53,7 +53,7 @@ const resetForm = document.querySelector('.reset-form');
 const [emailForReset] = resetForm.elements;
 const resetBtn = document.querySelector('.reset-btn');
 
-const logoutBtn = document.querySelector('.logout-link');
+const logoutBtn = document.querySelector('.account__logout');
 
 // Logging into account
 const loginWithEmailAndPassword = async evt => {

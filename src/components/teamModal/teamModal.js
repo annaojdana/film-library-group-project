@@ -4,7 +4,8 @@ import {
   enableScrolling,
 } from '../scrollToggle/scrollToggle';
 import './teamModal.scss';
-
+import { confetti } from './confetti'; 
+  
 const teamLink = document.querySelector('[data-team]');
 const closeModalBtn = document.querySelector('[data-team-modal-close]');
 const modalTeam = document.querySelector('[data-team-modal]');
@@ -19,8 +20,10 @@ const openModal = () => {
   modalTeam.classList.remove('is-hidden');
   backdrop.addEventListener('keydown', closeEscKey);
   disableScrolling();
+   confetti();
 };
 const closeEscKey = e => {
+
   let keyCode = e.keyCode;
   if (keyCode === 27) {
     //keycode is an Integer, not a String
