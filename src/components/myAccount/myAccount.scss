@@ -2,36 +2,13 @@
 @import '../../scss/variables';
 
 .account {
-  &--backdrop {
-    position: fixed;
-    left: 0;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    padding: 0 20px;
-    background: linear-gradient(
-      180deg,
-      rgba(2, 0, 36, 1) 25%,
-      rgb(245, 132, 58) 100%
-    );
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-    transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 99;
-  }
   &__close {
     position: absolute;
     top: 8px;
     right: 0px;
     background-color: transparent;
     border: none;
-
+    z-index: 2;
     &-btn {
       width: 25px;
       height: 25px;
@@ -43,7 +20,7 @@
     overflow: hidden;
     display: flex;
     width: 98%;
-    max-width: 700px;
+    max-width: 500px;
     height: 485px;
     background: $modalBgColor;
     border-radius: 15px;
@@ -100,7 +77,6 @@
     background-image: url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png');
     background-repeat: no-repeat;
     background-size: cover;
-
   }
   &__form {
     &--wrapper {
@@ -172,4 +148,109 @@
   display: flex;
   flex-direction: column;
   opacity: 1;
+}
+
+@media screen and (min-width: 450px) {
+  .account {
+    &__side {
+      &--right {
+        padding: 25px;
+      }
+    }
+    &__icon {
+      width: 30px;
+      height: 25px;
+    }
+    &__title {
+      font-size: 18px;
+    }
+    &__text {
+      font-size: 14px;
+    }
+    &__form {
+      &-input {
+        padding: 0 10px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .account {
+    &__side {
+      &--left {
+        padding: 0 30px;
+      }
+      &--right {
+        padding: 20px 30px;
+      }
+    }
+    &__close {
+      &-btn {
+        width: 30px;
+        height: 30px;
+      }
+    }
+    &__icon {
+      width: 35px;
+      height: 30px;
+    }
+    &__title {
+      font-size: 20px;
+    }
+    &__text {
+      font-size: 14px;
+    }
+    &__form {
+      &-input {
+        padding: 0 10px;
+        font-size: 16px;
+      }
+      &-button {
+        height: 50px;
+        margin-top: 25px;
+        font-size: 18px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .account {
+    &__side {
+      max-width: 700px;
+      &--left {
+        padding: 0 40px;
+      }
+      &--right {
+        padding: 20px 50px;
+      }
+    }
+    &__close {
+      &-btn {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    &__icon {
+      width: 40px;
+      height: 35px;
+    }
+    &__title {
+      font-size: 22px;
+    }
+    &__text {
+      font-size: 14px;
+    }
+    &__form {
+      &-input {
+        padding: 0 15px;
+        font-size: 18px;
+      }
+      &-button {
+        height: 50px;
+        margin-top: 25px;
+        font-size: 18px;
+      }
+    }
+  }
 }
