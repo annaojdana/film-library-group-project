@@ -141,10 +141,10 @@
   transition: all 0.2s ease-in-out;
 }
 
-#general.active-side,
-#password.active-side,
-#avatar.active-side,
-#delete-account.active-side {
+#general.active-card,
+#password.active-card,
+#avatar.active-card,
+#delete-account.active-card {
   display: flex;
   flex-direction: column;
   opacity: 1;
