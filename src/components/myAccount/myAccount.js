@@ -1,16 +1,10 @@
 import './myAccount.scss';
-import './../../scss/_backdrop.scss';
 import {
   disableScrolling,
   enableScrolling,
 } from '../scrollToggle/scrollToggle';
 
-const generalIcon = document.querySelector('.general'),
-  passwordIcon = document.querySelector('.password'),
-  avatarIcon = document.querySelector('.avatar'),
-  deleteIcon = document.querySelector('.delete-account');
-
-const closeModalBtn = document.querySelector('[data-account-close]');
+const closeAccountBtn = document.querySelector('[data-account-close]');
 const modalAccount = document.querySelector('[data-account]');
 const backdrop = document.querySelector('body');
 
@@ -45,7 +39,7 @@ links.forEach(el =>
 
 const closeModal = () => {
   console.log('object');
-  modalAccount.classList.add('is-hidden');
+  modalAccount.classList.add('is-hidden-account');
   backdrop.removeEventListener('keydown', closeEscKey);
   enableScrolling();
 };
@@ -63,6 +57,10 @@ const closeEscKey = e => {
   }
 };
 
-closeModalBtn.addEventListener('click', closeModal);
-// modalAccount.addEventListener('click', closeByClick);
-// accountLink.addEventListener('click', openModal);
+const closeByClick = e => {
+  if (e.target === modalAccount) {
+    closeModal();
+  }
+};
+closeAccountBtn.addEventListener('click', closeModal);
+modalAccount.addEventListener('click', closeByClick);

@@ -2,6 +2,29 @@
 @import '../../scss/variables';
 
 .account {
+  &__backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+
+    // Mobile url bar overflow bugfix
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
+    padding: 0 20px;
+
+    background-color: rgba(0, 0, 0, 0.2);
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 99;
+  }
   &__close {
     position: absolute;
     top: 8px;
@@ -21,7 +44,7 @@
     display: flex;
     width: 98%;
     max-width: 500px;
-    height: 485px;
+    height: 500px;
     background: $modalBgColor;
     border-radius: 15px;
     &--left {
@@ -63,7 +86,8 @@
     text-transform: uppercase;
   }
   &__text {
-    color: $fontColor;
+    margin-top: 20px;
+    color: $mainFontColor;
     font-size: 12px;
   }
   &__uploader {
@@ -150,7 +174,7 @@
   opacity: 1;
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 425px) {
   .account {
     &__side {
       &--right {
@@ -172,6 +196,11 @@
         padding: 0 10px;
         font-size: 16px;
       }
+    }
+    &__img {
+      margin-top: 50px;
+      width: 170px;
+      height: 170px;
     }
   }
 }
@@ -211,6 +240,11 @@
         margin-top: 25px;
         font-size: 18px;
       }
+    }
+    &__img {
+      margin-top: 50px;
+      width: 200px;
+      height: 200px;
     }
   }
 }
@@ -252,5 +286,16 @@
         font-size: 18px;
       }
     }
+    &__img {
+      margin-top: 50px;
+      margin-bottom: 20px;
+      width: 250px;
+      height: 250px;
+    }
   }
+}
+.is-hidden-account {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
