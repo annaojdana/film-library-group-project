@@ -17,13 +17,21 @@ const modalAccount = document.querySelector('[data-account]');
 const backdrop = document.querySelector('body');
 
 const links = [...document.querySelectorAll('.account__link')];
+const cards = [...document.querySelectorAll('.account__card')];
 const setActive = el => {
   [...el.parentElement.children].forEach(sib =>
   sib.children[0].classList.remove('checked')
   );
 el.children[0].classList.add('checked');
 }
-links.forEach(el => el.addEventListener('click', e => setActive(el)));
+const  accountSupport = el => {
+  setActive(el);
+}
+
+
+links.forEach(el => el.addEventListener('click', e => {
+  return accountSupport(el);
+}));
 
 const closeModal = () => {
   console.log("object");
@@ -44,12 +52,7 @@ const closeEscKey = (e) => {
     closeModal();
   }
 }
-const changeSide = (icon) => {
-  icon.path[1].classList.toggle('checked');
-  // icon.classList.remove('is-hidden');
-  // backdrop.addEventListener('keydown', closeEscKey);
-  // disableScrolling();
-}
+
 
 closeModalBtn.addEventListener('click', closeModal);
 // modalAccount.addEventListener('click', closeByClick);
