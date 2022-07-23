@@ -6,26 +6,50 @@
       </svg>
     </button>
     <div class="account__side--left">
-      <a href="#general" class="account__link general" title="general"><svg class="account__icon checked">
+      <a href="#info" class="account__link info" title="profile-info">
+        <svg class="account__icon checked">
           <use href="./images/sprite.svg#profile"></use>
         </svg>
-
       </a>
-      <a href="#password" class="account__link password" title="password"><svg class="account__icon">
+      <a href="#general" class="account__link general" title="general">
+        <svg class="account__icon">
+          <use href="./images/sprite.svg#general"></use>
+        </svg>
+      </a>
+      <a href="#password" class="account__link password" title="password">
+        <svg class="account__icon">
           <use href="./images/sprite.svg#key"></use>
         </svg>
       </a>
-      <a href="#avatar" class="account__link avatar" title="avatar"><svg class="account__icon">
+      <a href="#avatar" class="account__link avatar" title="avatar">
+        <svg class="account__icon">
           <use href="./images/sprite.svg#user"></use>
         </svg>
       </a>
-      <a href="#delete-account" class="account__link delete-account" title="delete-account"><svg class="account__icon">
+      <a href="#delete-account" class="account__link delete-account" title="delete-account">
+        <svg class="account__icon">
           <use href="./images/sprite.svg#bin"></use>
         </svg>
       </a>
     </div>
     <div class="account__side--right">
-      <div id="general" class="account__card active-card">
+      <div id="info" class="account__card active-card">
+        <h3 class="account__title">Profile information</h3>
+        <div class="account__info">
+          <img class="info__photo" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Profile photo">
+          <p class="info__label">Username: 
+            <span class="info__value info__name"></span>
+          </p>
+          <p class="info__label">E-mail: 
+            <span class="info__value info__email"></span>
+          </p>
+          <p class="info__label">Phone number: 
+            <span class="info__value info__phone"></span>
+          </p>
+        </div>
+      </div>
+
+      <div id="general" class="account__card">
         <h3 class="account__title">General account settings</h3>
         <form class="general-form account__form--wrapper" action="#">
           <div class="account__form-field">
@@ -68,6 +92,7 @@
             <input class="account__form-input" type="password" name="newPassword" autocomplete="newPassword"
               placeholder="Create a new password" required />
           </div>
+
           <div class="account__form-field">
             <input class="account__form-input" type="password" name="confirmNewPassword"
               autocomplete="confirmNewPassword" placeholder="Confirm a new password" required />

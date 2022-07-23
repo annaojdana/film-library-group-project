@@ -1,3 +1,9 @@
 @mixin size($height) {
   font-size: $height;
 }
+
+@mixin bordered-U($width, $color) {
+  border-right: $width solid $color;
+  border-bottom: $width solid $color;
+  border-left: $width solid $color;
+}

@@ -25,6 +25,7 @@
       opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 99;
   }
+
   &__close {
     position: absolute;
     top: 8px;
@@ -47,6 +48,7 @@
     height: 500px;
     background: $modalBgColor;
     border-radius: 15px;
+
     &--left {
       overflow: hidden;
       padding: 0 20px;
@@ -57,6 +59,7 @@
       background: #fafafa;
       border-right: solid 1px #ddd;
     }
+
     &--right {
       position: relative;
       display: flex;
@@ -66,6 +69,7 @@
       height: 100%;
     }
   }
+
   &__link {
     text-decoration: none;
     color: $iconColor;
@@ -74,25 +78,30 @@
       display: none;
     }
   }
+
   &__icon {
     fill: $iconColor;
     width: 25px;
     height: 20px;
   }
+
   &__title {
     margin: 10px 0;
     color: $fontColor;
     font-size: 16px;
     text-transform: uppercase;
   }
+
   &__text {
     margin-top: 20px;
     color: $mainFontColor;
     font-size: 12px;
   }
+
   &__uploader {
     display: none;
   }
+
   &__img {
     margin-top: 20px;
     border-radius: 50%;
@@ -101,13 +110,16 @@
     background-image: url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png');
     background-repeat: no-repeat;
     background-size: cover;
+    cursor: pointer;
   }
+
   &__form {
     &--wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
+
     &-field {
       margin-top: 15px;
       height: 50px;
@@ -116,6 +128,7 @@
         color: #333;
       }
     }
+
     &-input {
       height: 100%;
       width: 100%;
@@ -131,6 +144,7 @@
         border-bottom-color: #ff6b08;
       }
     }
+
     &-button {
       width: 80%;
       height: 40px;
@@ -138,7 +152,7 @@
       border: none;
       color: $secondFontColor;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: $mainFontWieght;
       letter-spacing: 1px;
       border-radius: 6px;
       background-color: #ff6b08;
@@ -151,10 +165,31 @@
     }
   }
 }
+
+.info {
+  &__photo {
+    width: 150px;
+    height: 150px;
+    margin: 15px auto 20px auto;
+    border-radius: 50%;
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: $mainFontWieght;
+    color: $fontColor;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
 .checked {
   fill: #ff6b08;
 }
 
+#info,
 #general,
 #avatar,
 #password,
@@ -165,6 +200,7 @@
   transition: all 0.2s ease-in-out;
 }
 
+#info.active-card,
 #general.active-card,
 #password.active-card,
 #avatar.active-card,
@@ -247,6 +283,12 @@
       height: 200px;
     }
   }
+
+  .info {
+    &__label {
+      font-size: 14px;
+    }
+  }
 }
 @media screen and (min-width: 1024px) {
   .account {
@@ -293,7 +335,14 @@
       height: 250px;
     }
   }
+
+  .info {
+    &__photo {
+      margin: 15px auto 30px auto;
+    }
+  }
 }
+
 .is-hidden-account {
   visibility: hidden;
   opacity: 0;
