@@ -5,16 +5,20 @@ import 'notiflix/dist/notiflix-3.2.5.min.css';
 const signModal = document.querySelector('[data-signIn]');
 const signInLink = document.querySelector('.nav__signIn');
 const accountBtn = document.querySelector('.nav__account');
+const photoOutput = document.querySelector('.info__photo');
+const usernameOutput = document.querySelector('.info__name');
+const emailOutput = document.querySelector('.info__email');
+const phoneOutput = document.querySelector('.info__phone');
 
-export function showLoginForm() {
+export const showLoginForm = () => {
   signModal.classList.remove('is-hidden');
 }
 
-export function hideLoginForm() {
+export const hideLoginForm = () => {
   signModal.classList.add('is-hidden');
 }
 
-export function showLoginError(error) {
+export const showLoginError = (error) => {
   console.log(error);
   if (error.code === 'auth/wrong-password') {
     Notiflix.Notify.failure('Wrong password! Try again.');
@@ -27,21 +31,39 @@ export function showLoginError(error) {
   }
 }
 
-export function hideSignIn() {
+export const hideSignIn = () => {
   signInLink.style.display = 'none';
   accountBtn.style.display = 'list-item';
 }
 
-export function showSignIn() {
+export const showSignIn = () => {
   accountBtn.style.display = 'none';
   signInLink.style.display = 'list-item';
 }
 
-export function startHiding() {
+export const startHiding = () => {
   signInLink.style.display = 'none';
   accountBtn.style.display = 'none';
 }
 
-export function showLoginState(user) {
-  Notiflix.Notify.success(`You are logged in as ${user.displayName}`);
+export const showLoginState = ({displayName}) => {
+  Notiflix.Notify.success(`You are logged in as ${displayName}`);
+}
+
+export const setUserInfo = ({photoURL, displayName, email, phoneNumber}) => {
+  (photoURL)
+    ? photoOutput.src = photoURL
+    : phoneOutput.src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+
+  (displayName)
+    ? usernameOutput.innerHTML = displayName
+    : usernameOutput.innerHTML = "-";
+
+  (email)
+    ? emailOutput.innerHTML = email
+    : emailOutput.innerHTML = "-";
+
+  (phoneNumber)
+    ? phoneOutput.innerHTML = phoneNumber
+    : phoneOutput.innerHTML = "-";
 }

@@ -183,6 +183,12 @@
       margin-bottom: 10px;
     }
   }
+
+  &__value {
+    display: block;
+    margin-top: 2px;
+    font-weight: $secondFontWieght;
+  }
 }
 
 .checked {
@@ -217,66 +223,87 @@
         padding: 25px;
       }
     }
+
     &__icon {
       width: 30px;
       height: 25px;
     }
+
     &__title {
       font-size: 18px;
     }
+
     &__text {
       font-size: 14px;
     }
+
     &__form {
       &-input {
         padding: 0 10px;
         font-size: 16px;
       }
     }
+
     &__img {
       margin-top: 20px;
       width: 170px;
       height: 170px;
     }
   }
+
+  .info {
+    &__value {
+      display: inline;
+      margin-top: 0;
+    }
+  }
 }
+
 @media screen and (min-width: 768px) {
   .account {
     &__side {
       &--left {
         padding: 0 30px;
       }
+
       &--right {
         padding: 20px 30px;
       }
     }
+
     &__close {
       &-btn {
         width: 30px;
         height: 30px;
       }
     }
+
     &__icon {
       width: 35px;
       height: 30px;
     }
+
     &__title {
       font-size: 20px;
     }
+
     &__text {
       font-size: 14px;
     }
+
     &__form {
       &-input {
         padding: 0 10px;
         font-size: 16px;
       }
+
       &-button {
         height: 50px;
         margin-top: 25px;
         font-size: 18px;
       }
     }
+
     &__img {
       margin-top: 50px;
       width: 200px;
@@ -288,46 +315,60 @@
     &__label {
       font-size: 14px;
     }
+
+    &__value {
+      display: inline;
+      margin-top: 0;
+    }
   }
 }
 @media screen and (min-width: 1024px) {
   .account {
     &__side {
       max-width: 700px;
+
       &--left {
         padding: 0 40px;
       }
+
       &--right {
         padding: 20px 50px;
       }
     }
+
     &__close {
       &-btn {
         width: 40px;
         height: 40px;
       }
     }
+
     &__icon {
       width: 40px;
       height: 35px;
     }
+
     &__title {
       font-size: 22px;
     }
+
     &__text {
       font-size: 14px;
     }
+
     &__form {
       &-input {
         padding: 0 15px;
         font-size: 18px;
       }
+
       &-button {
         height: 50px;
         margin-top: 25px;
         font-size: 18px;
       }
     }
+    
     &__img {
       margin-top: 20px;
       margin-bottom: 20px;

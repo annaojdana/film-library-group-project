@@ -17,6 +17,7 @@ import {
   hideLoginForm,
   showLoginError,
   showLoginState,
+  setUserInfo,
 } from '../authSupport/authSupport';
 import resetWindowClose from '../signInUp/signInUp';
 import Notiflix from 'notiflix';
@@ -69,29 +70,30 @@ const loginWithEmailAndPassword = async evt => {
   } else {
     try {
       if (rememberMe.checked === false) {
-       setPersistence(auth, browserSessionPersistence)
-      .then(() => {
-        // Existing and future Auth states are now persisted in the current
-        // session only. Closing the window would clear any existing state even
-        // if a user forgets to sign out.
-        // ...
-        // New sign-in will be persisted with session persistence.
-        const userCredential = signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-        return userCredential;
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
-
+        setPersistence(auth, browserSessionPersistence)
+          .then(() => {
+            // Existing and future Auth states are now persisted in the current
+            // session only. Closing the window would clear any existing state even
+            // if a user forgets to sign out.
+            // ...
+            // New sign-in will be persisted with session persistence.
+            const userCredential = signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+            return userCredential;
+          })
+          .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
       }
       const userCredential = await signInWithEmailAndPassword(
         auth,
         loginEmail,
         loginPassword
       );
-      showLoginState(userCredential.user);
+      const user = userCredential.user;
+      showLoginState(user);
+      setUserInfo(user);
     } catch (error) {
       showLoginError(error);
     }
@@ -130,7 +132,8 @@ const createAccount = async evt => {
       const email = user.email;
       const username = email.split('@').shift();
       await updateProfile(auth.currentUser, { displayName: username });
-      showLoginState(userCredential.user);
+      showLoginState(user);
+      setUserInfo(user);
     } catch (error) {
       console.log(error);
       showLoginError(error);
@@ -167,8 +170,8 @@ export const checkAuthState = async () => {
     if (user) {
       console.log(user);
       hideLoginForm();
-
       hideSignIn();
+      setUserInfo(user);
     } else {
       showSignIn();
     }
