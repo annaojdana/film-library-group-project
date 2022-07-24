@@ -34,7 +34,7 @@ const accountSupport = el => {
   setCard(el);
 };
 
-const closeModal = () => {
+export const closeModal = () => {
   modalAccount.classList.add('is-hidden-account');
   backdrop.removeEventListener('keydown', closeEscKey);
   enableScrolling();

@@ -10,6 +10,8 @@ import {
   setPersistence,
   browserSessionPersistence,
   sendPasswordResetEmail,
+  updatePhoneNumber,
+  updateEmail,
 } from 'firebase/auth';
 import {
   hideSignIn,
@@ -20,6 +22,7 @@ import {
   setUserInfo,
 } from '../authSupport/authSupport';
 import resetWindowClose from '../signInUp/signInUp';
+import { closeModal } from '../myAccount/myAccount';
 import Notiflix from 'notiflix';
 import 'notiflix/dist/notiflix-3.2.5.min.css';
 
@@ -39,6 +42,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 // Firebase authentication initiaization (creating instance of auth)
 const auth = getAuth(firebaseApp);
+
 // Inputs for login form
 const loginForm = document.querySelector('.login-form');
 const [email, password, rememberMe] = loginForm.elements;
@@ -56,8 +60,11 @@ const resetBtn = document.querySelector('.reset-btn');
 
 const logoutBtn = document.querySelector('.account__logout');
 
+// Inputs for account update
+const userUpdateForm = document.querySelector('.general-form');
+
 // Logging into account
-const loginWithEmailAndPassword = async evt => {
+const loginWithEmailAndPassword = async (evt) => {
   evt.preventDefault();
   const loginEmail = email.value;
   const loginPassword = password.value;
@@ -103,7 +110,7 @@ const loginWithEmailAndPassword = async evt => {
 loginBtn.addEventListener('click', loginWithEmailAndPassword);
 
 // Sign Up and logging into account after sign up
-const createAccount = async evt => {
+const createAccount = async (evt) => {
   evt.preventDefault();
   const signUpEmail = newEmail.value;
   const signUpPassword = newPassword.value;
@@ -144,8 +151,7 @@ const createAccount = async evt => {
 signUpBtn.addEventListener('click', createAccount);
 
 // Reset password
-
-const resetPassword = async evt => {
+const resetPassword = async (evt) => {
   evt.preventDefault();
   const emailValue = emailForReset.value;
 
@@ -180,9 +186,53 @@ export const checkAuthState = async () => {
 
 checkAuthState();
 
+// Account logout
 const logout = async () => {
   await signOut(auth);
   Notiflix.Notify.info('You have been logged out.');
 };
 
 logoutBtn.addEventListener('click', logout);
+
+// Account update (username, phone number and email)
+const userDataUpdate = async (evt) => {
+  evt.preventDefault();
+  const [username, phoneNumber, newEmail, currentEmail, confirmPassword] = evt.currentTarget.elements;
+
+  if ((username.value || phoneNumber.value || newEmail.value) == "") {
+    Notiflix.Notify.warning('Fill data you want to change.');
+  } else if (currentEmail.value === "") {
+    Notiflix.Notify.warning('Confirm with current email!');
+  } else if (confirmPassword.value === "") {
+    Notiflix.Notify.warning('Confirm with your password');
+  } else {
+    try {
+      if (username.value !== "") {
+        await updateProfile(auth.currentUser, {displayName: String(username.value)});
+      }
+  
+      // if (phoneNumber.value !== "") {
+      //   await updatePhoneNumber(user, String(phoneNumber.value));
+      // }
+  
+      if (newEmail.value !== "") {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          currentEmail.value,
+          confirmPassword.value,
+        );
+        const user = userCredential.user;
+        await updateEmail(user, newEmail.value);
+      }
+      
+      closeModal();
+      checkAuthState();
+      console.log(username.value, phoneNumber.value, newEmail.value, currentEmail.value);
+    } catch (error) {
+      console.log(`${error.name}: ${error.message}`);
+      Notiflix.Notify.failure('Update failed! Try again.');
+    }
+  }
+}
+
+userUpdateForm.addEventListener('submit', userDataUpdate);

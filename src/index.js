@@ -25,6 +25,7 @@ import paginationSizeChange from './components/pagination/pagination-mediaQuery'
 import './components/signInUp/signInUp';
 import './components/authentication/authentication';
 import './components/myAccount/myAccount';
+
 //popup
 import './components/popup/popup';
 

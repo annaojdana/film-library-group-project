@@ -6,27 +6,27 @@
       </svg>
     </button>
     <div class="account__side--left">
-      <a href="#info" class="account__link info" title="profile-info">
+      <a href="#info" class="account__link info" title="User information">
         <svg class="account__icon checked">
           <use href="./images/sprite.svg#profile"></use>
         </svg>
       </a>
-      <a href="#general" class="account__link general" title="general">
+      <a href="#general" class="account__link general" title="User data update">
         <svg class="account__icon">
           <use href="./images/sprite.svg#general"></use>
         </svg>
       </a>
-      <a href="#password" class="account__link password" title="password">
+      <a href="#password" class="account__link password" title="Password change">
         <svg class="account__icon">
           <use href="./images/sprite.svg#key"></use>
         </svg>
       </a>
-      <a href="#avatar" class="account__link avatar" title="avatar">
+      <a href="#avatar" class="account__link avatar" title="Avatar update">
         <svg class="account__icon">
           <use href="./images/sprite.svg#user"></use>
         </svg>
       </a>
-      <a href="#delete-account" class="account__link delete-account" title="delete-account">
+      <a href="#delete-account" class="account__link delete-account" title="Account deletion">
         <svg class="account__icon">
           <use href="./images/sprite.svg#bin"></use>
         </svg>
@@ -34,15 +34,18 @@
     </div>
     <div class="account__side--right">
       <div id="info" class="account__card active-card">
-        <h3 class="account__title">Profile information</h3>
+        <h3 class="account__title">User information</h3>
         <div class="account__info">
           <img class="info__photo" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Profile photo">
+
           <p class="info__label">Username: 
             <span class="info__value info__name"></span>
           </p>
+
           <p class="info__label">E-mail: 
             <span class="info__value info__email"></span>
           </p>
+
           <p class="info__label">Phone number: 
             <span class="info__value info__phone"></span>
           </p>
@@ -50,7 +53,7 @@
       </div>
 
       <div id="general" class="account__card">
-        <h3 class="account__title">General account settings</h3>
+        <h3 class="account__title">User data update</h3>
         <form class="general-form account__form--wrapper" action="#">
           <div class="account__form-field">
             <input class="account__form-input" type="text" name="username" autocomplete="username"
@@ -58,21 +61,25 @@
           </div>
 
           <div class="account__form-field">
-            <input class="account__form-input" type="text" name="name" autocomplete="name"
-              placeholder="Enter your name" />
+            <input class="account__form-input" type="tel" name="phoneNumber" autocomplete="phoneNumber"
+              placeholder="Enter your phone number" />
           </div>
+
           <div class="account__form-field">
-            <input class="account__form-input" type="text" name="lastName" autocomplete="lastName"
-              placeholder="Enter your last name" />
+            <input class="account__form-input" type="email" name="newEmail" autocomplete="newEmail"
+              placeholder="Enter your new e-mail" />
           </div>
+
           <div class="account__form-field">
-            <input class="account__form-input" type="number" name="age" autocomplete="age" min="5" max="120"
-              placeholder="Enter your age" />
+            <input class="account__form-input" type="email" name="currentEmail" autocomplete="currentEmail"
+              placeholder="Confirm with current e-mail" />
           </div>
+
           <div class="account__form-field">
-            <input class="account__form-input" type="email" name="email" autocomplete="email"
-              placeholder="Enter your email" required />
+            <input class="account__form-input" type="password" name="confirmPassword"
+              autocomplete="confirmPassword" placeholder="Confirm your password" />
           </div>
+
           <button type="submit" class="account__form-button general-btn">
             Update Profile
           </button>
@@ -80,7 +87,7 @@
       </div>
 
       <div id="password" class="account__card ">
-        <h3 class="account__title">Change password</h3>
+        <h3 class="account__title">Password change</h3>
 
         <form class="password-form account__form--wrapper" action="#">
           <div class="account__form-field">
@@ -97,6 +104,7 @@
             <input class="account__form-input" type="password" name="confirmNewPassword"
               autocomplete="confirmNewPassword" placeholder="Confirm a new password" required />
           </div>
+
           <button type="submit" class="account__form-button password-btn">
             Save Change
           </button>
@@ -104,8 +112,8 @@
       </div>
 
       <div id="avatar" class="account__card ">
-        <h3 class="account__title">Profile image</h3>
-        <p class="account__text">Click on the picture to choose a new one
+        <h3 class="account__title">Avatar update</h3>
+        <p class="account__text">Click on the picture to choose a new one.
         </p>
         <form class="avatar-form account__form--wrapper" action="#">
           <label class="account__img" for="imageUpload">
@@ -117,9 +125,9 @@
 
       </div>
       <div id="delete-account" class="account__card">
-        <h3 class="account__title">Delete your account</h3>
+        <h3 class="account__title">Account deletion</h3>
 
-        <p class="account__text">Are you sure you want to delete your profile ?
+        <p class="account__text">Are you sure you want to delete your account?
         </p>
 
         <form class="password-form account__form--wrapper" action="#">
