@@ -7,6 +7,7 @@ import './components/signInUp/signInUp';
 import './components/authentication/authentication';
 
 import './components/accountDropdown/accountDropdown';
+import './components/myAccount/myAccount';
 
 import './components/headerLibrary/headerLibrary';
 import './components/loadMoviesList/loadMoviesList';

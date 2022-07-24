@@ -104,8 +104,10 @@
     right: 0;
     z-index: 1;
     display: none;
-    margin-top: 6px;
-    text-align: center;
+    margin-top: 5px;
+    padding: 10px 5px 10px 0;
+    text-align: right;
+    // @include bordered-U(2px, $mainBgColor);
     border-right: 2px solid $mainBgColor;
     border-bottom: 2px solid $mainBgColor;
     border-left: 2px solid $mainBgColor;
