@@ -227,7 +227,7 @@ const userDataUpdate = async (evt) => {
       
       closeModal();
       checkAuthState();
-      console.log(username.value, phoneNumber.value, newEmail.value, currentEmail.value);
+      Notiflix.Notify.success('Data has been updated successfully.');
     } catch (error) {
       console.log(`${error.name}: ${error.message}`);
       Notiflix.Notify.failure('Update failed! Try again.');
