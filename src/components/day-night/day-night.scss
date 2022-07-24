@@ -6,6 +6,11 @@
 .dark-theme {
   background-color: $bodyBgNight;
   color: $secondFontColor;
+
+  .item {
+    box-shadow: 0 0 10px 3px rgba(182, 182, 182, 0.6);
+  }
+
   & .pagination ul {
     background-color: $bodyBgNight;
   }

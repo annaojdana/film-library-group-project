@@ -1,4 +1,4 @@
-//font variables
+// Font variables
 $mainFont: 'Roboto', sans-serif;
 $fontColor: #000000;
 $mainFontColor: #ff6b08;
@@ -9,7 +9,7 @@ $modalLabelFontColor: #8c8c8c;
 $mainFontWieght: 500;
 $secondFontWieght: 400;
 
-//background color variables
+// Background color variables
 $mainBgColor: #ff6b08;
 $bodyBgColor: #ffffff;
 $footerBgColor: #f7f7f7;
@@ -19,7 +19,10 @@ $paginationBgColor: #ffffff;
 $paginationBntBgColor: #f7f7f7;
 $bodyBgNight: #333333;
 
-//movie card variables M-mobile, T-tablet, D-desktop
+// Backdrop variables
+$backdropBgColor: #000;
+
+// Movie card variables M-mobile, T-tablet, D-desktop
 $movieCardWidthM: 280px;
 $movieCardWidthT: 294px;
 $movieCardWidthD: 274px;
@@ -28,7 +31,7 @@ $movieCardWidthD: 274px;
 $loader-color-main: #fff;
 $loader-color-modal: #000;
 
-//shadow
+// Shadow
 $modalShadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
   0px 2px 1px rgba(0, 0, 0, 0.2);
 $libraryBntShadow: 0px 8px 43px rgba(255, 107, 1, 0.6);

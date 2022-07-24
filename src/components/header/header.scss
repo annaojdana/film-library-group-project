@@ -110,20 +110,22 @@
     // @include bordered-U(2px, $mainBgColor);
     border-right: 2px solid $mainBgColor;
     border-bottom: 2px solid $mainBgColor;
+    border-left: 2px solid $mainBgColor;
 
     &--show {
       display: block;
+      width: 100%;
+      background-color: $backdropBgColor;
     }
   }
 
   &__item {
+    padding: 5px 0;
+
     &:hover,
     &:focus {
-      text-decoration: underline $mainBgColor 2px;
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 10px;
+      color: $mainFontColor;
+      background-color: rgb(71, 71, 71);
     }
   }
 }
