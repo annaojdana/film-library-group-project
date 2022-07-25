@@ -220,14 +220,11 @@ logoutBtn.addEventListener('click', logout);
 // Account update (username, phone number and email)
 const userDataUpdate = async evt => {
   evt.preventDefault();
-  const [username, phoneNumber, newEmail, currentEmail, confirmPassword] =
-    evt.currentTarget.elements;
+  const [username, newEmail, confirmPassword] = evt.currentTarget.elements;
+  const email = auth.currentUser.email;
 
-  if ((username.value || phoneNumber.value || newEmail.value) === "") {
-
+  if ((username.value || newEmail.value) === "") {
     Notiflix.Notify.warning('Fill data you want to change.');
-  } else if (currentEmail.value === '') {
-    Notiflix.Notify.warning('Confirm with current email!');
   } else if (confirmPassword.value === '') {
     Notiflix.Notify.warning('Confirm with your password');
   } else {
@@ -257,7 +254,7 @@ const userDataUpdate = async evt => {
       if (newEmail.value !== '') {
         const userCredential = await signInWithEmailAndPassword(
           auth,
-          currentEmail.value,
+          email,
           confirmPassword.value
         );
         const user = userCredential.user;
@@ -265,7 +262,6 @@ const userDataUpdate = async evt => {
       }
 
       closeModal();
-      evt.currentTarget.reset();
       checkAuthState();
       Notiflix.Notify.success('Data has been updated successfully.');
     } catch (error) {
@@ -276,7 +272,7 @@ const userDataUpdate = async evt => {
 
 userUpdateForm.addEventListener('submit', userDataUpdate);
 
-
+// Password change
 const passwordUpdate = async evt => {
   evt.preventDefault();
   const userEmail = document.querySelector('.info__email').textContent;
@@ -307,7 +303,6 @@ const passwordUpdate = async evt => {
       await updatePassword(user, newPassword.value);
       await signInWithEmailAndPassword(auth, userEmail, newPassword.value);
       closeModal();
-      evt.currentTarget.reset();
       checkAuthState();
       Notiflix.Notify.success('Password has been updated successfully.');
     } catch (error) {
@@ -339,7 +334,6 @@ const userAvatarUpdate = async (evt) => {
     try {
       await upload(photo, auth.currentUser);
       closeModal();
-      evt.currentTarget.reset();
       checkAuthState();
       Notiflix.Notify.success("The photo has been changed.");
     } catch (error) {
@@ -368,7 +362,6 @@ const accountDeletion = async (evt) => {
       const user = userCredential.user;
       await deleteUser(user);
       closeModal();
-      evt.currentTarget.reset();
       checkAuthState();
       Notiflix.Notify.success('Your account has been deleted.');
     } catch (error) {
