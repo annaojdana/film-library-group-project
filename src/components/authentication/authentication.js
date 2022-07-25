@@ -13,7 +13,16 @@ import {
   updatePhoneNumber,
   updateEmail,
   updatePassword,
+  deleteUser
 } from 'firebase/auth';
+import { 
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from 'firebase/storage';
+
+// Imports for auth support functions
 import {
   hideSignIn,
   showSignIn,
@@ -22,6 +31,8 @@ import {
   showLoginState,
   setUserInfo,
 } from '../authSupport/authSupport';
+
+// Components and libraries imports
 import resetWindowClose from '../signInUp/signInUp';
 import { closeModal } from '../myAccount/myAccount';
 import Notiflix from 'notiflix';
@@ -44,6 +55,9 @@ const firebaseApp = initializeApp(firebaseConfig);
 // Firebase authentication initiaization (creating instance of auth)
 const auth = getAuth(firebaseApp);
 
+// Firebase storage initiaization
+const storage = getStorage();
+
 // Inputs for login form
 const loginForm = document.querySelector('.login-form');
 const [email, password, rememberMe] = loginForm.elements;
@@ -64,6 +78,11 @@ const logoutBtn = document.querySelector('.account__logout');
 // Inputs for account update
 const userUpdateForm = document.querySelector('.general-form');
 const passwordUpdateForm = document.querySelector('.password-form');
+const avatarUpdateForm = document.querySelector('.avatar-form');
+
+// Inputs for account deletion
+const deletionForm = document.querySelector('.deletion-form');
+
 
 // Logging into account
 const loginWithEmailAndPassword = async evt => {
@@ -206,7 +225,8 @@ const userDataUpdate = async evt => {
   const [username, phoneNumber, newEmail, currentEmail, confirmPassword] =
     evt.currentTarget.elements;
 
-  if ((username.value || phoneNumber.value || newEmail.value) == '') {
+  if ((username.value || phoneNumber.value || newEmail.value) === "") {
+
     Notiflix.Notify.warning('Fill data you want to change.');
   } else if (currentEmail.value === '') {
     Notiflix.Notify.warning('Confirm with current email!');
@@ -258,6 +278,7 @@ const userDataUpdate = async evt => {
 
 userUpdateForm.addEventListener('submit', userDataUpdate);
 
+
 const passwordUpdate = async evt => {
   console.log('funkcja działa');
   evt.preventDefault();
@@ -299,3 +320,69 @@ const passwordUpdate = async evt => {
   }
 };
 passwordUpdateForm.addEventListener('submit', passwordUpdate);
+
+// Account update (photoURL)
+const upload = async (file, currentUser) => {
+  const fileRef = ref(storage, `${currentUser.uid}.png`);
+
+  await uploadBytes(fileRef, file);
+
+  const photoURL = await getDownloadURL(fileRef);
+
+  await updateProfile(auth.currentUser, {photoURL: photoURL});
+}
+
+const userAvatarUpdate = async (evt) => {
+  evt.preventDefault();
+  const [imageUpload] = evt.currentTarget.elements;
+  const photo = imageUpload.files[0];
+
+  if (!photo) {
+    Notiflix.Notify.warning('The photo has not been selected.')
+  } else {
+    try {
+      await upload(photo, auth.currentUser);
+      closeModal();
+      checkAuthState();
+      Notiflix.Notify.success("The photo has been changed.");
+    } catch (error) {
+      console.log(`${error.name}: ${error.message}`);
+      Notiflix.Notify.failure('Update failed! Try again.');
+    }
+  }
+}
+
+avatarUpdateForm.addEventListener('submit', userAvatarUpdate);
+
+// Account deletion
+const accountDeletion = async (evt) => {
+  evt.preventDefault();
+  const [password] = evt.currentTarget.elements;
+  const email = auth.currentUser.email;
+
+  if (password.value === "") {
+    Notiflix.Notify.warning("Confirm with account password!");
+  } else {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password.value,
+      );
+      const user = userCredential.user;
+      await deleteUser(user);
+      closeModal();
+      checkAuthState();
+      Notiflix.Notify.success('Your account has been deleted.');
+    } catch (error) {
+      if (error.code === 'auth/wrong-password') {
+        Notiflix.Notify.failure('Wrong password! Try again.');
+      } else {
+        console.log(`${error.name}: ${error.message}`);
+        Notiflix.Notify.failure('Account deletion failed! Try again.');
+      }
+    }
+  }
+}
+
+deletionForm.addEventListener('submit', accountDeletion);

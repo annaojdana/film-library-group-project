@@ -110,6 +110,7 @@
     background-image: url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     cursor: pointer;
   }
 
@@ -181,6 +182,8 @@
     height: 150px;
     margin: 15px auto 20px auto;
     border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
   }
 
   &__label {
