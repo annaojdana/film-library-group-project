@@ -161,7 +161,6 @@ const createAccount = async evt => {
       showLoginState(user);
       setUserInfo(user);
     } catch (error) {
-      console.log(error);
       showLoginError(error);
     }
   }
@@ -193,7 +192,6 @@ resetBtn.addEventListener('click', resetPassword);
 export const checkAuthState = async () => {
   await onAuthStateChanged(auth, user => {
     if (user) {
-      console.log(user);
       hideLoginForm();
       hideSignIn();
       setUserInfo(user);
@@ -263,7 +261,6 @@ const userDataUpdate = async evt => {
       checkAuthState();
       Notiflix.Notify.success('Data has been updated successfully.');
     } catch (error) {
-      console.log(`${error.name}: ${error.message}`);
       Notiflix.Notify.failure('Update failed! Try again.');
     }
   }
@@ -272,10 +269,8 @@ const userDataUpdate = async evt => {
 userUpdateForm.addEventListener('submit', userDataUpdate);
 
 const passwordUpdate = async evt => {
-  console.log('funkcja działa');
   evt.preventDefault();
   const userEmail = document.querySelector('.info__email').textContent;
-  console.log(userEmail);
   const [oldPassword, newPassword, confirmNewPassword] =
     evt.currentTarget.elements;
   if (
@@ -309,7 +304,6 @@ const passwordUpdate = async evt => {
       checkAuthState();
       Notiflix.Notify.success('Password has been updated successfully.');
     } catch (error) {
-      console.log(`${error.name}: ${error.message}`);
       Notiflix.Notify.failure('Update failed! Try again.');
     }
   }
@@ -342,7 +336,6 @@ const userAvatarUpdate = async evt => {
       checkAuthState();
       Notiflix.Notify.success('The photo has been changed.');
     } catch (error) {
-      console.log(`${error.name}: ${error.message}`);
       Notiflix.Notify.failure('Update failed! Try again.');
     }
   }
@@ -375,7 +368,6 @@ const accountDeletion = async evt => {
       if (error.code === 'auth/wrong-password') {
         Notiflix.Notify.failure('Wrong password! Try again.');
       } else {
-        console.log(`${error.name}: ${error.message}`);
         Notiflix.Notify.failure('Account deletion failed! Try again.');
       }
     }
