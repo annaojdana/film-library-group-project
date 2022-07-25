@@ -220,8 +220,20 @@ const userDataUpdate = async evt => {
         });
       }
 
-      // if (phoneNumber.value !== "") {
-      //   await updatePhoneNumber(user, String(phoneNumber.value));
+      // if (phoneNumber.value !== '') {
+      //   if (phoneNumber.length < 12) {
+      //     Notiflix.Notify.warning(
+      //       'Your phone number should be at least 12 characters, remember to enter your country code'
+      //     );
+      //   } else if (!phoneNumber.value.includes('+')) {
+      //     Notiflix.Notify.warning('Your number should include "+"!');
+      //   } else {
+
+      //     await updatePhoneNumber(user, String(phoneNumber.value));
+      //     closeModal();
+      //     checkAuthState();
+      //     Notiflix.Notify.success('Data has been updated successfully.');
+      //   }
       // }
 
       if (newEmail.value !== '') {
@@ -247,29 +259,36 @@ const userDataUpdate = async evt => {
 userUpdateForm.addEventListener('submit', userDataUpdate);
 
 const passwordUpdate = async evt => {
+  console.log('funkcja działa');
   evt.preventDefault();
-  console.log(evt);
-  const user = auth.currentUser;
+  const userEmail = document.querySelector('.info__email').textContent;
+  console.log(userEmail);
   const [oldPassword, newPassword, confirmNewPassword] =
     evt.currentTarget.elements;
-
   if (
-    (oldPassword.value || newPassword.value || confirmNewPassword.value) == ''
+    (oldPassword.value || newPassword.value || confirmNewPassword.value) === ''
   ) {
     Notiflix.Notify.warning(
       'If you want to change the password, complete all fields.'
     );
   } else if (oldPassword.value === '') {
     Notiflix.Notify.warning('Enter your current password!');
+  } else if (newPassword.value.length < 6) {
+    Notiflix.Notify.warning('New password should be at least 6 characters');
   } else if (confirmNewPassword.value === '') {
     Notiflix.Notify.warning('Confirm with your new password');
-  } else if (oldPassword.value !== user.password) {
-    Notiflix.Notify.warning('Enter the correct  old password!');
-  } else if (newPassword !== confirmNewPassword) {
-    Notiflix.Notify.warning('Password and confirmation password do not match.');
+  } else if (newPassword.value !== confirmNewPassword.value) {
+      Notiflix.Notify.warning('New password and confirmation password do not match.');
   } else {
     try {
-      await updatePassword(user, newPassword);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        userEmail,
+        oldPassword.value
+      );
+      const user = userCredential.user;
+      await updatePassword(user, newPassword.value);
+      await signInWithEmailAndPassword(auth, userEmail, newPassword.value);
       closeModal();
       checkAuthState();
       Notiflix.Notify.success('Password has been updated successfully.');
@@ -279,5 +298,4 @@ const passwordUpdate = async evt => {
     }
   }
 };
-
 passwordUpdateForm.addEventListener('submit', passwordUpdate);
