@@ -36,17 +36,19 @@
       <div id="info" class="account__card active-card">
         <h3 class="account__title">User information</h3>
         <div class="account__info">
-          <img class="info__photo" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Profile photo">
+          <img class="info__photo"
+            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            alt="Profile photo">
 
-          <p class="info__label">Username: 
+          <p class="info__label">Username:
             <span class="info__value info__name"></span>
           </p>
 
-          <p class="info__label">E-mail: 
+          <p class="info__label">E-mail:
             <span class="info__value info__email"></span>
           </p>
 
-          <p class="info__label">Phone number: 
+          <p class="info__label">Phone number:
             <span class="info__value info__phone"></span>
           </p>
         </div>
@@ -54,32 +56,38 @@
 
       <div id="general" class="account__card">
         <h3 class="account__title">User data update</h3>
-        <form class="general-form account__form--wrapper" action="#">
-          <div class="account__form-field">
-            <input class="account__form-input" type="text" name="username" autocomplete="username"
-              placeholder="Enter your username" />
-          </div>
+        <form class="general-form account__form--wrapper">
+          <div class="account__form-data">
+            <p class="account__text">Data you can change:
+            </p>
+            <div class="account__form-field">
+              <input class="account__form-input" type="text" name="username" autocomplete="username"
+                placeholder="Enter your username" />
+            </div>
 
-          <div class="account__form-field">
-            <input class="account__form-input" type="tel" name="phoneNumber" autocomplete="phoneNumber"
-              placeholder="Enter your phone number" />
-          </div>
+            <div class="account__form-field">
+              <input class="account__form-input" type="tel" name="phoneNumber" autocomplete="phoneNumber"
+                placeholder="Enter your phone number - now function not available" disabled />
+            </div>
 
-          <div class="account__form-field">
-            <input class="account__form-input" type="email" name="newEmail" autocomplete="newEmail"
-              placeholder="Enter your new e-mail" />
+            <div class="account__form-field">
+              <input class="account__form-input" type="email" name="newEmail" autocomplete="newEmail"
+                placeholder="Enter your new e-mail" />
+            </div>
           </div>
+          <div class="account__form-confirm">
+            <p class="account__text">Here you can confirm the change of your data:
+            </p>
+            <div class="account__form-field">
+              <input class="account__form-input" type="email" name="currentEmail" autocomplete="currentEmail"
+                placeholder="Confirm with current e-mail" />
+            </div>
 
-          <div class="account__form-field">
-            <input class="account__form-input" type="email" name="currentEmail" autocomplete="currentEmail"
-              placeholder="Confirm with current e-mail" />
+            <div class="account__form-field">
+              <input class="account__form-input" type="password" name="confirmPassword" autocomplete="confirmPassword"
+                placeholder="Confirm your password" />
+            </div>
           </div>
-
-          <div class="account__form-field">
-            <input class="account__form-input" type="password" name="confirmPassword"
-              autocomplete="confirmPassword" placeholder="Confirm your password" />
-          </div>
-
           <button type="submit" class="account__form-button general-btn">
             Update Profile
           </button>
@@ -89,20 +97,20 @@
       <div id="password" class="account__card ">
         <h3 class="account__title">Password change</h3>
 
-        <form class="password-form account__form--wrapper" action="#">
+        <form class="password-form account__form--wrapper">
           <div class="account__form-field">
             <input class="account__form-input" type="password" name="oldPassword" autocomplete="oldPassword"
-              placeholder="Old password" required />
+              placeholder="Old password" />
           </div>
 
           <div class="account__form-field">
             <input class="account__form-input" type="password" name="newPassword" autocomplete="newPassword"
-              placeholder="Create a new password" required />
+              placeholder="Create a new password"  />
           </div>
 
           <div class="account__form-field">
             <input class="account__form-input" type="password" name="confirmNewPassword"
-              autocomplete="confirmNewPassword" placeholder="Confirm a new password" required />
+              autocomplete="confirmNewPassword" placeholder="Confirm a new password" />
           </div>
 
           <button type="submit" class="account__form-button password-btn">
@@ -115,7 +123,7 @@
         <h3 class="account__title">Avatar update</h3>
         <p class="account__text">Click on the picture to choose a new one.
         </p>
-        <form class="avatar-form account__form--wrapper" action="#">
+        <form class="avatar-form account__form--wrapper">
           <label class="account__img" for="imageUpload">
             <input class="account__uploader" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" /></label>
           <button type="submit" class="account__form-button avatar-btn">

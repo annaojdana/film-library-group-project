@@ -12,7 +12,8 @@ import {
   sendPasswordResetEmail,
   updatePhoneNumber,
   updateEmail,
-  deleteUser,
+  updatePassword,
+  deleteUser
 } from 'firebase/auth';
 import { 
   getStorage,
@@ -76,13 +77,15 @@ const logoutBtn = document.querySelector('.account__logout');
 
 // Inputs for account update
 const userUpdateForm = document.querySelector('.general-form');
+const passwordUpdateForm = document.querySelector('.password-form');
 const avatarUpdateForm = document.querySelector('.avatar-form');
 
 // Inputs for account deletion
 const deletionForm = document.querySelector('.deletion-form');
 
+
 // Logging into account
-const loginWithEmailAndPassword = async (evt) => {
+const loginWithEmailAndPassword = async evt => {
   evt.preventDefault();
   const loginEmail = email.value;
   const loginPassword = password.value;
@@ -102,10 +105,14 @@ const loginWithEmailAndPassword = async (evt) => {
             // if a user forgets to sign out.
             // ...
             // New sign-in will be persisted with session persistence.
-            const userCredential = signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+            const userCredential = signInWithEmailAndPassword(
+              auth,
+              loginEmail,
+              loginPassword
+            );
             return userCredential;
           })
-          .catch((error) => {
+          .catch(error => {
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -128,7 +135,7 @@ const loginWithEmailAndPassword = async (evt) => {
 loginBtn.addEventListener('click', loginWithEmailAndPassword);
 
 // Sign Up and logging into account after sign up
-const createAccount = async (evt) => {
+const createAccount = async evt => {
   evt.preventDefault();
   const signUpEmail = newEmail.value;
   const signUpPassword = newPassword.value;
@@ -169,7 +176,7 @@ const createAccount = async (evt) => {
 signUpBtn.addEventListener('click', createAccount);
 
 // Reset password
-const resetPassword = async (evt) => {
+const resetPassword = async evt => {
   evt.preventDefault();
   const emailValue = emailForReset.value;
 
@@ -213,36 +220,52 @@ const logout = async () => {
 logoutBtn.addEventListener('click', logout);
 
 // Account update (username, phone number and email)
-const userDataUpdate = async (evt) => {
+const userDataUpdate = async evt => {
   evt.preventDefault();
-  const [username, phoneNumber, newEmail, currentEmail, confirmPassword] = evt.currentTarget.elements;
+  const [username, phoneNumber, newEmail, currentEmail, confirmPassword] =
+    evt.currentTarget.elements;
 
   if ((username.value || phoneNumber.value || newEmail.value) === "") {
+
     Notiflix.Notify.warning('Fill data you want to change.');
-  } else if (currentEmail.value === "") {
+  } else if (currentEmail.value === '') {
     Notiflix.Notify.warning('Confirm with current email!');
-  } else if (confirmPassword.value === "") {
+  } else if (confirmPassword.value === '') {
     Notiflix.Notify.warning('Confirm with your password');
   } else {
     try {
-      if (username.value !== "") {
-        await updateProfile(auth.currentUser, {displayName: String(username.value)});
+      if (username.value !== '') {
+        await updateProfile(auth.currentUser, {
+          displayName: String(username.value),
+        });
       }
-  
-      // if (phoneNumber.value !== "") {
-      //   await updatePhoneNumber(user, String(phoneNumber.value));
+
+      // if (phoneNumber.value !== '') {
+      //   if (phoneNumber.length < 12) {
+      //     Notiflix.Notify.warning(
+      //       'Your phone number should be at least 12 characters, remember to enter your country code'
+      //     );
+      //   } else if (!phoneNumber.value.includes('+')) {
+      //     Notiflix.Notify.warning('Your number should include "+"!');
+      //   } else {
+
+      //     await updatePhoneNumber(user, String(phoneNumber.value));
+      //     closeModal();
+      //     checkAuthState();
+      //     Notiflix.Notify.success('Data has been updated successfully.');
+      //   }
       // }
-  
-      if (newEmail.value !== "") {
+
+      if (newEmail.value !== '') {
         const userCredential = await signInWithEmailAndPassword(
           auth,
           currentEmail.value,
-          confirmPassword.value,
+          confirmPassword.value
         );
         const user = userCredential.user;
         await updateEmail(user, newEmail.value);
       }
-      
+
       closeModal();
       checkAuthState();
       Notiflix.Notify.success('Data has been updated successfully.');
@@ -251,9 +274,52 @@ const userDataUpdate = async (evt) => {
       Notiflix.Notify.failure('Update failed! Try again.');
     }
   }
-}
+};
 
 userUpdateForm.addEventListener('submit', userDataUpdate);
+
+
+const passwordUpdate = async evt => {
+  console.log('funkcja działa');
+  evt.preventDefault();
+  const userEmail = document.querySelector('.info__email').textContent;
+  console.log(userEmail);
+  const [oldPassword, newPassword, confirmNewPassword] =
+    evt.currentTarget.elements;
+  if (
+    (oldPassword.value || newPassword.value || confirmNewPassword.value) === ''
+  ) {
+    Notiflix.Notify.warning(
+      'If you want to change the password, complete all fields.'
+    );
+  } else if (oldPassword.value === '') {
+    Notiflix.Notify.warning('Enter your current password!');
+  } else if (newPassword.value.length < 6) {
+    Notiflix.Notify.warning('New password should be at least 6 characters');
+  } else if (confirmNewPassword.value === '') {
+    Notiflix.Notify.warning('Confirm with your new password');
+  } else if (newPassword.value !== confirmNewPassword.value) {
+      Notiflix.Notify.warning('New password and confirmation password do not match.');
+  } else {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        userEmail,
+        oldPassword.value
+      );
+      const user = userCredential.user;
+      await updatePassword(user, newPassword.value);
+      await signInWithEmailAndPassword(auth, userEmail, newPassword.value);
+      closeModal();
+      checkAuthState();
+      Notiflix.Notify.success('Password has been updated successfully.');
+    } catch (error) {
+      console.log(`${error.name}: ${error.message}`);
+      Notiflix.Notify.failure('Update failed! Try again.');
+    }
+  }
+};
+passwordUpdateForm.addEventListener('submit', passwordUpdate);
 
 // Account update (photoURL)
 const upload = async (file, currentUser) => {
