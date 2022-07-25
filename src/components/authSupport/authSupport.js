@@ -18,7 +18,6 @@ export const hideLoginForm = () => {
 }
 
 export const showLoginError = (error) => {
-  console.log(error);
   if (error.code === 'auth/wrong-password') {
     Notiflix.Notify.failure('Wrong password! Try again.');
   } else if (error.code === 'auth/invalid-email') {
