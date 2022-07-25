@@ -3,6 +3,7 @@ import {
   disableScrolling,
   enableScrolling,
 } from '../scrollToggle/scrollToggle';
+import { checkAuthState } from '../authentication/authentication';
 
 const openAccountBtn = document.querySelector('[data-account-open]');
 const closeAccountBtn = document.querySelector('[data-account-close]');
