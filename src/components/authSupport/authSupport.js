@@ -48,7 +48,7 @@ export const showLoginState = ({displayName}) => {
   Notiflix.Notify.success(`You are logged in as ${displayName}`);
 }
 
-export const setUserInfo = ({photoURL, displayName, email, phoneNumber}) => {
+export const setUserInfo = ({photoURL, displayName, email}) => {
   (photoURL)
     ? photoOutput.src = photoURL
     : photoOutput.src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
@@ -61,7 +61,7 @@ export const setUserInfo = ({photoURL, displayName, email, phoneNumber}) => {
     ? emailOutput.innerHTML = email
     : emailOutput.innerHTML = "-";
 
-  (phoneNumber)
-    ? phoneOutput.innerHTML = phoneNumber
-    : phoneOutput.innerHTML = "-";
+  // (phoneNumber)
+  //   ? phoneOutput.innerHTML = phoneNumber
+  //   : phoneOutput.innerHTML = "-";
 }

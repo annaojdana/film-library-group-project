@@ -214,13 +214,13 @@ logoutBtn.addEventListener('click', logout);
 // Account update (username, phone number and email)
 const userDataUpdate = async evt => {
   evt.preventDefault();
-  const [username, phoneNumber, newEmail, currentEmail, confirmPassword] =
-    evt.currentTarget.elements;
 
-  if ((username.value || phoneNumber.value || newEmail.value) === '') {
+  const [username, newEmail, confirmPassword] = evt.currentTarget.elements;
+  const email = auth.currentUser.email;
+
+  if ((username.value || newEmail.value) === "") {
+
     Notiflix.Notify.warning('Fill data you want to change.');
-  } else if (currentEmail.value === '') {
-    Notiflix.Notify.warning('Confirm with current email!');
   } else if (confirmPassword.value === '') {
     Notiflix.Notify.warning('Confirm with your password');
   } else {
@@ -250,7 +250,7 @@ const userDataUpdate = async evt => {
       if (newEmail.value !== '') {
         const userCredential = await signInWithEmailAndPassword(
           auth,
-          currentEmail.value,
+          email,
           confirmPassword.value
         );
         const user = userCredential.user;
@@ -267,6 +267,9 @@ const userDataUpdate = async evt => {
 };
 
 userUpdateForm.addEventListener('submit', userDataUpdate);
+
+
+// Password change
 
 const passwordUpdate = async evt => {
   evt.preventDefault();
