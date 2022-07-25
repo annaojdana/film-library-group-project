@@ -13,14 +13,9 @@ import {
   updatePhoneNumber,
   updateEmail,
   updatePassword,
-  deleteUser
+  deleteUser,
 } from 'firebase/auth';
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL,
-} from 'firebase/storage';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 // Imports for auth support functions
 import {
@@ -82,7 +77,6 @@ const avatarUpdateForm = document.querySelector('.avatar-form');
 
 // Inputs for account deletion
 const deletionForm = document.querySelector('.deletion-form');
-
 
 // Logging into account
 const loginWithEmailAndPassword = async evt => {
@@ -220,10 +214,12 @@ logoutBtn.addEventListener('click', logout);
 // Account update (username, phone number and email)
 const userDataUpdate = async evt => {
   evt.preventDefault();
+
   const [username, newEmail, confirmPassword] = evt.currentTarget.elements;
   const email = auth.currentUser.email;
 
   if ((username.value || newEmail.value) === "") {
+
     Notiflix.Notify.warning('Fill data you want to change.');
   } else if (confirmPassword.value === '') {
     Notiflix.Notify.warning('Confirm with your password');
@@ -260,7 +256,7 @@ const userDataUpdate = async evt => {
         const user = userCredential.user;
         await updateEmail(user, newEmail.value);
       }
-
+     
       closeModal();
       checkAuthState();
       Notiflix.Notify.success('Data has been updated successfully.');
@@ -272,7 +268,9 @@ const userDataUpdate = async evt => {
 
 userUpdateForm.addEventListener('submit', userDataUpdate);
 
+
 // Password change
+
 const passwordUpdate = async evt => {
   evt.preventDefault();
   const userEmail = document.querySelector('.info__email').textContent;
@@ -291,7 +289,9 @@ const passwordUpdate = async evt => {
   } else if (confirmNewPassword.value === '') {
     Notiflix.Notify.warning('Confirm with your new password');
   } else if (newPassword.value !== confirmNewPassword.value) {
-      Notiflix.Notify.warning('New password and confirmation password do not match.');
+    Notiflix.Notify.warning(
+      'New password and confirmation password do not match.'
+    );
   } else {
     try {
       const userCredential = await signInWithEmailAndPassword(
@@ -302,6 +302,7 @@ const passwordUpdate = async evt => {
       const user = userCredential.user;
       await updatePassword(user, newPassword.value);
       await signInWithEmailAndPassword(auth, userEmail, newPassword.value);
+
       closeModal();
       checkAuthState();
       Notiflix.Notify.success('Password has been updated successfully.');
@@ -320,47 +321,49 @@ const upload = async (file, currentUser) => {
 
   const photoURL = await getDownloadURL(fileRef);
 
-  await updateProfile(auth.currentUser, {photoURL: photoURL});
-}
+  await updateProfile(auth.currentUser, { photoURL: photoURL });
+};
 
-const userAvatarUpdate = async (evt) => {
+const userAvatarUpdate = async evt => {
   evt.preventDefault();
   const [imageUpload] = evt.currentTarget.elements;
   const photo = imageUpload.files[0];
 
   if (!photo) {
-    Notiflix.Notify.warning('The photo has not been selected.')
+    Notiflix.Notify.warning('The photo has not been selected.');
   } else {
     try {
       await upload(photo, auth.currentUser);
+
       closeModal();
       checkAuthState();
-      Notiflix.Notify.success("The photo has been changed.");
+      Notiflix.Notify.success('The photo has been changed.');
     } catch (error) {
       Notiflix.Notify.failure('Update failed! Try again.');
     }
   }
-}
+};
 
 avatarUpdateForm.addEventListener('submit', userAvatarUpdate);
 
 // Account deletion
-const accountDeletion = async (evt) => {
+const accountDeletion = async evt => {
   evt.preventDefault();
   const [password] = evt.currentTarget.elements;
   const email = auth.currentUser.email;
 
-  if (password.value === "") {
-    Notiflix.Notify.warning("Confirm with account password!");
+  if (password.value === '') {
+    Notiflix.Notify.warning('Confirm with account password!');
   } else {
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
-        password.value,
+        password.value
       );
       const user = userCredential.user;
       await deleteUser(user);
+
       closeModal();
       checkAuthState();
       Notiflix.Notify.success('Your account has been deleted.');
@@ -372,6 +375,6 @@ const accountDeletion = async (evt) => {
       }
     }
   }
-}
+};
 
 deletionForm.addEventListener('submit', accountDeletion);
