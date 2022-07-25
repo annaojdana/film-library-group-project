@@ -78,6 +78,9 @@ const logoutBtn = document.querySelector('.account__logout');
 const userUpdateForm = document.querySelector('.general-form');
 const avatarUpdateForm = document.querySelector('.avatar-form');
 
+// Inputs for account deletion
+const deletionForm = document.querySelector('.deletion-form');
+
 // Logging into account
 const loginWithEmailAndPassword = async (evt) => {
   evt.preventDefault();
@@ -265,11 +268,11 @@ const upload = async (file, currentUser) => {
 
 const userAvatarUpdate = async (evt) => {
   evt.preventDefault();
-  const {imageUpload} = evt.currentTarget.elements;
+  const [imageUpload] = evt.currentTarget.elements;
   const photo = imageUpload.files[0];
 
   if (!photo) {
-    Notiflix.Notify.info('The photo has not been selected.')
+    Notiflix.Notify.warning('The photo has not been selected.')
   } else {
     try {
       await upload(photo, auth.currentUser);
@@ -284,3 +287,36 @@ const userAvatarUpdate = async (evt) => {
 }
 
 avatarUpdateForm.addEventListener('submit', userAvatarUpdate);
+
+// Account deletion
+const accountDeletion = async (evt) => {
+  evt.preventDefault();
+  const [password] = evt.currentTarget.elements;
+  const email = auth.currentUser.email;
+
+  if (password.value === "") {
+    Notiflix.Notify.warning("Confirm with account password!");
+  } else {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password.value,
+      );
+      const user = userCredential.user;
+      await deleteUser(user);
+      closeModal();
+      checkAuthState();
+      Notiflix.Notify.success('Your account has been deleted.');
+    } catch (error) {
+      if (error.code === 'auth/wrong-password') {
+        Notiflix.Notify.failure('Wrong password! Try again.');
+      } else {
+        console.log(`${error.name}: ${error.message}`);
+        Notiflix.Notify.failure('Account deletion failed! Try again.');
+      }
+    }
+  }
+}
+
+deletionForm.addEventListener('submit', accountDeletion);
