@@ -15,7 +15,7 @@ import {
   updatePassword,
   deleteUser
 } from 'firebase/auth';
-import { 
+import {
   getStorage,
   ref,
   uploadBytes,
@@ -267,6 +267,7 @@ const userDataUpdate = async evt => {
       }
 
       closeModal();
+      evt.currentTarget.reset();
       checkAuthState();
       Notiflix.Notify.success('Data has been updated successfully.');
     } catch (error) {
@@ -311,6 +312,7 @@ const passwordUpdate = async evt => {
       await updatePassword(user, newPassword.value);
       await signInWithEmailAndPassword(auth, userEmail, newPassword.value);
       closeModal();
+      evt.currentTarget.reset();
       checkAuthState();
       Notiflix.Notify.success('Password has been updated successfully.');
     } catch (error) {
@@ -343,6 +345,7 @@ const userAvatarUpdate = async (evt) => {
     try {
       await upload(photo, auth.currentUser);
       closeModal();
+      evt.currentTarget.reset();
       checkAuthState();
       Notiflix.Notify.success("The photo has been changed.");
     } catch (error) {
@@ -372,6 +375,7 @@ const accountDeletion = async (evt) => {
       const user = userCredential.user;
       await deleteUser(user);
       closeModal();
+      evt.currentTarget.reset();
       checkAuthState();
       Notiflix.Notify.success('Your account has been deleted.');
     } catch (error) {
