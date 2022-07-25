@@ -199,7 +199,7 @@ const userDataUpdate = async (evt) => {
   evt.preventDefault();
   const [username, phoneNumber, newEmail, currentEmail, confirmPassword] = evt.currentTarget.elements;
 
-  if ((username.value || phoneNumber.value || newEmail.value) == "") {
+  if ((username.value || phoneNumber.value || newEmail.value) === "") {
     Notiflix.Notify.warning('Fill data you want to change.');
   } else if (currentEmail.value === "") {
     Notiflix.Notify.warning('Confirm with current email!');
