@@ -39,6 +39,19 @@ export const closeModal = () => {
   modalAccount.classList.add('is-hidden-account');
   backdrop.removeEventListener('keydown', closeEscKey);
   enableScrolling();
+  links.forEach(link => {
+    let linkId = link.href.split('#')[1];
+    linkId !== 'info'
+      ? link.children[0].classList.remove('checked')
+      : link.children[0].classList.add('checked');
+  }
+  )
+  cards.forEach(card => {
+    let cardId = card.id;
+    cardId !== 'info'
+      ? card.classList.remove('active-card')
+      : card.classList.add('active-card');
+  });
 };
 
 const openModal = () => {
