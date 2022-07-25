@@ -256,7 +256,7 @@ const userDataUpdate = async evt => {
         const user = userCredential.user;
         await updateEmail(user, newEmail.value);
       }
-      evt.currentTarget.reset();
+     
       closeModal();
       checkAuthState();
       Notiflix.Notify.success('Data has been updated successfully.');
@@ -299,7 +299,7 @@ const passwordUpdate = async evt => {
       const user = userCredential.user;
       await updatePassword(user, newPassword.value);
       await signInWithEmailAndPassword(auth, userEmail, newPassword.value);
-      evt.currentTarget.reset();
+
       closeModal();
       checkAuthState();
       Notiflix.Notify.success('Password has been updated successfully.');
@@ -331,7 +331,7 @@ const userAvatarUpdate = async evt => {
   } else {
     try {
       await upload(photo, auth.currentUser);
-      evt.currentTarget.reset();
+
       closeModal();
       checkAuthState();
       Notiflix.Notify.success('The photo has been changed.');
@@ -360,7 +360,7 @@ const accountDeletion = async evt => {
       );
       const user = userCredential.user;
       await deleteUser(user);
-      evt.currentTarget.reset();
+
       closeModal();
       checkAuthState();
       Notiflix.Notify.success('Your account has been deleted.');
